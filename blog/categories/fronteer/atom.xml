@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[memos]]></title>
-  <link href="http://liunian.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: fronteer | memos]]></title>
+  <link href="http://liunian.github.com/blog/categories/fronteer/atom.xml" rel="self"/>
   <link href="http://liunian.github.com/"/>
   <updated>2012-06-29T11:31:39+08:00</updated>
   <id>http://liunian.github.com/</id>
@@ -35,7 +35,7 @@
 
 <h2>demos</h2>
 
-<figure class='code'><figcaption><span> (ie6_float_right.html)</span> <a href='http://liunian.github.com/downloads/code/ie6_float_right.html'>download</a></figcaption>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (ie6_float_right.html)</span> <a href='/downloads/code/ie6_float_right.html'>download</a></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -134,8 +134,7 @@
 </span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
 </span><span class='line'><span class="nt">&lt;/body&gt;</span>
 </span><span class='line'><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   
