@@ -9,8 +9,8 @@
   <meta name="author" content="流年">
 
   
-  <meta name="description" content="问题描述 IE6 下，当一个 float:right 的元素不是第一个子元素并且其前面没有 float:left 的元素时，那么将会将会导致一个换行。 解决方法 将 float:right 的元素放到最前面
-把 float:right 前面的一个或多个元素加上 float:left（视样式而定) ">
+  <meta name="description" content="问题描述 IE6 下使用 display:inline-block 可能会发现中间出现了折行。 解决方法 display:inline-block 的元素前后不能有空白符，需要紧紧相连。
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +64,48 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/ie6-inline-block-zhe-xing-wen-ti/">Ie6 Inline-block 折行问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-07T13:21:00+08:00" pubdate data-updated="true">Jul 7<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>问题描述</h2>
+
+<p>IE6 下使用 <code>display:inline-block</code> 可能会发现中间出现了折行。</p>
+
+<h2>解决方法</h2>
+
+<p><code>display:inline-block</code> 的元素前后不能有空白符，需要紧紧相连。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -127,6 +169,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/ie6-inline-block-zhe-xing-wen-ti/">ie6 inline-block 折行问题</a>
+      </li>
     
       <li class="post">
         <a href="/blog/ie6-float-right-bug/">IE6 float right 导致换行</a>

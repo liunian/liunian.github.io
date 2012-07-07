@@ -4,7 +4,7 @@
   <title><![CDATA[Category: fronteer | memos]]></title>
   <link href="http://liunian.github.com/blog/categories/fronteer/atom.xml" rel="self"/>
   <link href="http://liunian.github.com/"/>
-  <updated>2012-06-29T11:37:16+08:00</updated>
+  <updated>2012-07-07T13:26:26+08:00</updated>
   <id>http://liunian.github.com/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ie6 inline-block 折行问题]]></title>
+    <link href="http://liunian.github.com/blog/ie6-inline-block-zhe-xing-wen-ti/"/>
+    <updated>2012-07-07T13:21:00+08:00</updated>
+    <id>http://liunian.github.com/blog/ie6-inline-block-zhe-xing-wen-ti</id>
+    <content type="html"><![CDATA[<h2>问题描述</h2>
+
+<p>IE6 下使用 <code>display:inline-block</code> 可能会发现中间出现了折行。</p>
+
+<h2>解决方法</h2>
+
+<p><code>display:inline-block</code> 的元素前后不能有空白符，需要紧紧相连。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[IE6 float right 导致换行]]></title>
