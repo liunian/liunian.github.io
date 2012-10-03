@@ -9,8 +9,7 @@
   <meta name="author" content="流年">
 
   
-  <meta name="description" content="问题描述 IE6 下使用 display:inline-block 可能会发现中间出现了折行。 解决方法 display:inline-block 的元素前后不能有空白符，需要紧紧相连。
-">
+  <meta name="description" content="Python Interactive Shell _ 变量代表最后一次 return 的值。 Source Code Encoding Python 2.x 默认识别源码为 ASCII，对于需要使用如中文等，可以在源码中指定编码类型，如： # -*- coding: utf-8 -*- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +63,72 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/python-tutorial/">Python Tutorial</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-14T19:18:00+08:00" pubdate data-updated="true">Jul 14<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Python Interactive Shell</h2>
+
+<p><code>_</code> 变量代表最后一次 return 的值。</p>
+
+<h2>Source Code Encoding</h2>
+
+<p>Python 2.x 默认识别源码为 ASCII，对于需要使用如中文等，可以在源码中指定编码类型，如：</p>
+
+<pre><code># -*- coding: utf-8 -*-
+</code></pre>
+
+<p>此方法不使用与 2.2 及更旧版本，3.x 后默认为 utf-8 编码，无需如此。</p>
+
+<h2>Number</h2>
+
+<p>0 == 0.0</p>
+
+<h3>/ （除法）</h3>
+
+<p>2.x 中对两个整数应用 / ，得到的是 math.floor，但其中一个 float，则得到 float。如：5 / 2 = 2； 5 / 2.0 = 2.5；</p>
+
+<p>3.x 中默认是普通的除法，不取 floor。</p>
+
+<h3>复数（complex）</h3>
+
+<p>用 1j 或 2J 等形式来表示虚数，也可以用 complex 类来构建复数。如：<code>(1+2j) + complex(2, 1)</code>。得到的复数 i，可以用 <code>i.real</code> 和 <code>i.imag</code> 来分别获取实数部分和虚数部分。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/python-tutorial/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -169,6 +234,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/python-tutorial/">Python Tutorial</a>
+      </li>
     
       <li class="post">
         <a href="/blog/ie6-inline-block-zhe-xing-wen-ti/">ie6 inline-block 折行问题</a>
