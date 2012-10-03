@@ -4,7 +4,7 @@
   <title><![CDATA[Category: memo | memos]]></title>
   <link href="http://liunian.github.com/blog/categories/memo/atom.xml" rel="self"/>
   <link href="http://liunian.github.com/"/>
-  <updated>2012-10-03T16:15:11+08:00</updated>
+  <updated>2012-10-03T21:39:49+08:00</updated>
   <id>http://liunian.github.com/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -121,6 +121,15 @@ Quote string
 </code></pre>
 
 <p>此方法不使用与 2.2 及更旧版本，3.x 后默认为 utf-8 编码，无需如此。</p>
+
+<p>注意：</p>
+
+<ul>
+<li><p>如果第一行是如 <code>/usr/bin/env python</code> 这样的指定，那么指定的编码类型必须位于第二行，中间不能有空行。</p></li>
+<li><p>如果第一行不是程序指定，那么编码类型注释前面可以有空行。</p></li>
+<li><p>加了编码类型注释后，注释中可以直接使用中文了，但在代码中，需要用 u<code>'中文'</code>，而不能直接想 JS 中那样使用字符串。</p></li>
+</ul>
+
 
 <h2>Number</h2>
 
