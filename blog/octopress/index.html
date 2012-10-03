@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>ie6 inline-block 折行问题 - memos</title>
+  <title>Octopress memo - memos</title>
   <meta name="author" content="流年">
 
   
-  <meta name="description" content="问题描述 IE6 下使用 display:inline-block 可能会发现中间出现了折行。 解决方法 display:inline-block 的元素前后不能有空白符，需要紧紧相连。
-">
+  <meta name="description" content="Install bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer) Add to shell command echo '[[ -s "$ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liunian.github.com/blog/ie6-inline-block-zhe-xing-wen-ti/">
+  <link rel="canonical" href="http://liunian.github.com/blog/octopress/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -67,7 +66,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ie6 Inline-block 折行问题</h1>
+      <h1 class="entry-title">Octopress Memo</h1>
     
     
       <p class="meta">
@@ -83,20 +82,96 @@
   
 
 
-<time datetime="2012-07-07T13:21:00+08:00" pubdate data-updated="true">Jul 7<span>th</span>, 2012</time>
+<time datetime="2012-10-03T15:55:00+08:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>问题描述</h2>
+<div class="entry-content"><p>Install</p>
 
-<p>IE6 下使用 <code>display:inline-block</code> 可能会发现中间出现了折行。</p>
+<pre><code>bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+</code></pre>
 
-<h2>解决方法</h2>
+<p>Add to shell command</p>
 
-<p><code>display:inline-block</code> 的元素前后不能有空白符，需要紧紧相连。</p>
+<pre><code>echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile
+source ~/.bash_profile
+
+# If using Zsh do this instead
+echo '[[ -s $HOME/.rvm/scripts/rvm ]] &amp;&amp; source $HOME/.rvm/scripts/rvm' &gt;&gt; ~/.zshrc
+source ~/.zshrc
+</code></pre>
+
+<p>Install Ruby</p>
+
+<pre><code>rvm install 1.9.2 &amp;&amp; rvm use 1.9.2
+# 1.9.3 will not fit here for now
+</code></pre>
+
+<p>Switch back to system</p>
+
+<pre><code>rvm use system
+</code></pre>
+
+<p>when using zsh, should add something in .zshrc to make it work right.</p>
+
+<pre><code>alias rake="noglob rake"
+</code></pre>
+
+<p>After adding it, restart the terminal or source the .zshrc file.</p>
+
+<!--more-->
+
+
+<h2>code snippets</h2>
+
+<h3><a href="http://octopress.org/docs/blogging/code/">Basic</a></h3>
+
+<pre><code>``` [language] [title] [url] [link text]
+code snippet
+```
+</code></pre>
+
+<h3>Gists</h3>
+
+<pre><code>{% gist gist_id [filename] %}
+</code></pre>
+
+<h3>Include Code Snippets</h3>
+
+<p>Import files on your filesystem into any blog post as embedded code snippets with syntax highlighting and a download link. In the _config.yml you can set your code_dir but the default is <code>source/downloads/code</code>. Simply put a file anywhere under that directory and use the following tag to embed it in a post.</p>
+
+<pre><code>{% include_code [title] [lang:language] path/to/file %}
+</code></pre>
+
+<p>Following example will include the code file: <code>source/downloads/code/test.js</code></p>
+
+<pre><code>{% include_code test.js  %}
+</code></pre>
+
+<h2>image</h2>
+
+<pre><code>{% img [class names] /path/to/image [width] [height] [title text [alt text]] %}
+</code></pre>
+
+<h2><a href="http://octopress.org/docs/plugins/blockquote/">extended blockquote</a></h2>
+
+<pre><code>{% blockquote [author[, source]] [link] [source_link_title] %}
+Quote string
+{% endblockquote %}
+</code></pre>
+
+<h2>Render Partial</h2>
+
+<pre><code>{% render_partial path/to/file %}
+</code></pre>
+
+<h2>add about page</h2>
+
+<pre><code>http://gangmax.github.com/blog/2012/05/04/add-about-page-in-octopress/
+</code></pre>
 </div>
 
 
@@ -119,12 +194,12 @@
   
 
 
-<time datetime="2012-07-07T13:21:00+08:00" pubdate data-updated="true">Jul 7<span>th</span>, 2012</time>
+<time datetime="2012-10-03T15:55:00+08:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/css-/'>css,</a>, <a class='category' href='/blog/categories/fronteer/'>fronteer</a>
+    <a class='category' href='/blog/categories/octopress-/'>Octopress,</a>, <a class='category' href='/blog/categories/memo/'>memo</a>
   
 </span>
 
@@ -140,10 +215,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/ie6-float-right-bug/" title="Previous Post: IE6 float right 导致换行">&laquo; IE6 float right 导致换行</a>
+        <a class="basic-alignment left" href="/blog/python-tutorial/" title="Previous Post: Python Tutorial">&laquo; Python Tutorial</a>
       
-      
-        <a class="basic-alignment right" href="/blog/python-tutorial/" title="Next Post: Python Tutorial">Python Tutorial &raquo;</a>
       
     </p>
   </footer>

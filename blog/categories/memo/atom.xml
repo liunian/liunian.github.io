@@ -4,7 +4,7 @@
   <title><![CDATA[Category: memo | memos]]></title>
   <link href="http://liunian.github.com/blog/categories/memo/atom.xml" rel="self"/>
   <link href="http://liunian.github.com/"/>
-  <updated>2012-10-03T15:48:41+08:00</updated>
+  <updated>2012-10-03T16:15:11+08:00</updated>
   <id>http://liunian.github.com/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -12,6 +12,97 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress memo]]></title>
+    <link href="http://liunian.github.com/blog/octopress/"/>
+    <updated>2012-10-03T15:55:00+08:00</updated>
+    <id>http://liunian.github.com/blog/octopress</id>
+    <content type="html"><![CDATA[<p>Install</p>
+
+<pre><code>bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+</code></pre>
+
+<p>Add to shell command</p>
+
+<pre><code>echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile
+source ~/.bash_profile
+
+# If using Zsh do this instead
+echo '[[ -s $HOME/.rvm/scripts/rvm ]] &amp;&amp; source $HOME/.rvm/scripts/rvm' &gt;&gt; ~/.zshrc
+source ~/.zshrc
+</code></pre>
+
+<p>Install Ruby</p>
+
+<pre><code>rvm install 1.9.2 &amp;&amp; rvm use 1.9.2
+# 1.9.3 will not fit here for now
+</code></pre>
+
+<p>Switch back to system</p>
+
+<pre><code>rvm use system
+</code></pre>
+
+<p>when using zsh, should add something in .zshrc to make it work right.</p>
+
+<pre><code>alias rake="noglob rake"
+</code></pre>
+
+<p>After adding it, restart the terminal or source the .zshrc file.</p>
+
+<!--more-->
+
+
+<h2>code snippets</h2>
+
+<h3><a href="http://octopress.org/docs/blogging/code/">Basic</a></h3>
+
+<pre><code>``` [language] [title] [url] [link text]
+code snippet
+```
+</code></pre>
+
+<h3>Gists</h3>
+
+<pre><code>{% gist gist_id [filename] %}
+</code></pre>
+
+<h3>Include Code Snippets</h3>
+
+<p>Import files on your filesystem into any blog post as embedded code snippets with syntax highlighting and a download link. In the _config.yml you can set your code_dir but the default is <code>source/downloads/code</code>. Simply put a file anywhere under that directory and use the following tag to embed it in a post.</p>
+
+<pre><code>{% include_code [title] [lang:language] path/to/file %}
+</code></pre>
+
+<p>Following example will include the code file: <code>source/downloads/code/test.js</code></p>
+
+<pre><code>{% include_code test.js  %}
+</code></pre>
+
+<h2>image</h2>
+
+<pre><code>{% img [class names] /path/to/image [width] [height] [title text [alt text]] %}
+</code></pre>
+
+<h2><a href="http://octopress.org/docs/plugins/blockquote/">extended blockquote</a></h2>
+
+<pre><code>{% blockquote [author[, source]] [link] [source_link_title] %}
+Quote string
+{% endblockquote %}
+</code></pre>
+
+<h2>Render Partial</h2>
+
+<pre><code>{% render_partial path/to/file %}
+</code></pre>
+
+<h2>add about page</h2>
+
+<pre><code>http://gangmax.github.com/blog/2012/05/04/add-about-page-in-octopress/
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python Tutorial]]></title>

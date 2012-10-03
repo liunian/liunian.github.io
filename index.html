@@ -9,7 +9,7 @@
   <meta name="author" content="流年">
 
   
-  <meta name="description" content="Python Interactive Shell _ 变量代表最后一次 return 的值。 Source Code Encoding Python 2.x 默认识别源码为 ASCII，对于需要使用如中文等，可以在源码中指定编码类型，如： # -*- coding: utf-8 -*- &hellip;">
+  <meta name="description" content="Install bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer) Add to shell command echo '[[ -s "$ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -63,6 +63,78 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/octopress/">Octopress Memo</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T15:55:00+08:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Install</p>
+
+<pre><code>bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+</code></pre>
+
+<p>Add to shell command</p>
+
+<pre><code>echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile
+source ~/.bash_profile
+
+# If using Zsh do this instead
+echo '[[ -s $HOME/.rvm/scripts/rvm ]] &amp;&amp; source $HOME/.rvm/scripts/rvm' &gt;&gt; ~/.zshrc
+source ~/.zshrc
+</code></pre>
+
+<p>Install Ruby</p>
+
+<pre><code>rvm install 1.9.2 &amp;&amp; rvm use 1.9.2
+# 1.9.3 will not fit here for now
+</code></pre>
+
+<p>Switch back to system</p>
+
+<pre><code>rvm use system
+</code></pre>
+
+<p>when using zsh, should add something in .zshrc to make it work right.</p>
+
+<pre><code>alias rake="noglob rake"
+</code></pre>
+
+<p>After adding it, restart the terminal or source the .zshrc file.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/octopress/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -234,6 +306,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/octopress/">Octopress memo</a>
+      </li>
     
       <li class="post">
         <a href="/blog/python-tutorial/">Python Tutorial</a>

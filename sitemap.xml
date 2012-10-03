@@ -10,11 +10,15 @@
     </url>
     <url>
         <loc>http://liunian.github.com/blog/python-tutorial/</loc>
-        <lastmod>2012-07-14T23:13:11+08:00</lastmod>
+        <lastmod>2012-10-03T16:15:01+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liunian.github.com/blog/octopress/</loc>
+        <lastmod>2012-10-03T16:15:03+08:00</lastmod>
     </url>
     <url>
         <loc>http://liunian.github.com/blog/archives/</loc>
-        <lastmod>2012-07-14T23:13:11+08:00</lastmod>
+        <lastmod>2012-10-03T16:15:03+08:00</lastmod>
     </url>
     <url>
         <loc>http://liunian.github.com/about/</loc>
@@ -22,6 +26,6 @@
     </url>
     <url>
         <loc>http://liunian.github.com/</loc>
-        <lastmod>2012-07-14T23:13:11+08:00</lastmod>
+        <lastmod>2012-10-03T16:15:03+08:00</lastmod>
     </url>
 </urlset>
