@@ -162,62 +162,12 @@ Tutorial Basic 字符串只能用双引号，不能用单引号
 </ol>
 
 
-<h3>List &amp; Map</h3>
-
-<figure class='code'><figcaption><span> (2.io)</span> <a href='/downloads/code/2.io'>download</a></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='io'><span class='line'><span class="c1">#!/usr/bin/env io</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">a</span> <span class="o">:=</span> <span class="nb">List</span> <span class="k">clone</span>             <span class="c1"># list(), create by using clone</span>
-</span><span class='line'><span class="n">a</span> <span class="o">:=</span> <span class="nb">list</span><span class="o">(</span><span class="mf">1</span><span class="o">,</span> <span class="mf">2</span><span class="o">,</span> <span class="s">&quot;a&quot;</span><span class="o">,</span> <span class="s">&quot;b&quot;</span><span class="o">)</span>   <span class="c1"># list(1, 2, a, b), create by using method</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">a</span> <span class="n">at</span><span class="o">(</span><span class="mf">1</span><span class="o">)</span>                     <span class="c1"># 2</span>
-</span><span class='line'><span class="n">a</span> <span class="n">append</span><span class="o">(</span><span class="mf">3</span><span class="o">)</span>                 <span class="c1"># list(1, 2, a, b, 3)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># more examples: http://iolanguage.org/scm/io/docs/IoGuide.html#Primitives-List</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Control Flow</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='io'><span class='line'><span class="n">loop</span><span class="o">(</span><span class="s">&quot;getting dizzy...&quot;</span> <span class="n">println</span><span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># while(condiction, other_codes)</span>
-</span><span class='line'><span class="n">i</span> <span class="o">:=</span> <span class="mf">0</span>
-</span><span class='line'><span class="n">while</span><span class="o">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="mf">11</span><span class="o">,</span> <span class="n">i</span> <span class="n">println</span><span class="o">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mf">1</span><span class="o">);</span>   <span class="s">&quot;This one goes up to 11&quot;</span> <span class="n">println</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># for(counter, init, end, step, msg_slot)</span>
-</span><span class='line'><span class="k">for</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="mf">1</span><span class="o">,</span> <span class="mf">11</span><span class="o">,</span> <span class="mf">2</span><span class="o">,</span> <span class="n">i</span> <span class="n">println</span><span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># if(condition, true_code, false_code)</span>
-</span><span class='line'><span class="k">if</span><span class="o">(</span><span class="no">true</span><span class="o">,</span> <span class="s">&quot;It is true.&quot;</span><span class="o">,</span> <span class="s">&quot;It is false.&quot;</span><span class="o">)</span>
-</span><span class='line'><span class="k">if</span><span class="o">(</span><span class="no">false</span><span class="o">)</span> <span class="k">then</span><span class="o">(</span><span class="s">&quot;It is true.&quot;</span><span class="o">)</span> <span class="k">else</span><span class="o">(</span><span class="s">&quot;It is false&quot;</span><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/io-language/">Read on &rarr;</a>
+    </footer>
   
 
 

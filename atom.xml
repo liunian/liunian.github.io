@@ -4,7 +4,7 @@
   <title><![CDATA[memos]]></title>
   <link href="http://liunian.github.com/atom.xml" rel="self"/>
   <link href="http://liunian.github.com/"/>
-  <updated>2013-07-06T22:41:03+08:00</updated>
+  <updated>2013-07-06T22:43:18+08:00</updated>
   <id>http://liunian.github.com/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -81,6 +81,9 @@
 <li>方法使用 <code>method()</code> 创建，如：<code>Car dirve := method("Vroom" print)</code>，给 <code>ferrari</code> 发送 <code>drive</code> 消息将有 <code>ferrari drive</code> => <code>"Vroom"</code>。</li>
 <li>和 Ruby 一样，<code>0</code> 是 <code>true</code> 而不是 <code>false</code>。<code>nil</code> 是 <code>false</code>。</li>
 </ol>
+
+
+<!--more-->
 
 
 <h3>List &amp; Map</h3>
