@@ -17,8 +17,16 @@
         <lastmod>2012-10-03T16:15:03+08:00</lastmod>
     </url>
     <url>
+        <loc>http://liunian.github.com/blog/python-library/</loc>
+        <lastmod>2013-01-01T00:05:05+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://liunian.github.com/blog/io-language/</loc>
+        <lastmod>2013-01-01T21:12:37+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://liunian.github.com/blog/archives/</loc>
-        <lastmod>2012-10-03T16:59:56+08:00</lastmod>
+        <lastmod>2013-01-01T21:12:37+08:00</lastmod>
     </url>
     <url>
         <loc>http://liunian.github.com/about/</loc>
@@ -26,6 +34,6 @@
     </url>
     <url>
         <loc>http://liunian.github.com/</loc>
-        <lastmod>2012-10-03T16:59:56+08:00</lastmod>
+        <lastmod>2013-01-01T21:12:37+08:00</lastmod>
     </url>
 </urlset>
