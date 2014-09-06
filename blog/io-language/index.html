@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Io language - memos</title>
+  <title>Io Language - memos</title>
   <meta name="author" content="流年">
 
   
@@ -23,7 +23,7 @@ Tutorial Basic 字符串只能用双引号，不能用单引号
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liunian.github.com/blog/io-language/">
+  <link rel="canonical" href="http://liunian.github.io/blog/io-language/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -52,7 +52,7 @@ Tutorial Basic 字符串只能用双引号，不能用单引号
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:liunian.github.com" />
+    <input type="hidden" name="q" value="site:liunian.github.io" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -87,7 +87,7 @@ Tutorial Basic 字符串只能用双引号，不能用单引号
   
 
 
-<time datetime="2013-01-01T00:05:00+08:00" pubdate data-updated="true">Jan 1<span>st</span>, 2013</time>
+<time datetime="2013-01-01T03:13:05+08:00" pubdate data-updated="true"></time>
         
       </p>
     
@@ -96,7 +96,7 @@ Tutorial Basic 字符串只能用双引号，不能用单引号
 
 <div class="entry-content"><p>这是 <a href="http://iolanguage.org/">Io</a> 的简单笔记。</p>
 
-<h3>相关资源</h3>
+<p>相关资源</p>
 
 <ul>
 <li><a href="http://iolanguage.org/">官网</a></li>
@@ -106,17 +106,20 @@ Tutorial Basic 字符串只能用双引号，不能用单引号
 </ul>
 
 
-<h3>Basic</h3>
+<h2>Basic</h2>
 
 <ol>
 <li>字符串只能用双引号，不能用单引号</li>
-<li>没有类，只有类型和对象。两者的区别是前者有<code>type</code>标识(slot)，并且该标识是在创建时因为其为<em>大写字母开头</em>而确定为类型来添加的。</li>
-<li>不是对象式的方法调用，而是向对象发送信息，比如 <code>"abc" print</code>。</li>
-<li>一般地，赋值使用 <code>:=</code> 而不是 <code>=</code>，如 <code>obj := Object clone</code>。在对象或对象 slot 还没存在的情况下，使用 <code>=</code> 会出错，但使用 <code>:=</code> 则会先创建然后赋值。</li>
-<li>从上可以看到，从某种类型创建一个对象使用 <code>clone</code> 消息。</li>
-<li>查看一个对象可用 <code>obj slotNames</code>。</li>
-<li>继承机制使用原型（<code>proto</code>）而不是父子类，如：
- <figure class='code'><figcaption><span> (1.io)</span> <a href='/downloads/code/1.io'>download</a></figcaption>
+<li>没有类，只有类型和对象。两者的区别是前者有type标识(slot)，并且该标识是在创建时因为其为大写字母开头而确定为类型来添加的。</li>
+<li>不是对象式的方法调用，而是向对象发送信息，比如 &ldquo;abc&rdquo; print。</li>
+<li>一般地，赋值使用 := 而不是 =，如 obj := Object clone。在对象或对象 slot 还没存在的情况下，使用 = 会出错，但使用 := 则会先创建然后赋值。</li>
+<li>从上可以看到，从某种类型创建一个对象使用 clone 消息。</li>
+<li>查看一个对象可用 obj slotNames。</li>
+<li>继承机制使用原型（proto）而不是父子类，如：</li>
+</ol>
+
+
+<figure class='code'><figcaption><span> (1.io)</span> <a href='/downloads/code/1.io'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -153,19 +156,22 @@ Tutorial Basic 字符串只能用双引号，不能用单引号
 </span><span class='line'><span class="n">Car</span>     <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Vehicle_0x19c9f10: description = &quot;Something...&quot; type = &quot;Vehicle&quot;</span>
 </span><span class='line'><span class="n">Vehicle</span> <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Object_0x17c1a10: type = Object_type() .....</span>
 </span><span class='line'><span class="nb">Object</span>  <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Object_17e5720: Car = Car_0x19bcb80 Vehicle = Vehicle_0x19c9f10 Protos = xxx Lobby = xxxx ....</span>
-</span></code></pre></td></tr></table></div></figure></li>
-<li>方法使用 <code>method()</code> 创建，如：<code>Car dirve := method("Vroom" print)</code>，给 <code>ferrari</code> 发送 <code>drive</code> 消息将有 <code>ferrari drive</code> => <code>"Vroom"</code>。</li>
-<li>和 Ruby 一样，<code>0</code> 是 <code>true</code> 而不是 <code>false</code>。<code>nil</code> 是 <code>false</code>。</li>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>方法使用 method() 创建，如：Car dirve := method(&ldquo;Vroom&rdquo; print)，给 ferrari 发送 drive 消息将有 ferrari drive => &ldquo;Vroom&#8221;。</li>
+<li>和 Ruby 一样，0 是 true 而不是 false。nil 是 false。</li>
 </ol>
 
 
 <!-- more -->
 
 
-<h3>List &amp; Map</h3>
+<h2>List &amp; Map</h2>
 
 <figure class='code'><figcaption><span> (2.io)</span> <a href='/downloads/code/2.io'>download</a></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -186,7 +192,7 @@ Tutorial Basic 字符串只能用双引号，不能用单引号
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>Control Flow</h3>
+<h2>Control Flow</h2>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -214,8 +220,6 @@ Tutorial Basic 字符串只能用双引号，不能用单引号
 </span><span class='line'><span class="k">if</span><span class="o">(</span><span class="no">false</span><span class="o">)</span> <span class="k">then</span><span class="o">(</span><span class="s">&quot;It is true.&quot;</span><span class="o">)</span> <span class="k">else</span><span class="o">(</span><span class="s">&quot;It is false&quot;</span><span class="o">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-
 </div>
 
 
@@ -238,8 +242,14 @@ Tutorial Basic 字符串只能用双引号，不能用单引号
   
 
 
-<time datetime="2013-01-01T00:05:00+08:00" pubdate data-updated="true">Jan 1<span>st</span>, 2013</time>
+<time datetime="2013-01-01T03:13:05+08:00" pubdate data-updated="true"></time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/memo/'>memo</a>
+  
+</span>
 
 
     </p>
@@ -269,7 +279,7 @@ Tutorial Basic 字符串只能用双引号，不能用单引号
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/io-language/">Io language</a>
+        <a href="/blog/io-language/">Io Language</a>
       </li>
     
       <li class="post">
@@ -285,12 +295,11 @@ Tutorial Basic 字符串只能用双引号，不能用单引号
       </li>
     
       <li class="post">
-        <a href="/blog/ie6-inline-block-zhe-xing-wen-ti/">ie6 inline-block 折行问题</a>
+        <a href="/blog/ie6-inline-block-new-line/">Ie6 Inline-block 折行问题</a>
       </li>
     
   </ul>
 </section>
-
 
 
 
@@ -303,7 +312,7 @@ Tutorial Basic 字符串只能用双引号，不能用单引号
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - 流年 -
+  Copyright &copy; 2014 - 流年 -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[memos]]></title>
-  <link href="http://liunian.github.com/atom.xml" rel="self"/>
-  <link href="http://liunian.github.com/"/>
-  <updated>2013-07-06T22:44:02+08:00</updated>
-  <id>http://liunian.github.com/</id>
+  <link href="http://liunian.github.io/atom.xml" rel="self"/>
+  <link href="http://liunian.github.io/"/>
+  <updated>2014-09-06T12:53:03+08:00</updated>
+  <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
     
@@ -14,13 +14,13 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Io language]]></title>
-    <link href="http://liunian.github.com/blog/io-language/"/>
-    <updated>2013-01-01T00:05:00+08:00</updated>
-    <id>http://liunian.github.com/blog/io-language</id>
+    <title type="html"><![CDATA[Io Language]]></title>
+    <link href="http://liunian.github.io/blog/io-language/"/>
+    <updated>2013-01-01T03:13:05+08:00</updated>
+    <id>http://liunian.github.io/blog/io-language</id>
     <content type="html"><![CDATA[<p>这是 <a href="http://iolanguage.org/">Io</a> 的简单笔记。</p>
 
-<h3>相关资源</h3>
+<p>相关资源</p>
 
 <ul>
 <li><a href="http://iolanguage.org/">官网</a></li>
@@ -30,17 +30,20 @@
 </ul>
 
 
-<h3>Basic</h3>
+<h2>Basic</h2>
 
 <ol>
 <li>字符串只能用双引号，不能用单引号</li>
-<li>没有类，只有类型和对象。两者的区别是前者有<code>type</code>标识(slot)，并且该标识是在创建时因为其为<em>大写字母开头</em>而确定为类型来添加的。</li>
-<li>不是对象式的方法调用，而是向对象发送信息，比如 <code>"abc" print</code>。</li>
-<li>一般地，赋值使用 <code>:=</code> 而不是 <code>=</code>，如 <code>obj := Object clone</code>。在对象或对象 slot 还没存在的情况下，使用 <code>=</code> 会出错，但使用 <code>:=</code> 则会先创建然后赋值。</li>
-<li>从上可以看到，从某种类型创建一个对象使用 <code>clone</code> 消息。</li>
-<li>查看一个对象可用 <code>obj slotNames</code>。</li>
-<li>继承机制使用原型（<code>proto</code>）而不是父子类，如：
- <figure class='code'><figcaption><span> (1.io)</span> <a href='http://liunian.github.com/downloads/code/1.io'>download</a></figcaption>
+<li>没有类，只有类型和对象。两者的区别是前者有type标识(slot)，并且该标识是在创建时因为其为大写字母开头而确定为类型来添加的。</li>
+<li>不是对象式的方法调用，而是向对象发送信息，比如 &ldquo;abc&rdquo; print。</li>
+<li>一般地，赋值使用 := 而不是 =，如 obj := Object clone。在对象或对象 slot 还没存在的情况下，使用 = 会出错，但使用 := 则会先创建然后赋值。</li>
+<li>从上可以看到，从某种类型创建一个对象使用 clone 消息。</li>
+<li>查看一个对象可用 obj slotNames。</li>
+<li>继承机制使用原型（proto）而不是父子类，如：</li>
+</ol>
+
+
+<figure class='code'><figcaption><span> (1.io)</span> <a href='http://liunian.github.io/downloads/code/1.io'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -77,19 +80,22 @@
 </span><span class='line'><span class="n">Car</span>     <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Vehicle_0x19c9f10: description = &quot;Something...&quot; type = &quot;Vehicle&quot;</span>
 </span><span class='line'><span class="n">Vehicle</span> <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Object_0x17c1a10: type = Object_type() .....</span>
 </span><span class='line'><span class="nb">Object</span>  <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Object_17e5720: Car = Car_0x19bcb80 Vehicle = Vehicle_0x19c9f10 Protos = xxx Lobby = xxxx ....</span>
-</span></code></pre></td></tr></table></div></figure></li>
-<li>方法使用 <code>method()</code> 创建，如：<code>Car dirve := method("Vroom" print)</code>，给 <code>ferrari</code> 发送 <code>drive</code> 消息将有 <code>ferrari drive</code> => <code>"Vroom"</code>。</li>
-<li>和 Ruby 一样，<code>0</code> 是 <code>true</code> 而不是 <code>false</code>。<code>nil</code> 是 <code>false</code>。</li>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>方法使用 method() 创建，如：Car dirve := method(&ldquo;Vroom&rdquo; print)，给 ferrari 发送 drive 消息将有 ferrari drive => &ldquo;Vroom&#8221;。</li>
+<li>和 Ruby 一样，0 是 true 而不是 false。nil 是 false。</li>
 </ol>
 
 
 <!-- more -->
 
 
-<h3>List &amp; Map</h3>
+<h2>List &amp; Map</h2>
 
-<figure class='code'><figcaption><span> (2.io)</span> <a href='http://liunian.github.com/downloads/code/2.io'>download</a></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (2.io)</span> <a href='http://liunian.github.io/downloads/code/2.io'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -110,7 +116,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>Control Flow</h3>
+<h2>Control Flow</h2>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -138,130 +144,161 @@
 </span><span class='line'><span class="k">if</span><span class="o">(</span><span class="no">false</span><span class="o">)</span> <span class="k">then</span><span class="o">(</span><span class="s">&quot;It is true.&quot;</span><span class="o">)</span> <span class="k">else</span><span class="o">(</span><span class="s">&quot;It is false&quot;</span><span class="o">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Python Library]]></title>
-    <link href="http://liunian.github.com/blog/python-library/"/>
-    <updated>2012-12-19T16:22:00+08:00</updated>
-    <id>http://liunian.github.com/blog/python-library</id>
+    <link href="http://liunian.github.io/blog/python-library/"/>
+    <updated>2012-12-19T03:10:13+08:00</updated>
+    <id>http://liunian.github.io/blog/python-library</id>
     <content type="html"><![CDATA[<h2>Built-in Functions</h2>
 
 <p><em>callable(object)</em></p>
 
-<pre><code>Note that classed are callable(calling a class returns a new instance); class instances are callable if they have a `__call__()` method.
-</code></pre>
-
-<p><em>classmethod VS staticmethod</em></p>
+<p>Note that classed are callable(calling a class returns a new instance); class instances are callable if they have a <code>__call__()</code> method.
+classmethod VS staticmethod</p>
 
 <p><em>cmp(x, y)</em></p>
 
-<pre><code>return negative if x &lt; y, 0 if x = y, positive if x &gt; y
-</code></pre>
+<p>return negative if x &lt; y, 0 if x = y, positive if x > y</p>
 
-<p><em>To be continued&#8230;</em></p>
+<p><em>To be continued…</em></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress memo]]></title>
-    <link href="http://liunian.github.com/blog/octopress/"/>
-    <updated>2012-10-03T15:55:00+08:00</updated>
-    <id>http://liunian.github.com/blog/octopress</id>
-    <content type="html"><![CDATA[<p>Install</p>
+    <link href="http://liunian.github.io/blog/octopress/"/>
+    <updated>2012-08-03T02:51:34+08:00</updated>
+    <id>http://liunian.github.io/blog/octopress</id>
+    <content type="html"><![CDATA[<h2>Install</h2>
 
-<pre><code>bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>bash -s stable &lt; &lt;<span class="o">(</span>curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>Add to shell command</p>
 
-<pre><code>echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile
-source ~/.bash_profile
+<p>Add to bash command</p>
 
-# If using Zsh do this instead
-echo '[[ -s $HOME/.rvm/scripts/rvm ]] &amp;&amp; source $HOME/.rvm/scripts/rvm' &gt;&gt; ~/.zshrc
-source ~/.zshrc
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo</span> <span class="s1">&#39;[[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]] &amp;&amp; . &quot;$HOME/.rvm/scripts/rvm&quot; # Load RVM function&#39;</span> &gt;&gt; ~/.bash_profile
+</span><span class='line'><span class="nb">source</span> ~/.bash_profile
+</span><span class='line'>
+</span><span class='line'><span class="c"># If using Zsh do this instead</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;[[ -s $HOME/.rvm/scripts/rvm ]] &amp;&amp; source $HOME/.rvm/scripts/rvm&#39;</span> &gt;&gt; ~/.zshrc
+</span><span class='line'><span class="nb">source</span> ~/.zshrc
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Install Ruby</p>
 
-<pre><code>rvm install 1.9.2 &amp;&amp; rvm use 1.9.2
-# 1.9.3 will not fit here for now
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm install 1.9.2 <span class="o">&amp;&amp;</span> rvm use 1.9.2
+</span><span class='line'><span class="c"># 1.9.3 will not fit here for now</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Switch back to system</p>
 
-<pre><code>rvm use system
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm use system
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>when using zsh, should add something in .zshrc to make it work right.</p>
 
-<pre><code>alias rake="noglob rake"
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">alias </span><span class="nv">rake</span><span class="o">=</span><span class="s2">&quot;noglob rake&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>After adding it, restart the terminal or source the .zshrc file.</p>
 
-<!--more-->
+<!-- more -->
 
 
 <h2>code snippets</h2>
 
 <h3><a href="http://octopress.org/docs/blogging/code/">Basic</a></h3>
 
-<pre><code>``` [language] [title] [url] [link text]
-code snippet
-```
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="sb">```</span> <span class="o">[</span>language<span class="o">]</span> <span class="o">[</span>title<span class="o">]</span> <span class="o">[</span>url<span class="o">]</span> <span class="o">[</span>link text<span class="o">]</span>
+</span><span class='line'>code snippet
+</span><span class='line'><span class="se">\`</span><span class="sb">``</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>Gists</h3>
 
-<pre><code>{% gist gist_id [filename] %}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">{</span><span class="se">\%</span> gist gist_id <span class="o">[</span>filename<span class="o">]</span> %<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>Include Code Snippets</h3>
 
 <p>Import files on your filesystem into any blog post as embedded code snippets with syntax highlighting and a download link. In the _config.yml you can set your code_dir but the default is <code>source/downloads/code</code>. Simply put a file anywhere under that directory and use the following tag to embed it in a post.</p>
 
-<pre><code>{% include_code [title] [lang:language] path/to/file %}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">{</span>% include_code <span class="o">[</span>title<span class="o">]</span> <span class="o">[</span>lang:language<span class="o">]</span> path/to/file %<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Following example will include the code file: <code>source/downloads/code/test.js</code></p>
 
-<pre><code>{% include_code test.js  %}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">{</span>% include_code test.js  %<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>image</h2>
 
-<pre><code>{% img [class names] /path/to/image [width] [height] [title text [alt text]] %}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">{</span>% img <span class="o">[</span>class names<span class="o">]</span> /path/to/image <span class="o">[</span>width<span class="o">]</span> <span class="o">[</span>height<span class="o">]</span> <span class="o">[</span>title text <span class="o">[</span>alt text<span class="o">]]</span> %<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<h2><a href="http://octopress.org/docs/plugins/blockquote/">extended blockquote</a></h2>
 
-<pre><code>{% blockquote [author[, source]] [link] [source_link_title] %}
-Quote string
-{% endblockquote %}
-</code></pre>
+<h2>extended blockquote</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">{</span>% blockquote <span class="o">[</span>author<span class="o">[</span>, <span class="nb">source</span><span class="o">]]</span> <span class="o">[</span>link<span class="o">]</span> <span class="o">[</span>source_link_title<span class="o">]</span> %<span class="o">}</span>
+</span><span class='line'>Quote string
+</span><span class='line'><span class="o">{</span>% endblockquote %<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>Render Partial</h2>
 
-<pre><code>{% render_partial path/to/file %}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">{</span>% render_partial path/to/file %<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>add about page</h2>
 
-<pre><code>http://gangmax.github.com/blog/2012/05/04/add-about-page-in-octopress/
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>http://gangmax.github.com/blog/2012/05/04/add-about-page-in-octopress/
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Python Tutorial]]></title>
-    <link href="http://liunian.github.com/blog/python-tutorial/"/>
-    <updated>2012-07-14T19:18:00+08:00</updated>
-    <id>http://liunian.github.com/blog/python-tutorial</id>
+    <link href="http://liunian.github.io/blog/python-tutorial/"/>
+    <updated>2012-07-14T02:21:51+08:00</updated>
+    <id>http://liunian.github.io/blog/python-tutorial</id>
     <content type="html"><![CDATA[<h2>Python Interactive Shell</h2>
 
 <p><code>_</code> 变量代表最后一次 return 的值。</p>
@@ -270,17 +307,18 @@ Quote string
 
 <p>Python 2.x 默认识别源码为 ASCII，对于需要使用如中文等，可以在源码中指定编码类型，如：</p>
 
-<pre><code># -*- coding: utf-8 -*-
-</code></pre>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># -*- coding: utf-8 -*-</span></code></pre></td></tr></table></div></figure>
+
 
 <p>此方法不使用与 2.2 及更旧版本，3.x 后默认为 utf-8 编码，无需如此。</p>
 
 <p>注意：</p>
 
 <ul>
-<li><p>如果第一行是如 <code>/usr/bin/env python</code> 这样的指定，那么指定的编码类型必须位于第二行，中间不能有空行。</p></li>
-<li><p>如果第一行不是程序指定，那么编码类型注释前面可以有空行。</p></li>
-<li><p>加了编码类型注释后，注释中可以直接使用中文了，但在代码中，需要用 u<code>'中文'</code>，而不能直接想 JS 中那样使用字符串。</p></li>
+<li>如果第一行是如 <code>/usr/bin/env python</code> 这样的指定，那么指定的编码类型必须位于第二行，中间不能有空行。</li>
+<li>如果第一行不是程序指定，那么编码类型注释前面可以有空行。</li>
+<li>加了编码类型注释后，注释中可以直接使用中文了，但在代码中，需要用 u<code>'中文'</code>，而不能直接想 JS 中那样使用字符串。</li>
 </ul>
 
 
@@ -288,13 +326,13 @@ Quote string
 
 <p>0 == 0.0</p>
 
-<h3>/ （除法）</h3>
+<p>/ （除法）</p>
 
 <p>2.x 中对两个整数应用 / ，得到的是 math.floor，但其中一个 float，则得到 float。如：5 / 2 = 2； 5 / 2.0 = 2.5；</p>
 
 <p>3.x 中默认是普通的除法，不取 floor。</p>
 
-<h3>复数（complex）</h3>
+<h2>复数（complex）</h2>
 
 <p>用 1j 或 2J 等形式来表示虚数，也可以用 complex 类来构建复数。如：<code>(1+2j) + complex(2, 1)</code>。得到的复数 i，可以用 <code>i.real</code> 和 <code>i.imag</code> 来分别获取实数部分和虚数部分。</p>
 
@@ -305,7 +343,7 @@ Quote string
 
 <h3>unicode to str</h3>
 
-<p>对于用 u&#8217;string&#8217; 声明的 unicode 变量，如果都是 ASCII 码，那么可以用 <code>str</code> 来转换为普通的字符串，但如果有非 ASCII 的，那么则无法。</p>
+<p>对于用 <code>u’string’</code> 声明的 unicode 变量，如果都是 ASCII 码，那么可以用 <code>str</code> 来转换为普通的字符串，但如果有非 ASCII 的，那么则无法。</p>
 
 <p>这使用需要使用 <code>aunicodeObj.encode('utf-8')</code> 等形式来转换为对应编码的字符串。</p>
 
@@ -317,90 +355,147 @@ Quote string
 
 <h3>if else</h3>
 
-<pre><code>if condition:
-    doSomething
-elif otherCondition:
-    doSomething Else
-else:
-    others
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='Python'><span class='line'><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">doSomething</span>
+</span><span class='line'><span class="k">elif</span> <span class="n">otherCondition</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">doSomething</span> <span class="n">Else</span>
+</span><span class='line'><span class="k">else</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">others</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>for</h3>
 
-<pre><code>for i in iterable:
-    print i
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='Python'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>while</h3>
 
-<pre><code>while conditon:
-    doSomething
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='Python'><span class='line'><span class="k">while</span> <span class="n">conditon</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">doSomething</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>range([start, ] end [, step])</h3>
 
-<pre><code>range(5)            # =&gt; [0, 1, 2, 3, 4]
-range(1, 5)         # =&gt; [1, 2, 3, 4]
-range(1, 5, 2)      # =&gt; [1, 3]
-range(-10, -20, -3) # =&gt; [-10, -13, -16, -19]
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='Python'><span class='line'><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>            <span class="c"># =&gt; [0, 1, 2, 3, 4]</span>
+</span><span class='line'><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>         <span class="c"># =&gt; [1, 2, 3, 4]</span>
+</span><span class='line'><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>      <span class="c"># =&gt; [1, 3]</span>
+</span><span class='line'><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="c"># =&gt; [-10, -13, -16, -19]</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aList</span><span class="p">)):</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">aList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
 
-for i in range(len(aList)):
-    print i, aList[i]
-</code></pre>
 
 <h3>function</h3>
 
 <p>函数参数的默认值仅生效一次（why？），在其为可变对象（如 list，dictionary 等）时，可能会带来困扰。如：</p>
 
-<pre><code>def f(a, L=[]):
-    L.append(a)
-    return L
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="p">[]):</span>
+</span><span class='line'>    <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">L</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span> <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c"># =&gt; [1]</span>
+</span><span class='line'><span class="k">print</span> <span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>      <span class="c"># =&gt; [1, 2]</span>
+</span><span class='line'><span class="k">print</span> <span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>      <span class="c"># =&gt; [1, 2, 3]</span>
+</span></code></pre></td></tr></table></div></figure>
 
-print f(1)      # =&gt; [1]
-print f(2)      # =&gt; [1, 2]
-print f(3)      # =&gt; [1, 2, 3]
-</code></pre>
 
 <p>调用函数时，一旦某个参数使用了命名参数形式，则其后面的参数都必须使用命名参数形式。</p>
 
-<h4>*args 和 **keywords</h4>
+<h3>*args 和 **keywords</h3>
 
-<p>定义函数时，<em>args 表示用一个 args 元组来代表后面任意多个基于位置的参数，**keywords 则用一个 dict 来记录后面的基于命名的参数，且必须在 </em>args 后面。</p>
+<p>定义函数时，args 表示用一个 args 元组来代表后面任意多个基于位置的参数，**keywords 则用一个 dict 来记录后面的基于命名的参数，且必须在 args 后面。</p>
 
-<pre><code>def t(a, b, *c, **d):
-    print 'a: ', a
-    print 'b: ', b
-    for i in c:
-        print '-', i
-    keys = sorted(d.keys())
-    for k in keys:
-        print k, ':', d[k]
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">t</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="o">**</span><span class="n">d</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&#39;a: &#39;</span><span class="p">,</span> <span class="n">a</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&#39;b: &#39;</span><span class="p">,</span> <span class="n">b</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&#39;-&#39;</span><span class="p">,</span> <span class="n">i</span>
+</span><span class='line'>    <span class="n">keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">print</span> <span class="n">k</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>    <span class="c"># =&gt;</span>
+</span><span class='line'>                                    <span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
+</span><span class='line'>                                    <span class="n">b</span><span class="p">:</span> <span class="mi">2</span>
+</span><span class='line'>                                    <span class="o">-</span> <span class="mi">3</span>
+</span><span class='line'>                                    <span class="o">-</span> <span class="mi">4</span>
+</span><span class='line'>                                    <span class="n">d</span> <span class="p">:</span> <span class="mi">5</span>
+</span><span class='line'>                                    <span class="n">e</span> <span class="p">:</span> <span class="mi">6</span>
+</span><span class='line'>                                    <span class="n">f</span> <span class="p">:</span> <span class="mi">7</span>
+</span></code></pre></td></tr></table></div></figure>
 
-t(1, 2, 3, 4, d=5, e=6, f=7)    # =&gt;
-                                    a: 1
-                                    b: 2
-                                    - 3
-                                    - 4
-                                    d : 5
-                                    e : 6
-                                    f : 7
-</code></pre>
 
 <p>调用函数时，使用 *args 和 **keywords 可以展开一个 tuple/list 和 dict 来传参。</p>
 
-<pre><code>args = [3, 6]
-range(*args)    # =&gt; [3, 4, 5]
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</span><span class='line'><span class="nb">range</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>    <span class="c"># =&gt; [3, 4, 5]</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>Doc Strings</h2>
 
-<pre><code>def t():
-    """Short summary.
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">t</span><span class="p">():</span>
+</span><span class='line'>    <span class="sd">&quot;&quot;&quot;Short summary.</span>
+</span><span class='line'>
+</span><span class='line'><span class="sd">    Other description.</span>
+</span><span class='line'><span class="sd">    &quot;&quot;&quot;</span>
+</span><span class='line'>    <span class="k">pass</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    Other description.
-    """
-    pass
-</code></pre>
 
 <h2>Data Structures</h2>
 
@@ -412,44 +507,65 @@ range(*args)    # =&gt; [3, 4, 5]
 
 <p>list comprehension 在规则简单的情况下比 filter 和 map 更简洁易读。</p>
 
-<pre><code>squares = [x ** 2 for x in range(10)]
-[(x, y) for x in [1, 2, 3] for y in [3, 1, 4] if x != y]
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+</span><span class='line'><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">y</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">vec</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+</span><span class='line'><span class="p">[</span><span class="n">num</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">vec</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">elem</span><span class="p">]</span>   <span class="c"># =&gt; [1, 2, 3, 4, ..., 9]</span>
+</span></code></pre></td></tr></table></div></figure>
 
-vec = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-[num for elem in vec for num in elem]   # =&gt; [1, 2, 3, 4, ..., 9]
-</code></pre>
 
 <h3>tuple</h3>
 
-<pre><code>t = 1, 2, 'a'       # =&gt; (1, 2, 'a')
-u =  1,             # =&gt; (1, )
-v = (1, )           # =&gt; (1, )
-a, b, c = t         # =&gt; a = 1, b = 3, c = 'a'
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">t</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;a&#39;</span>       <span class="c"># =&gt; (1, 2, &#39;a&#39;)</span>
+</span><span class='line'><span class="n">u</span> <span class="o">=</span>  <span class="mi">1</span><span class="p">,</span>             <span class="c"># =&gt; (1, )</span>
+</span><span class='line'><span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)</span>           <span class="c"># =&gt; (1, )</span>
+</span><span class='line'><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">t</span>         <span class="c"># =&gt; a = 1, b = 3, c = &#39;a&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>set</h3>
 
 <p>set（集合）是无序去重的结构，支持 in，-， |， &amp;，^ 等操作。</p>
 
-<pre><code>a = set('abr')
-b = set('ac')
-a - b               # =&gt; set(['b', 'r'])
-a | b               # =&gt; set(['a', 'b', 'c', 'r'])
-a &amp; b               # =&gt; set(['a'])
-a ^ b               # =&gt; set(['b', 'c', 'r'])
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='Python'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">&#39;abr&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">&#39;ac&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">a</span> <span class="o">-</span> <span class="n">b</span>               <span class="c"># =&gt; set([&#39;b&#39;, &#39;r&#39;])</span>
+</span><span class='line'><span class="n">a</span> <span class="o">|</span> <span class="n">b</span>               <span class="c"># =&gt; set([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;r&#39;])</span>
+</span><span class='line'><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span>               <span class="c"># =&gt; set([&#39;a&#39;])</span>
+</span><span class='line'><span class="n">a</span> <span class="o">^</span> <span class="n">b</span>               <span class="c"># =&gt; set([&#39;b&#39;, &#39;c&#39;, &#39;r&#39;])</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p><code>pop()</code> 随机返回并移除 set 中的一个元素，当为空时返回 <code>KeyError</code> 异常。</p>
 
 <p><code>remove(element)</code> 移除 set 中指定的元素，当其不存在时，返回 <code>KeyError</code> 异常。</p>
 
-<h2>dictionary</h2>
+<h3>dictionary</h3>
 
 <p>除了字面量构建 dict 外，还可以从 tuple 的 list 或命名参数赋值的方式来构建，如：</p>
 
-<pre><code>dict([('a', 1), ('b', 2)])
-dict(a=1, b=2)
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nb">dict</span><span class="p">([(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+</span><span class='line'><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p><code>dict.keys()</code> 获取所有的 key 组成的 list，<code>dict.values()</code> 获取所有的 value 组成的 list，<code>dict.items()</code> 或得 (key, value) 的 list。</p>
 
@@ -457,39 +573,53 @@ dict(a=1, b=2)
 
 <p>在 for in 循环中，若需要 index，除了使用 range 的方式外，还可以使用 <code>enumerate</code> 函数。</p>
 
-<pre><code>for i, v in enumerate(['tic', 'tac', 'toc']):
-    print i, v
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s">&#39;tic&#39;</span><span class="p">,</span> <span class="s">&#39;tac&#39;</span><span class="p">,</span> <span class="s">&#39;toc&#39;</span><span class="p">]):</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>同时遍历多个序列，先使用 zip 处理一下或会更好一点。</p>
 
-<pre><code>a = ['a', 'b', 'c']
-b = [1, 2, 3]
-for i, j in zip(a, b):
-    print i, j
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>Input &amp; Output</h2>
 
-<p><code>print 1,</code> 最后带 <code>,</code> 这种方式将不会自动换行。</p>
+<p><code>print 1</code>, 最后带 <code>,</code> 这种方式将不会自动换行。</p>
 
 <p>下面这些函数可用来作为输出布局，都是返回一个新的字符串（String 是不可变的），当字符串长度大于 width 时，返回原字符串的拷贝，不作任何修改。</p>
 
-<pre><code>str.rjust(width[, fillchar]);
-str.ljust(width [, fillchar];
-str.center(width [, fillchar]);
-str.zfill(width);
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nb">str</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">width</span><span class="p">[,</span> <span class="n">fillchar</span><span class="p">]);</span>
+</span><span class='line'><span class="nb">str</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">width</span> <span class="p">[,</span> <span class="n">fillchar</span><span class="p">];</span>
+</span><span class='line'><span class="nb">str</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span> <span class="p">[,</span> <span class="n">fillchar</span><span class="p">]);</span>
+</span><span class='line'><span class="nb">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">width</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>str.format</h3>
 
-<pre><code>str.format( *args, **kargs)  # =&gt; unicode
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nb">str</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>  <span class="c"># =&gt; unicode</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>str 中用 <code>{}</code> 来代表预置的变量，可存在着多个，比如：<code>'first: {}, second: {}'.format(1, 2)</code>；也可以用 <code>{3}</code> 这样的方式来指定使用第4个参数（从0开始）；如果<code>format</code>中的参数带命名，那么还可以采用这样的方式：<code>'a: {a}'.format(1, a=2)</code>。</p>
 
-<p>可以使用 <code>:</code> 来指定更加详细高级的格式，比如 <code>'a: {a:.3f}'.format(a=3.141592535)'    # =&gt; 3.142</code>
-从定义可知，还可以采用参数展开的方法来给 <code>format</code> 传参。</p>
+<p>可以使用 <code>:</code> 来指定更加详细高级的格式，比如 <code>'a: {a:.3f}'.format(a=3.141592535)' # =&gt; 3.142</code> 从定义可知，还可以采用参数展开的方法来给 <code>format</code> 传参。</p>
 
 <h3>str % var</h3>
 
@@ -501,28 +631,45 @@ str.zfill(width);
 
 <h2>Errors &amp; Exceptions</h2>
 
-<p>可以用 <code>except (Exception1, Exception2)</code> 的方式来对多种异常做相同的处理；<code>except Exception1, e</code> 是 <code>except Exception1 as e</code> 的简写；还可以用 <code>raise</code> 继续往外抛。</p>
+<p>可以用 <code>except (Exception1, Exception2)</code> 的方式来对多种异常做相同的处理；<code>except Exception1</code>, <code>e</code> 是 <code>except Exception1 as e</code> 的简写；还可以用 <code>raise</code> 继续往外抛。</p>
 
-<pre><code>import sys
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">try</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;file&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span><span class='line'>    <span class="n">s</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">notExist</span><span class="p">)</span>
+</span><span class='line'><span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&quot;File content error({0}): {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">errno</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">strerror</span><span class="p">)</span>
+</span><span class='line'><span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&quot;Not exist variable: notExist&quot;</span>
+</span><span class='line'><span class="k">except</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&#39;other exception no expected&#39;</span>
+</span><span class='line'>    <span class="k">raise</span>
+</span></code></pre></td></tr></table></div></figure>
 
-try:
-    f = open('file')
-    s = f.readline()
-    i = int(s.strip())
-    s = i + str(notExist)
-except (IOError, ValueError) as e:
-    print "File content error({0}): {1}".format(e.errno, e.strerror)
-except NameError:
-    print "Not exist variable: notExist"
-except:
-    print 'other exception no expected'
-    raise
-</code></pre>
 
 <p>raise 出来的异常对象（e）可带有信息，这些存在 <code>e.args</code> 这个元组中，并且，Exception 对象的 <code>__str__</code> 默认作了 print args 的效果，故不用特意去 print。</p>
 
-<pre><code>`raise Exception('spam', 'eggs')`
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="sb">`raise Exception(&#39;spam&#39;, &#39;eggs&#39;)`</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p><code>try except</code> 后还可带 else 和 finally 块，前者在无异常发生时执行，而后者则总会执行到。</p>
 
@@ -544,92 +691,146 @@ except:
 </ul>
 
 
-<p>Assignments do not copy data &#8211; they just bind names to objects.</p>
+<p>Assignments do not copy data – they just bind names to objects.</p>
 
 <h3>class</h3>
 
-<pre><code>class MyClass:
-    """class doc"""
-    i = 123456
-    def f(self):
-        return 'hello'
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span>
+</span><span class='line'>    <span class="sd">&quot;&quot;&quot;class doc&quot;&quot;&quot;</span>
+</span><span class='line'>    <span class="n">i</span> <span class="o">=</span> <span class="mi">123456</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s">&#39;hello&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">MyClass</span><span class="o">.</span><span class="n">i</span>   <span class="c"># =&gt; 123456</span>
+</span><span class='line'><span class="n">MyClass</span><span class="o">.</span><span class="n">f</span>   <span class="c"># =&gt; &lt;unbound method MyClass.f&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-MyClass.i   # =&gt; 123456
-MyClass.f   # =&gt; &lt;unbound method MyClass.f&gt;
-</code></pre>
 
 <p><code>__init__</code> 充当构造函数（如果需要）。</p>
 
-<pre><code>x = MyClass()
-x.i         # =&gt; 123456
-x.f         # =&gt; &lt;bound method MyClass.f of ..... at 0x....&gt;
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+</span><span class='line'><span class="n">x</span><span class="o">.</span><span class="n">i</span>         <span class="c"># =&gt; 123456</span>
+</span><span class='line'><span class="n">x</span><span class="o">.</span><span class="n">f</span>         <span class="c"># =&gt; &lt;bound method MyClass.f of ..... at 0x....&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p><em>Notes</em>: 称 MyClass.f 为 function，称 x.f 为 method。</p>
 
-<pre><code>def df():
-    print 'df'
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">df</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&#39;df&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">x</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span>   <span class="c"># =&gt; 认为这是一个 data attribute 而不是 method attribute</span>
+</span></code></pre></td></tr></table></div></figure>
 
-x.df = df   # =&gt; 认为这是一个 data attribute 而不是 method attribute
-</code></pre>
 
 <p><code>x.f()</code> 实质为 <code>MyClass.f(x)</code>。</p>
 
 <p>调用一个实例的属性（attribute）的过程是：首先看是否是 data attribute，是则返回；否则搜索其 class，挡在其 class 中找到对应名字的 function，则用该实例和对应的 function 创建一个 method 对象。当调用该 method 对象时，用该实例和 method 对象实参组成的新实参来调用 class 的 function。</p>
 
-<p>类实例的 <strong>class</strong> 属性指向该类。</p>
+<p>类实例的 class 属性指向该类。</p>
 
 <p>继承机制中，子类的 data attribute 和 method attribute 将会覆盖基类的对应 attribute。这包括 method 调用的 method，如：</p>
 
-<pre><code>class A():
-    def p(self):
-        print 'a'
-    def l(self):
-        self.p()
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">A</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">p</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&#39;a&#39;</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">l</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+</span><span class='line'>   <span class="k">def</span> <span class="nf">p</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>       <span class="k">print</span> <span class="s">&#39;b&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="n">B</span><span class="p">()</span>
+</span><span class='line'><span class="n">b</span><span class="o">.</span><span class="n">l</span><span class="p">()</span>           <span class="c"># =&gt; &#39;b&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-class B(A):
-   def p(self):
-       print 'b'
 
-b = B()
-b.l()           # =&gt; 'b'
-</code></pre>
+<p>B 的实例 b 调用继承自 A 的 method <code>l</code>，里面又调用了 p method，此时，调用的是 B 中 override 后的 method。</p>
 
-<p>B 的实例 b 调用继承自 A 的 method <code>l</code>，里面又调用了 <code>p</code> method，此时，调用的是 B 中 override 后的 method。</p>
+<h2>Iterators</h2>
 
-<h3>Iterators</h3>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="s">&#39;abc&#39;</span>
+</span><span class='line'><span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'><span class="n">it</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>   <span class="c"># =&gt; &#39;a&#39;</span>
+</span><span class='line'><span class="n">it</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>   <span class="c"># =&gt; &#39;b&#39;</span>
+</span><span class='line'><span class="n">it</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>   <span class="c"># =&gt; &#39;c&#39;</span>
+</span><span class='line'><span class="n">it</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>   <span class="c"># =&gt; StopIteration</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>s = 'abc'
-it = iter(s)
-it.next()   # =&gt; 'a'
-it.next()   # =&gt; 'b'
-it.next()   # =&gt; 'c'
-it.next()   # =&gt; StopIteration
-</code></pre>
 
-<p>若需要对一个 class 实现 for in 迭代，只需要定义 <strong>iter</strong> 和 next 方法即可，其中，<strong>iter</strong> 返回 self，next 负责返回当前结果，越界时抛出 StopIteration 异常。</p>
+<p>若需要对一个 class 实现 for in 迭代，只需要定义 iter 和 next 方法即可，其中，iter 返回 self，next 负责返回当前结果，越界时抛出 StopIteration 异常。</p>
 
-<pre><code>class Reverse:
-    def __init__(self, data):
-        self.data = data
-        self.index = len(data)
-    def __iter__(self):
-        return self
-    def next(self):
-        if self.index == 0:
-            raise StopIteration
-        self.index = self.index - 1
-        return self.data[self.index]
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Reverse</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">self</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">raise</span> <span class="ne">StopIteration</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<h3>Generators</h3>
+
+<h2>Generators</h2>
 
 <p>和普通函数相同，只是在该 return 时使用 <code>yield</code>。</p>
 
-<pre><code>def reverse(data):
-    for index in range(len(data)-1, -1, -1):
-        yield data[index]
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">yield</span> <span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>Standard Library</h2>
 
@@ -639,12 +840,14 @@ it.next()   # =&gt; StopIteration
 
 <p><code>os.system(command)</code> execute the command(a string) in a subshell.</p>
 
-<p>for high level file and directory tasks, the <em>shutil</em> module is much more easier.</p>
+<p>for high level file and directory tasks, the shutil module is much more easier.</p>
 
 <h3>文件通配查找</h3>
 
-<pre><code>glob.glob(pathname)
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pathname</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>Command Line Arguments</h3>
 
@@ -654,48 +857,74 @@ it.next()   # =&gt; StopIteration
 
 <p>timeit, profile, pstats</p>
 
-<pre><code>from timeit import Timer
-Timer('t=a; a=b; b=t', 'a=1; b=2').timeit()
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
+</span><span class='line'><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;t=a; a=b; b=t&#39;</span><span class="p">,</span> <span class="s">&#39;a=1; b=2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>测试</h3>
 
 <p><code>doctest</code> 允许运行以一定规则写在 docstring 中的代码，并判断是否和给出的结果相符，若有失败，则输出信息。</p>
 
-<pre><code>def average(values):
-    """Computes the arithmetic mean of a list of numbers
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+</span><span class='line'>    <span class="sd">&quot;&quot;&quot;Computes the arithmetic mean of a list of numbers</span>
+</span><span class='line'>
+</span><span class='line'><span class="sd">    &gt;&gt;&gt; print average([20, 30, 70])</span>
+</span><span class='line'><span class="sd">    40.0</span>
+</span><span class='line'><span class="sd">    &quot;&quot;&quot;</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">doctest</span>
+</span><span class='line'><span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    &gt;&gt;&gt; print average([20, 30, 70])
-    40.0
-    """
-    return sum(values, 0.0) / len(values)
 
-import doctest
-doctest.testmod()
-</code></pre>
+<h4>unittest</h4>
 
-<p><code>unittest</code></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">unittest</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">TestStatisticalFunctions</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">test_average</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">average</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">]),</span> <span class="mf">40.0</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">average</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]),</span> <span class="mi">1</span><span class="p">),</span> <span class="mf">4.3</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ZeroDivisionError</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="p">[])</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span> <span class="c"># Calling from the command line invokes all tests</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>import unittest
-
-class TestStatisticalFunctions(unittest.TestCase):
-
-    def test_average(self):
-        self.assertEqual(average([20, 30, 70]), 40.0)
-        self.assertEqual(round(average([1, 5, 7]), 1), 4.3)
-        self.assertRaises(ZeroDivisionError, average, [])
-        self.assertRaises(TypeError, average, 20, 30, 70)
-
-unittest.main() # Calling from the command line invokes all tests
-</code></pre>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[ie6 inline-block 折行问题]]></title>
-    <link href="http://liunian.github.com/blog/ie6-inline-block-zhe-xing-wen-ti/"/>
-    <updated>2012-07-07T13:21:00+08:00</updated>
-    <id>http://liunian.github.com/blog/ie6-inline-block-zhe-xing-wen-ti</id>
+    <title type="html"><![CDATA[Ie6 Inline-block 折行问题]]></title>
+    <link href="http://liunian.github.io/blog/ie6-inline-block-new-line/"/>
+    <updated>2012-07-07T12:49:50+08:00</updated>
+    <id>http://liunian.github.io/blog/ie6-inline-block-new-line</id>
     <content type="html"><![CDATA[<h2>问题描述</h2>
 
 <p>IE6 下使用 <code>display:inline-block</code> 可能会发现中间出现了折行。</p>
@@ -707,29 +936,26 @@ unittest.main() # Calling from the command line invokes all tests
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[IE6 float right 导致换行]]></title>
-    <link href="http://liunian.github.com/blog/ie6-float-right-bug/"/>
-    <updated>2012-06-29T10:01:00+08:00</updated>
-    <id>http://liunian.github.com/blog/ie6-float-right-bug</id>
+    <title type="html"><![CDATA[Ie6 float right 导致换行]]></title>
+    <link href="http://liunian.github.io/blog/ie6-float-right-bug/"/>
+    <updated>2012-06-29T02:11:20+08:00</updated>
+    <id>http://liunian.github.io/blog/ie6-float-right-bug</id>
     <content type="html"><![CDATA[<h2>问题描述</h2>
 
-<p>IE6 下，当一个 <code>float:right</code> 的元素不是第一个子元素并且其前面没有 <code>float:left</code> 的元素时，那么将会将会导致一个换行。</p>
+<p>IE6 下，当一个 float:right 的元素不是第一个子元素并且其前面没有 float:left 的元素时，那么将会将会导致一个换行。</p>
 
 <h2>解决方法</h2>
 
-<ol>
-<li>将 <code>float:right</code> 的元素放到最前面</li>
-<li>把 <code>float:right</code> 前面的一个或多个元素加上 <code>float:left</code>（视样式而定)</li>
-</ol>
+<p>将 float:right 的元素放到最前面
+把 float:right 前面的一个或多个元素加上 float:left（视样式而定)</p>
 
-
-<!--more-->
+<!-- more -->
 
 
 <h2>demos</h2>
 
-<figure class='code'><figcaption><span> (ie6_float_right.html)</span> <a href='http://liunian.github.com/downloads/code/ie6_float_right.html'>download</a></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span> (ie6_float_right.html)</span> <a href='http://liunian.github.io/downloads/code/ie6_float_right.html'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>

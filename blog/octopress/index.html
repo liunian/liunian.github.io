@@ -9,7 +9,13 @@
   <meta name="author" content="流年">
 
   
-  <meta name="description" content="Install bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer) Add to shell command echo '[[ -s "$ &hellip;">
+  <meta name="description" content="Install 1
+bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer) Add to bash command 1
+2
+3
+4
+5
+6 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liunian.github.com/blog/octopress/">
+  <link rel="canonical" href="http://liunian.github.io/blog/octopress/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -47,7 +53,7 @@
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:liunian.github.com" />
+    <input type="hidden" name="q" value="site:liunian.github.io" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -82,96 +88,132 @@
   
 
 
-<time datetime="2012-10-03T15:55:00+08:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+<time datetime="2012-08-03T02:51:34+08:00" pubdate data-updated="true"></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Install</p>
+<div class="entry-content"><h2>Install</h2>
 
-<pre><code>bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>bash -s stable &lt; &lt;<span class="o">(</span>curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>Add to shell command</p>
 
-<pre><code>echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile
-source ~/.bash_profile
+<p>Add to bash command</p>
 
-# If using Zsh do this instead
-echo '[[ -s $HOME/.rvm/scripts/rvm ]] &amp;&amp; source $HOME/.rvm/scripts/rvm' &gt;&gt; ~/.zshrc
-source ~/.zshrc
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo</span> <span class="s1">&#39;[[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]] &amp;&amp; . &quot;$HOME/.rvm/scripts/rvm&quot; # Load RVM function&#39;</span> &gt;&gt; ~/.bash_profile
+</span><span class='line'><span class="nb">source</span> ~/.bash_profile
+</span><span class='line'>
+</span><span class='line'><span class="c"># If using Zsh do this instead</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;[[ -s $HOME/.rvm/scripts/rvm ]] &amp;&amp; source $HOME/.rvm/scripts/rvm&#39;</span> &gt;&gt; ~/.zshrc
+</span><span class='line'><span class="nb">source</span> ~/.zshrc
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Install Ruby</p>
 
-<pre><code>rvm install 1.9.2 &amp;&amp; rvm use 1.9.2
-# 1.9.3 will not fit here for now
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm install 1.9.2 <span class="o">&amp;&amp;</span> rvm use 1.9.2
+</span><span class='line'><span class="c"># 1.9.3 will not fit here for now</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Switch back to system</p>
 
-<pre><code>rvm use system
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm use system
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>when using zsh, should add something in .zshrc to make it work right.</p>
 
-<pre><code>alias rake="noglob rake"
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">alias </span><span class="nv">rake</span><span class="o">=</span><span class="s2">&quot;noglob rake&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>After adding it, restart the terminal or source the .zshrc file.</p>
 
-<!--more-->
+<!-- more -->
 
 
 <h2>code snippets</h2>
 
 <h3><a href="http://octopress.org/docs/blogging/code/">Basic</a></h3>
 
-<pre><code>``` [language] [title] [url] [link text]
-code snippet
-```
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="sb">```</span> <span class="o">[</span>language<span class="o">]</span> <span class="o">[</span>title<span class="o">]</span> <span class="o">[</span>url<span class="o">]</span> <span class="o">[</span>link text<span class="o">]</span>
+</span><span class='line'>code snippet
+</span><span class='line'><span class="se">\`</span><span class="sb">``</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>Gists</h3>
 
-<pre><code>{% gist gist_id [filename] %}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">{</span><span class="se">\%</span> gist gist_id <span class="o">[</span>filename<span class="o">]</span> %<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>Include Code Snippets</h3>
 
 <p>Import files on your filesystem into any blog post as embedded code snippets with syntax highlighting and a download link. In the _config.yml you can set your code_dir but the default is <code>source/downloads/code</code>. Simply put a file anywhere under that directory and use the following tag to embed it in a post.</p>
 
-<pre><code>{% include_code [title] [lang:language] path/to/file %}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">{</span>% include_code <span class="o">[</span>title<span class="o">]</span> <span class="o">[</span>lang:language<span class="o">]</span> path/to/file %<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Following example will include the code file: <code>source/downloads/code/test.js</code></p>
 
-<pre><code>{% include_code test.js  %}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">{</span>% include_code test.js  %<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>image</h2>
 
-<pre><code>{% img [class names] /path/to/image [width] [height] [title text [alt text]] %}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">{</span>% img <span class="o">[</span>class names<span class="o">]</span> /path/to/image <span class="o">[</span>width<span class="o">]</span> <span class="o">[</span>height<span class="o">]</span> <span class="o">[</span>title text <span class="o">[</span>alt text<span class="o">]]</span> %<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<h2><a href="http://octopress.org/docs/plugins/blockquote/">extended blockquote</a></h2>
 
-<pre><code>{% blockquote [author[, source]] [link] [source_link_title] %}
-Quote string
-{% endblockquote %}
-</code></pre>
+<h2>extended blockquote</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">{</span>% blockquote <span class="o">[</span>author<span class="o">[</span>, <span class="nb">source</span><span class="o">]]</span> <span class="o">[</span>link<span class="o">]</span> <span class="o">[</span>source_link_title<span class="o">]</span> %<span class="o">}</span>
+</span><span class='line'>Quote string
+</span><span class='line'><span class="o">{</span>% endblockquote %<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>Render Partial</h2>
 
-<pre><code>{% render_partial path/to/file %}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">{</span>% render_partial path/to/file %<span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>add about page</h2>
 
-<pre><code>http://gangmax.github.com/blog/2012/05/04/add-about-page-in-octopress/
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>http://gangmax.github.com/blog/2012/05/04/add-about-page-in-octopress/
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -194,12 +236,12 @@ Quote string
   
 
 
-<time datetime="2012-10-03T15:55:00+08:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+<time datetime="2012-08-03T02:51:34+08:00" pubdate data-updated="true"></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/octopress-/'>Octopress,</a>, <a class='category' href='/blog/categories/memo/'>memo</a>
+    <a class='category' href='/blog/categories/memo/'>memo</a>, <a class='category' href='/blog/categories/octopress/'>octopress,</a>
   
 </span>
 
@@ -233,7 +275,7 @@ Quote string
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/io-language/">Io language</a>
+        <a href="/blog/io-language/">Io Language</a>
       </li>
     
       <li class="post">
@@ -249,12 +291,11 @@ Quote string
       </li>
     
       <li class="post">
-        <a href="/blog/ie6-inline-block-zhe-xing-wen-ti/">ie6 inline-block 折行问题</a>
+        <a href="/blog/ie6-inline-block-new-line/">Ie6 Inline-block 折行问题</a>
       </li>
     
   </ul>
 </section>
-
 
 
 
@@ -267,7 +308,7 @@ Quote string
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - 流年 -
+  Copyright &copy; 2014 - 流年 -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
