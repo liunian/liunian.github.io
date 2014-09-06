@@ -1,95 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Python Tutorial - memos</title>
-  <meta name="author" content="流年">
-
-  
-  <meta name="description" content="Python Interactive Shell _ 变量代表最后一次 return 的值。 Source Code Encoding Python 2.x 默认识别源码为 ASCII，对于需要使用如中文等，可以在源码中指定编码类型，如： # -*- coding: utf-8 -*- &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://liunian.github.com/blog/python-tutorial/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="memos" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">memos</a></h1>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:liunian.github.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/about/">About</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
+  <title><![CDATA[Category: Python, | memos]]></title>
+  <link href="http://liunian.github.com/blog/categories/python-/atom.xml" rel="self"/>
+  <link href="http://liunian.github.com/"/>
+  <updated>2013-07-06T22:44:02+08:00</updated>
+  <id>http://liunian.github.com/</id>
+  <author>
+    <name><![CDATA[流年]]></name>
     
-      <h1 class="entry-title">Python Tutorial</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2012-07-14T19:18:00+08:00" pubdate data-updated="true">Jul 14<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><h2>Python Interactive Shell</h2>
+  <entry>
+    <title type="html"><![CDATA[Python Tutorial]]></title>
+    <link href="http://liunian.github.com/blog/python-tutorial/"/>
+    <updated>2012-07-14T19:18:00+08:00</updated>
+    <id>http://liunian.github.com/blog/python-tutorial</id>
+    <content type="html"><![CDATA[<h2>Python Interactive Shell</h2>
 
 <p><code>_</code> 变量代表最后一次 return 的值。</p>
 
@@ -132,7 +61,7 @@
 
 <h3>unicode to str</h3>
 
-<p>对于用 u&#8217;string&#8217; 声明的 unicode 变量，如果都是 ASCII 码，那么可以用 <code>str</code> 来转换为普通的字符串，但如果有非 ASCII 的，那么则无法。</p>
+<p>对于用 u'string' 声明的 unicode 变量，如果都是 ASCII 码，那么可以用 <code>str</code> 来转换为普通的字符串，但如果有非 ASCII 的，那么则无法。</p>
 
 <p>这使用需要使用 <code>aunicodeObj.encode('utf-8')</code> 等形式来转换为对应编码的字符串。</p>
 
@@ -371,7 +300,7 @@ except:
 </ul>
 
 
-<p>Assignments do not copy data &#8211; they just bind names to objects.</p>
+<p>Assignments do not copy data -- they just bind names to objects.</p>
 
 <h3>class</h3>
 
@@ -515,117 +444,7 @@ class TestStatisticalFunctions(unittest.TestCase):
 
 unittest.main() # Calling from the command line invokes all tests
 </code></pre>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
+]]></content>
+  </entry>
   
-
-<span class="byline author vcard">Posted by <span class="fn">流年</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-14T19:18:00+08:00" pubdate data-updated="true">Jul 14<span>th</span>, 2012</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/python-/'>Python,</a>, <a class='category' href='/blog/categories/memo/'>memo</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/ie6-inline-block-zhe-xing-wen-ti/" title="Previous Post: ie6 inline-block 折行问题">&laquo; ie6 inline-block 折行问题</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/octopress/" title="Next Post: Octopress memo">Octopress memo &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/io-language/">Io language</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/python-library/">Python Library</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/octopress/">Octopress memo</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/python-tutorial/">Python Tutorial</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/ie6-inline-block-zhe-xing-wen-ti/">ie6 inline-block 折行问题</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - 流年 -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-
-
-
-
-
-
-
-
-
-
-</body>
-</html>
+</feed>

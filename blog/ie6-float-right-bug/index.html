@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>ie6-float-right-bug - memos</title>
+  <title>IE6 float right 导致换行 - memos</title>
   <meta name="author" content="流年">
 
   
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liunian.github.io/blog/ie6-float-right-bug/">
+  <link rel="canonical" href="http://liunian.github.com/blog/ie6-float-right-bug/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -48,7 +48,7 @@
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:liunian.github.io" />
+    <input type="hidden" name="q" value="site:liunian.github.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -67,7 +67,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ie6-float-right-bug</h1>
+      <h1 class="entry-title">IE6 Float Right 导致换行</h1>
     
     
       <p class="meta">
@@ -83,7 +83,7 @@
   
 
 
-<time datetime="2012-06-29T02:11:20+08:00" pubdate data-updated="true"></time>
+<time datetime="2012-06-29T10:01:00+08:00" pubdate data-updated="true">Jun 29<span>th</span>, 2012</time>
         
       </p>
     
@@ -92,20 +92,23 @@
 
 <div class="entry-content"><h2>问题描述</h2>
 
-<p>IE6 下，当一个 float:right 的元素不是第一个子元素并且其前面没有 float:left 的元素时，那么将会将会导致一个换行。</p>
+<p>IE6 下，当一个 <code>float:right</code> 的元素不是第一个子元素并且其前面没有 <code>float:left</code> 的元素时，那么将会将会导致一个换行。</p>
 
 <h2>解决方法</h2>
 
-<p>将 float:right 的元素放到最前面
-把 float:right 前面的一个或多个元素加上 float:left（视样式而定)</p>
+<ol>
+<li>将 <code>float:right</code> 的元素放到最前面</li>
+<li>把 <code>float:right</code> 前面的一个或多个元素加上 <code>float:left</code>（视样式而定)</li>
+</ol>
 
-<!-- more -->
+
+<!--more-->
 
 
 <h2>demos</h2>
 
 <figure class='code'><figcaption><span> (ie6_float_right.html)</span> <a href='/downloads/code/ie6_float_right.html'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -227,12 +230,12 @@
   
 
 
-<time datetime="2012-06-29T02:11:20+08:00" pubdate data-updated="true"></time>
+<time datetime="2012-06-29T10:01:00+08:00" pubdate data-updated="true">Jun 29<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/css/'>css,</a>, <a class='category' href='/blog/categories/fronter/'>fronter</a>
+    <a class='category' href='/blog/categories/css/'>css</a>, <a class='category' href='/blog/categories/fronteer/'>fronteer</a>
   
 </span>
 
@@ -249,7 +252,7 @@
     <p class="meta">
       
       
-        <a class="basic-alignment right" href="/blog/python-tutorial/" title="Next Post: Python Tutorial">Python Tutorial &raquo;</a>
+        <a class="basic-alignment right" href="/blog/ie6-inline-block-zhe-xing-wen-ti/" title="Next Post: ie6 inline-block 折行问题">ie6 inline-block 折行问题 &raquo;</a>
       
     </p>
   </footer>
@@ -264,7 +267,7 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/io-language/">Io Language</a>
+        <a href="/blog/io-language/">Io language</a>
       </li>
     
       <li class="post">
@@ -272,7 +275,7 @@
       </li>
     
       <li class="post">
-        <a href="/blog/octopress/">octopress</a>
+        <a href="/blog/octopress/">Octopress memo</a>
       </li>
     
       <li class="post">
@@ -280,11 +283,12 @@
       </li>
     
       <li class="post">
-        <a href="/blog/ie6-float-right-bug/">ie6-float-right-bug</a>
+        <a href="/blog/ie6-inline-block-zhe-xing-wen-ti/">ie6 inline-block 折行问题</a>
       </li>
     
   </ul>
 </section>
+
 
 
 
@@ -297,7 +301,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - 流年 -
+  Copyright &copy; 2013 - 流年 -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
