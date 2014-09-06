@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: memo, | memos]]></title>
+  <link href="http://liunian.github.io/blog/categories/memo/atom.xml" rel="self"/>
+  <link href="http://liunian.github.io/"/>
+  <updated>2014-09-06T12:41:23+08:00</updated>
+  <id>http://liunian.github.io/</id>
+  <author>
+    <name><![CDATA[流年]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Python Library]]></title>
+    <link href="http://liunian.github.io/blog/python-library/"/>
+    <updated>2012-12-19T03:10:13+08:00</updated>
+    <id>http://liunian.github.io/blog/python-library</id>
+    <content type="html"><![CDATA[<h2>Built-in Functions</h2>
+
+<p><em>callable(object)</em></p>
+
+<p>Note that classed are callable(calling a class returns a new instance); class instances are callable if they have a <code>__call__()</code> method.
+classmethod VS staticmethod</p>
+
+<p><em>cmp(x, y)</em></p>
+
+<p>return negative if x &lt; y, 0 if x = y, positive if x > y</p>
+
+<p><em>To be continued…</em></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ie6_float_right</title>
+    <meta charset="utf-8" />
+    <style type="text/css" media="screen">
+        .t{width:300px; margin:0 auto 10px; border:1px solid #ccc;zoom:1;}
+        .t:after{clear:both; display:block; content:''; height:0; width:0; line-height:0; font-size:0; visibility:hidden; overflow:hidden;}
+        .t span{display:inline; margin:0 5px 0 0;}
+        .l{float:left;}
+        .r{float:right;}
+    </style>
+</head>
+<body>
+    <p>在 IE6 下，如果一个 float right 的元素不是第一个子元素且前面没有float left的元素，那么将会导致一个换行，如例 1~3。</p>
+    <div class="t">
+        <span class="">none float</span>
+        <span class="r">float right</span>
+    </div>    
+
+    <div class="t">
+        <span class="">none float</span>
+        <span class="r">float right</span>
+        <span class="">none float</span>
+    </div>    
+
+    <div class="t">
+        <span class="">none float</span>
+        <span class="r">float right</span>
+        <span class="l">float left</span>
+    </div>    
+
+    <div class="t">
+        <span class="l">float left</span>
+        <span class="r">float right</span>
+        <span class="">none float</span>
+    </div>    
+
+    <div class="t">
+        <span class="l">float left</span>
+        <span class="r">float right</span>
+    </div>    
+
+    <div class="t">
+        <span class="r">float right</span>
+        <span class="">none float</span>
+    </div>    
+</body>
+</html>

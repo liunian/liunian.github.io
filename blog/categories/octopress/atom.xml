@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: octopress, | memos]]></title>
+  <link href="http://liunian.github.io/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://liunian.github.io/"/>
+  <updated>2014-09-06T12:41:23+08:00</updated>
+  <id>http://liunian.github.io/</id>
+  <author>
+    <name><![CDATA[流年]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[octopress]]></title>
+    <link href="http://liunian.github.io/blog/octopress/"/>
+    <updated>2012-08-03T02:51:34+08:00</updated>
+    <id>http://liunian.github.io/blog/octopress</id>
+    <content type="html"><![CDATA[<h2>Install</h2>
+
+<pre><code class="bash">bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+</code></pre>
+
+<p>Add to bash command</p>
+
+<pre><code class="bash">echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile
+source ~/.bash_profile
+
+# If using Zsh do this instead
+echo '[[ -s $HOME/.rvm/scripts/rvm ]] &amp;&amp; source $HOME/.rvm/scripts/rvm' &gt;&gt; ~/.zshrc
+source ~/.zshrc
+</code></pre>
+
+<p>Install Ruby</p>
+
+<pre><code class="bash">rvm install 1.9.2 &amp;&amp; rvm use 1.9.2
+# 1.9.3 will not fit here for now
+</code></pre>
+
+<p>Switch back to system</p>
+
+<pre><code class="bash">rvm use system
+</code></pre>
+
+<p>when using zsh, should add something in .zshrc to make it work right.</p>
+
+<pre><code class="bash">alias rake="noglob rake"
+</code></pre>
+
+<p>After adding it, restart the terminal or source the .zshrc file.</p>
+
+<!-- more -->
+
+
+<h2>code snippets</h2>
+
+<h3><a href="http://octopress.org/docs/blogging/code/">Basic</a></h3>
+
+<p><code>
+</code> [language] [title] [url] [link text]
+code snippet
+&#8220;`
+&#8220;`</p>
+
+<h3>Gists</h3>
+
+<pre><code>{\% gist gist_id [filename] %}
+</code></pre>
+
+<h3>Include Code Snippets</h3>
+
+<p>Import files on your filesystem into any blog post as embedded code snippets with syntax highlighting and a download link. In the _config.yml you can set your code_dir but the default is <code>source/downloads/code</code>. Simply put a file anywhere under that directory and use the following tag to embed it in a post.</p>
+
+<pre><code>File /Users/bd/Projects/web/octopress/source/downloads/code/path/to/file could not be found
+</code></pre>
+
+<p>Following example will include the code file: <code>source/downloads/code/test.js</code></p>
+
+<pre><code>File /Users/bd/Projects/web/octopress/source/downloads/code/test.js could not be found
+</code></pre>
+
+<h2>image</h2>
+
+<pre><code><img class="[class names]" src="/path/to/image" title="[width] [height] [title text [alt text]]" >
+</code></pre>
+
+<h2>extended blockquote</h2>
+
+<pre><code><blockquote><p>Quote string</p><footer><strong>[author[</strong> <cite>Source]] [Link] [Source_link_title]</cite></footer></blockquote>
+</code></pre>
+
+<h2>Render Partial</h2>
+
+<pre><code>File /Users/bd/Projects/web/octopress/source/path/to/file could not be found
+</code></pre>
+
+<h2>add about page</h2>
+
+<pre><code>http://gangmax.github.com/blog/2012/05/04/add-about-page-in-octopress/
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
