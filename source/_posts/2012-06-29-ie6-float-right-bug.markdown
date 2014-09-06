@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ie6-float-right-bug"
+title: "Ie6 float right 导致换行"
 date: 2012-06-29 02:11:20 +0800
 comments: true
 categories: css, fronter

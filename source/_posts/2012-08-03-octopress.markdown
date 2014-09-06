@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "octopress"
+title: "Octopress memo"
 date: 2012-08-03 02:51:34 +0800
 comments: true
 categories: Octopress, memo
