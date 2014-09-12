@@ -4,7 +4,7 @@
   <title><![CDATA[memos]]></title>
   <link href="http://liunian.github.io/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2014-09-06T12:56:47+08:00</updated>
+  <updated>2014-09-12T23:21:04+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[inline-block in ie6/7]]></title>
+    <link href="http://liunian.github.io/blog/inline-block-in-ie6-and-7/"/>
+    <updated>2014-09-12T23:15:07+08:00</updated>
+    <id>http://liunian.github.io/blog/inline-block-in-ie6-and-7</id>
+    <content type="html"><![CDATA[<p>在 ie6/7 中，<code>display:inline-block</code> 无法对 <code>div</code> 这些块状元素生效，最简单的解决方法就是改用 <code>span</code> 的 inline 元素。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Io Language]]></title>
