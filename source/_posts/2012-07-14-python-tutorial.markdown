@@ -3,7 +3,7 @@ layout: post
 title: "Python Tutorial"
 date: 2012-07-14 02:21:51 +0800
 comments: true
-categories: Python, memo
+categories: Python memo
 ---
 
 ## Python Interactive Shell

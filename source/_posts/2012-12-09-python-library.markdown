@@ -3,7 +3,7 @@ layout: post
 title: "Python Library"
 date: 2012-12-19 03:10:13 +0800
 comments: true
-categories: memo, python
+categories: memo python
 ---
 
 ## Built-in Functions
