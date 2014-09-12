@@ -4,7 +4,7 @@
   <title><![CDATA[Category: css | memos]]></title>
   <link href="http://liunian.github.io/blog/categories/css/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2014-09-12T23:23:10+08:00</updated>
+  <updated>2014-09-12T23:27:07+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -19,6 +19,143 @@
     <updated>2014-09-12T23:15:07+08:00</updated>
     <id>http://liunian.github.io/blog/inline-block-in-ie6-and-7</id>
     <content type="html"><![CDATA[<p>在 ie6/7 中，<code>display:inline-block</code> 无法对 <code>div</code> 这些块状元素生效，最简单的解决方法就是改用 <code>span</code> 的 inline 元素。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ie6 Inline-block 折行问题]]></title>
+    <link href="http://liunian.github.io/blog/ie6-inline-block-new-line/"/>
+    <updated>2012-07-07T12:49:50+08:00</updated>
+    <id>http://liunian.github.io/blog/ie6-inline-block-new-line</id>
+    <content type="html"><![CDATA[<h2>问题描述</h2>
+
+<p>IE6 下使用 <code>display:inline-block</code> 可能会发现中间出现了折行。</p>
+
+<h2>解决方法</h2>
+
+<p><code>display:inline-block</code> 的元素前后不能有空白符，需要紧紧相连。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ie6 float right 导致换行]]></title>
+    <link href="http://liunian.github.io/blog/ie6-float-right-bug/"/>
+    <updated>2012-06-29T02:11:20+08:00</updated>
+    <id>http://liunian.github.io/blog/ie6-float-right-bug</id>
+    <content type="html"><![CDATA[<h2>问题描述</h2>
+
+<p>IE6 下，当一个 float:right 的元素不是第一个子元素并且其前面没有 float:left 的元素时，那么将会将会导致一个换行。</p>
+
+<h2>解决方法</h2>
+
+<p>将 float:right 的元素放到最前面
+把 float:right 前面的一个或多个元素加上 float:left（视样式而定)</p>
+
+<!-- more -->
+
+
+<h2>demos</h2>
+
+<p><figure class='code'><figcaption><span> (ie6_float_right.html)</span> <a href='/downloads/code/ie6_float_right.html'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;title&gt;</span>Ie6_float_right<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nc">.t</span><span class="p">{</span><span class="k">width</span><span class="o">:</span><span class="m">300px</span><span class="p">;</span> <span class="k">margin</span><span class="o">:</span><span class="m">0</span> <span class="k">auto</span> <span class="m">10px</span><span class="p">;</span> <span class="k">border</span><span class="o">:</span><span class="m">1px</span> <span class="k">solid</span> <span class="m">#ccc</span><span class="p">;</span><span class="n">zoom</span><span class="o">:</span><span class="m">1</span><span class="p">;}</span>
+</span><span class='line'>        <span class="nc">.t</span><span class="nd">:after</span><span class="p">{</span><span class="k">clear</span><span class="o">:</span><span class="k">both</span><span class="p">;</span> <span class="k">display</span><span class="o">:</span><span class="k">block</span><span class="p">;</span> <span class="k">content</span><span class="o">:</span><span class="s1">&#39;&#39;</span><span class="p">;</span> <span class="k">height</span><span class="o">:</span><span class="m">0</span><span class="p">;</span> <span class="k">width</span><span class="o">:</span><span class="m">0</span><span class="p">;</span> <span class="k">line-height</span><span class="o">:</span><span class="m">0</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span><span class="m">0</span><span class="p">;</span> <span class="k">visibility</span><span class="o">:</span><span class="k">hidden</span><span class="p">;</span> <span class="k">overflow</span><span class="o">:</span><span class="k">hidden</span><span class="p">;}</span>
+</span><span class='line'>        <span class="nc">.t</span> <span class="nt">span</span><span class="p">{</span><span class="k">display</span><span class="o">:</span><span class="k">inline</span><span class="p">;</span> <span class="k">margin</span><span class="o">:</span><span class="m">0</span> <span class="m">5px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;}</span>
+</span><span class='line'>        <span class="nc">.l</span><span class="p">{</span><span class="k">float</span><span class="o">:</span><span class="k">left</span><span class="p">;}</span>
+</span><span class='line'>        <span class="nc">.r</span><span class="p">{</span><span class="k">float</span><span class="o">:</span><span class="k">right</span><span class="p">;}</span>
+</span><span class='line'>    <span class="nt">&lt;/style&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;p&gt;</span>在 IE6 下，如果一个 float right 的元素不是第一个子元素且前面没有float left的元素，那么将会导致一个换行，如例 1~3。<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;t&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>none float<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;r&quot;</span><span class="nt">&gt;</span>float right<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;t&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>none float<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;r&quot;</span><span class="nt">&gt;</span>float right<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>none float<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;t&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>none float<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;r&quot;</span><span class="nt">&gt;</span>float right<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;l&quot;</span><span class="nt">&gt;</span>float left<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;t&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;l&quot;</span><span class="nt">&gt;</span>float left<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;r&quot;</span><span class="nt">&gt;</span>float right<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>none float<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;t&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;l&quot;</span><span class="nt">&gt;</span>float left<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;r&quot;</span><span class="nt">&gt;</span>float right<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;t&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;r&quot;</span><span class="nt">&gt;</span>float right<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>none float<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 ]]></content>
   </entry>
   
