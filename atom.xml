@@ -4,7 +4,7 @@
   <title><![CDATA[memos]]></title>
   <link href="http://liunian.github.io/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2015-08-01T00:38:03+08:00</updated>
+  <updated>2015-08-01T00:45:10+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -380,6 +380,13 @@
 </span><span class='line'>  <span class="kd">function</span> <span class="nx">eit</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span> <span class="c1">// also kosher</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参考</h2>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">Strict mode</a></li>
+</ul>
 
 ]]></content>
   </entry>
