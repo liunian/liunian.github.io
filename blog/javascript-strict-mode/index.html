@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>memos</title>
+  <title>JavaScript 严格模式 - memos</title>
   <meta name="author" content="流年">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liunian.github.io/">
+  <link rel="canonical" href="http://liunian.github.io/blog/javascript-strict-mode/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -61,15 +61,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/javascript-strict-mode/">JavaScript 严格模式</a></h1>
+      <h1 class="entry-title">JavaScript 严格模式</h1>
     
     
       <p class="meta">
@@ -92,7 +89,7 @@
   </header>
 
 
-  <div class="entry-content"><p>严格模式的提出是为了约束一些 JavaScript 的使用方式，修改一些容易导致失误和安全问题的地方。因为严格模式和非严格模式下的语义有所不同，所以使用上需要谨慎，最好渐进的使用。</p>
+<div class="entry-content"><p>严格模式的提出是为了约束一些 JavaScript 的使用方式，修改一些容易导致失误和安全问题的地方。因为严格模式和非严格模式下的语义有所不同，所以使用上需要谨慎，最好渐进的使用。</p>
 
 <h2>使用</h2>
 
@@ -456,58 +453,16 @@
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/inline-block-in-ie6-and-7/">Inline-block in Ie6/7</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">流年</span></span>
 
-<time datetime="2014-09-12T23:15:07+08:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在 ie6/7 中，<code>display:inline-block</code> 无法对 <code>div</code> 这些块状元素生效，最简单的解决方法就是改用 <code>span</code> 的 inline 元素。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/io-language/">Io Language</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -519,402 +474,36 @@
   
 
 
-<time datetime="2013-01-01T03:13:05+08:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>这是 <a href="http://iolanguage.org/">Io</a> 的简单笔记。</p>
-
-<p>相关资源</p>
-
-<ul>
-<li><a href="http://iolanguage.org/">官网</a></li>
-<li><a href="http://en.wikibooks.org/wiki/Io_Programming">wiki</a></li>
-<li><a href="http://www.iolanguage.net/">一个中文博客</a></li>
-<li><a href="http://iolanguage.org/scm/io/docs/IoTutorial.html">Tutorial</a></li>
-</ul>
-
-
-<h2>Basic</h2>
-
-<ol>
-<li>字符串只能用双引号，不能用单引号</li>
-<li>没有类，只有类型和对象。两者的区别是前者有type标识(slot)，并且该标识是在创建时因为其为大写字母开头而确定为类型来添加的。</li>
-<li>不是对象式的方法调用，而是向对象发送信息，比如 &ldquo;abc&rdquo; print。</li>
-<li>一般地，赋值使用 := 而不是 =，如 obj := Object clone。在对象或对象 slot 还没存在的情况下，使用 = 会出错，但使用 := 则会先创建然后赋值。</li>
-<li>从上可以看到，从某种类型创建一个对象使用 clone 消息。</li>
-<li>查看一个对象可用 obj slotNames。</li>
-<li>继承机制使用原型（proto）而不是父子类，如：</li>
-</ol>
-
-
-<figure class='code'><figcaption><span> (1.io)</span> <a href='/downloads/code/1.io'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='io'><span class='line'><span class="c1">#!/usr/bin/env io</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">Vehicle</span> <span class="o">:=</span> <span class="nb">Object</span> <span class="k">clone</span>
-</span><span class='line'><span class="n">Vehicle</span> <span class="n">description</span> <span class="o">:=</span> <span class="s">&quot;Something to take you far away&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">Car</span> <span class="o">:=</span> <span class="n">Vehicle</span> <span class="k">clone</span>
-</span><span class='line'><span class="n">ferrari</span> <span class="o">:=</span> <span class="n">Car</span> <span class="k">clone</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">Car</span> <span class="n">slotNames</span> <span class="n">println</span>           <span class="c1"># list(type)</span>
-</span><span class='line'><span class="n">ferrari</span> <span class="n">slotNames</span> <span class="n">println</span>       <span class="c1"># list()</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">Car</span> <span class="n">description</span> <span class="n">println</span>         <span class="c1"># Something to take you far away</span>
-</span><span class='line'><span class="n">ferrari</span> <span class="n">description</span> <span class="n">println</span>     <span class="c1"># Something to take you far away</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">ferrari</span> <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Car_0x19bcb80: type = &quot;Car&quot;</span>
-</span><span class='line'><span class="n">Car</span>     <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Vehicle_0x19c9f10: description = &quot;Something...&quot; type = &quot;Vehicle&quot;</span>
-</span><span class='line'><span class="n">Vehicle</span> <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Object_0x17c1a10: type = Object_type() .....</span>
-</span><span class='line'><span class="nb">Object</span>  <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Object_17e5720: Car = Car_0x19bcb80 Vehicle = Vehicle_0x19c9f10 Protos = xxx Lobby = xxxx ....</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ol>
-<li>方法使用 method() 创建，如：Car dirve := method(&ldquo;Vroom&rdquo; print)，给 ferrari 发送 drive 消息将有 ferrari drive => &ldquo;Vroom&#8221;。</li>
-<li>和 Ruby 一样，0 是 true 而不是 false。nil 是 false。</li>
-</ol>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/io-language/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
+<time datetime="2015-08-01T00:29:35+08:00" pubdate data-updated="true"></time>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/python-library/">Python Library</a></h1>
-    
-    
-      <p class="meta">
-        
 
-
-
-
-
-
-
-
+<span class="categories">
   
+    <a class='category' href='/blog/categories/fronteer/'>fronteer,</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>
+  
+</span>
 
 
-<time datetime="2012-12-19T03:10:13+08:00" pubdate data-updated="true"></time>
-        
-      </p>
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><h2>Built-in Functions</h2>
-
-<p><em>callable(object)</em></p>
-
-<p>Note that classed are callable(calling a class returns a new instance); class instances are callable if they have a <code>__call__()</code> method.
-classmethod VS staticmethod</p>
-
-<p><em>cmp(x, y)</em></p>
-
-<p>return negative if x &lt; y, 0 if x = y, positive if x > y</p>
-
-<p><em>To be continued…</em></p>
+      <div class="sharing">
+  
+  
+  
 </div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/octopress/">Octopress Memo</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-03T02:51:34+08:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Install</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>bash -s stable &lt; &lt;<span class="o">(</span>curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer<span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Add to bash command</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo</span> <span class="s1">&#39;[[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]] &amp;&amp; . &quot;$HOME/.rvm/scripts/rvm&quot; # Load RVM function&#39;</span> &gt;&gt; ~/.bash_profile
-</span><span class='line'><span class="nb">source</span> ~/.bash_profile
-</span><span class='line'>
-</span><span class='line'><span class="c"># If using Zsh do this instead</span>
-</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;[[ -s $HOME/.rvm/scripts/rvm ]] &amp;&amp; source $HOME/.rvm/scripts/rvm&#39;</span> &gt;&gt; ~/.zshrc
-</span><span class='line'><span class="nb">source</span> ~/.zshrc
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Install Ruby</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm install 1.9.2 <span class="o">&amp;&amp;</span> rvm use 1.9.2
-</span><span class='line'><span class="c"># 1.9.3 will not fit here for now</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Switch back to system</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm use system
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>when using zsh, should add something in .zshrc to make it work right.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">alias </span><span class="nv">rake</span><span class="o">=</span><span class="s2">&quot;noglob rake&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>After adding it, restart the terminal or source the .zshrc file.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/octopress/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
+        <a class="basic-alignment left" href="/blog/inline-block-in-ie6-and-7/" title="Previous Post: inline-block in ie6/7">&laquo; inline-block in ie6/7</a>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/python-tutorial/">Python Tutorial</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-14T02:21:51+08:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Python Interactive Shell</h2>
-
-<p><code>_</code> 变量代表最后一次 return 的值。</p>
-
-<h2>Source Code Encoding</h2>
-
-<p>Python 2.x 默认识别源码为 ASCII，对于需要使用如中文等，可以在源码中指定编码类型，如：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># -*- coding: utf-8 -*-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>此方法不使用与 2.2 及更旧版本，3.x 后默认为 utf-8 编码，无需如此。</p>
-
-<p>注意：</p>
-
-<ul>
-<li>如果第一行是如 <code>/usr/bin/env python</code> 这样的指定，那么指定的编码类型必须位于第二行，中间不能有空行。</li>
-<li>如果第一行不是程序指定，那么编码类型注释前面可以有空行。</li>
-<li>加了编码类型注释后，注释中可以直接使用中文了，但在代码中，需要用 u<code>'中文'</code>，而不能直接想 JS 中那样使用字符串。</li>
-</ul>
-
-
-<h2>Number</h2>
-
-<p>0 == 0.0</p>
-
-<p>/ （除法）</p>
-
-<p>2.x 中对两个整数应用 / ，得到的是 math.floor，但其中一个 float，则得到 float。如：5 / 2 = 2； 5 / 2.0 = 2.5；</p>
-
-<p>3.x 中默认是普通的除法，不取 floor。</p>
-
-<h2>复数（complex）</h2>
-
-<p>用 1j 或 2J 等形式来表示虚数，也可以用 complex 类来构建复数。如：<code>(1+2j) + complex(2, 1)</code>。得到的复数 i，可以用 <code>i.real</code> 和 <code>i.imag</code> 来分别获取实数部分和虚数部分。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/python-tutorial/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/ie6-inline-block-new-line/">Ie6 Inline-block 折行问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-07T12:49:50+08:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>问题描述</h2>
-
-<p>IE6 下使用 <code>display:inline-block</code> 可能会发现中间出现了折行。</p>
-
-<h2>解决方法</h2>
-
-<p><code>display:inline-block</code> 的元素前后不能有空白符，需要紧紧相连。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/ie6-float-right-bug/">Ie6 Float Right 导致换行</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-29T02:11:20+08:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>问题描述</h2>
-
-<p>IE6 下，当一个 float:right 的元素不是第一个子元素并且其前面没有 float:left 的元素时，那么将会将会导致一个换行。</p>
-
-<h2>解决方法</h2>
-
-<p>将 float:right 的元素放到最前面
-把 float:right 前面的一个或多个元素加上 float:left（视样式而定)</p>
+    </p>
+  </footer>
+</article>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/ie6-float-right-bug/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -950,6 +539,7 @@ classmethod VS staticmethod</p>
 
   
 </aside>
+
 
     </div>
   </div>
