@@ -225,3 +225,7 @@ function baz(){ // kosher
   function eit() { } // also kosher
 }
 ```
+
+## 参考
+
+- [Strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
