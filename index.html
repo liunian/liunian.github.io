@@ -9,7 +9,7 @@
   <meta name="author" content="流年">
 
   
-  <meta name="description" content="严格模式的提出是为了约束一些 JavaScript 的使用方式，修改一些容易导致失误和安全问题的地方。因为严格模式和非严格模式下的语义有所不同，所以使用上需要谨慎，最好渐进的使用。 使用 有两种使用方式，影响整个脚本的脚本方式和影响函数的方式。 脚本方式 在脚本最前面（需要是第一个有效语句， &hellip;">
+  <meta name="description" content="HTML 5.1 计划增加 template 元素，提供一段可被后续被 JavaScript 克隆和插入的代码片段。 what &lt;template&gt;&lt;/template&gt; 元素是提供页面渲染是不被解析渲染，但在 JavaScript 使用并插入到文档后才解析渲染的代码片段。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -63,6 +63,121 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/html-template/">Html Template</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-09-21T17:49:18+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>HTML 5.1 计划增加 template 元素，提供一段可被后续被 JavaScript 克隆和插入的代码片段。</p>
+
+<h2>what</h2>
+
+<p><code>&lt;template&gt;&lt;/template&gt;</code> 元素是提供页面渲染是不被解析渲染，但在 JavaScript 使用并插入到文档后才解析渲染的代码片段。其可存放任意合法的 HTML 内容，可位于任何合法的非替换元素里，包括 <code>&lt;head&gt;</code> 等。</p>
+
+<p>如<a href="http://defg.sinaapp.com/demos/template/1.html">示例一</a>：</p>
+
+<pre><code>&lt;template&gt;
+    &lt;style&gt;
+    div {
+        color: red;
+    }
+    &lt;/style&gt;
+
+    &lt;div&gt;
+        &lt;h1&gt;template&lt;/h1&gt;
+        &lt;img src="http://holdit.sinaapp.com/300" /&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+    alert('template');
+    &lt;/script&gt;
+
+&lt;/template&gt;
+</code></pre>
+
+<p>需要注意的是，这是一个可被重复使用的文档片段，并没有像 Mustache 那样的模板插值（&#8220;）甚至更高级的流程处理的功能。这是一个静态的模板，不是根据数据来动态生成 HTML 字符串。</p>
+
+<h2>why</h2>
+
+<p>一直都有着重复使用一段内容（模板）的需求，以前使用的主要方式有两种：</p>
+
+<p>一是使用隐藏的 DOM 元素来存放模板，这样可以直接使用 DOM API 来操作，但浏览器默认会解析结构、发送请求（如果有图片等）和解析脚本（如果有）；</p>
+
+<p>二是使用 script 或 textarea 等默认不会解析的元素来存放，然后后续用 <code>innerHTML</code> 来放进文档，但容易造成 xss。</p>
+
+<p>所以提出这个 <code>template</code> 来直接使用 DOM 来避免 xss，同时也延迟解析。</p>
+
+<h2>how</h2>
+
+<h3>判断是否支持</h3>
+
+<pre><code>function supportsTemplate() {
+  return 'content' in document.createElement('template');
+}
+
+if (supportsTemplate()) {
+  // 检测通过！
+} else {
+  // 使用旧的模板技术或库。
+}
+</code></pre>
+
+<h3>获取模板内容</h3>
+
+<pre><code>var templateNode = document.querySelector('template');
+var fragDoc = templateNode.content;
+</code></pre>
+
+<p>模板的 <code>content</code> 是一个 <code>documentFragment</code>，所以可以对其做 DOM 能做的任何操作，也可以直接把其插入到文档中。</p>
+
+<h3>克隆使用</h3>
+
+<p><a href="http://defg.sinaapp.com/demos/template/2.html">示例二</a></p>
+
+<p>虽然可以直接把模板内容插入文档，但如果需要重复使用，那就不合适了。因为插入后就把内容从模板中移动到了文档中，模板中的内容就是空的了。</p>
+
+<p>这样，可以使用 <code>fragDoc.cloneNode(true)</code> 或 <code>document.importNode(fragDoc, true)</code> 来获取其克隆，然后再做处理。两种克隆方式的差别是：后者还适用于跨文档的情况，比如 iframe 和 shadow dom 这些情况；另，当前测试中（2015-09-18），Chrome 下 importNode 会请求 img 等，但 cloneNode 不会，暂没去确定规范是如何的。</p>
+
+<p>需要注意的是，克隆后，并不会运行模板中的脚本，而是在插入到文档中后才会运行里面的 js 脚本。</p>
+
+<h2>参考文档</h2>
+
+<ul>
+<li><a href="http://webcomponents.org/articles/introduction-to-template-element/">Introduction to template element</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/webcomponents/template/">HTML’s new template tag</a></li>
+<li><a href="https://html.spec.whatwg.org/multipage/scripting-1.html#the-template-element">w3c template spec</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -929,6 +1044,10 @@ classmethod VS staticmethod</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/html-template/">html template</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/javascript-strict-mode/">JavaScript 严格模式</a>
       </li>
     
@@ -942,10 +1061,6 @@ classmethod VS staticmethod</p>
     
       <li class="post">
         <a href="/blog/python-library/">Python Library</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/octopress/">Octopress memo</a>
       </li>
     
   </ul>
