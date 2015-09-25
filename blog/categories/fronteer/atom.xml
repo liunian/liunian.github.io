@@ -4,7 +4,7 @@
   <title><![CDATA[Category: fronteer, | memos]]></title>
   <link href="http://liunian.github.io/blog/categories/fronteer/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2015-09-21T17:50:39+08:00</updated>
+  <updated>2015-09-25T14:42:30+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -32,6 +32,9 @@
 'use strict';
 var v = "Hi! I'm a strict mode script!";
 </code></pre>
+
+<!-- more -->
+
 
 <h3>函数方式</h3>
 
