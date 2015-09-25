@@ -22,6 +22,8 @@ categories: fronteer, javascript
 var v = "Hi! I'm a strict mode script!";
 ```
 
+<!-- more -->
+
 ### 函数方式
 
 ```js
