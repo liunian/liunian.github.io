@@ -3,7 +3,7 @@ layout: post
 title: "JavaScript 严格模式"
 date: 2015-08-01 00:29:35 +0800
 comments: true
-categories: fronteer, javascript
+categories: frontend javascript
 ---
 
 严格模式的提出是为了约束一些 JavaScript 的使用方式，修改一些容易导致失误和安全问题的地方。因为严格模式和非严格模式下的语义有所不同，所以使用上需要谨慎，最好渐进的使用。

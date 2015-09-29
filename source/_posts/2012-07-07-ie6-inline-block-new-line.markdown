@@ -3,7 +3,7 @@ layout: post
 title: "Ie6 Inline-block 折行问题"
 date: 2012-07-07 12:49:50 +0800
 comments: true
-categories: css fronter
+categories: css frontend 
 ---
 
 ## 问题描述

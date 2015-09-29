@@ -3,7 +3,7 @@ layout: post
 title: "html template"
 date: 2015-09-21 17:49:18 +0800
 comments: true
-categories: 
+categories: frontend
 ---
 
 HTML 5.1 计划增加 template 元素，提供一段可被后续被 JavaScript 克隆和插入的代码片段。
