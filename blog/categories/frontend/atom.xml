@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: frontend | memos]]></title>
+  <link href="http://liunian.github.io/blog/categories/frontend/atom.xml" rel="self"/>
+  <link href="http://liunian.github.io/"/>
+  <updated>2015-09-29T10:21:41+08:00</updated>
+  <id>http://liunian.github.io/</id>
+  <author>
+    <name><![CDATA[流年]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[shadow dom]]></title>
+    <link href="http://liunian.github.io/blog/shadow-dom/"/>
+    <updated>2015-09-29T10:17:55+08:00</updated>
+    <id>http://liunian.github.io/blog/shadow-dom</id>
+    <content type="html"><![CDATA[<p>Shadow DOM 的用途是封装隔离一个元素，从而在组件化的过程中隔离外部样式和 JS 的影响。</p>
+
+<h2>使用</h2>
+
+<h3>创建</h3>
+
+<p>通过在一个元素（A）上创建一个 shadow root 的方式来创建 shadow dom，返回的值成为 shadow root，A 成为 shadow host。</p>
+
+<p>一旦创建了 shadow root，那么宿主元素的原内容将不被展示，而是展示 shadow root 的内容。</p>
+
+<p>可以在一个 shadow host 上创建多个 shadow root（但只有最新的一个会生效，但可以通过 <code>&lt;shadow&gt;&lt;/shadow&gt;</code> 来内嵌引用前一个 shadow；并且目前无法移除 shadow root），还可以把一个 shadow root 里的元素作为 shadow host 来继续创建 shadow root。</p>
+
+<pre><code>&lt;button&gt;Hello, world!&lt;/button&gt;
+&lt;script&gt;
+var host = document.querySelector('button');
+var root = host.createShadowRoot();
+root.textContent = 'こんにちは、影の世界!';
+&lt;/script&gt;
+</code></pre>
+
+<p>通过配合使用 <a href="http://liunian.github.io/blog/html-template/">html template</a> 可以简化创建时的繁琐，如：</p>
+
+<pre><code>var shadow = document.querySelector('#nameTag').createShadowRoot();
+var template = document.querySelector('#nameTagTemplate');
+var clone = document.importNode(template.content, true);
+shadow.appendChild(clone);
+</code></pre>
+
+<h4>相关属性</h4>
+
+<ul>
+<li><code>element.shadownRoot</code>：获取一个元素挂着的生效的 shadow root</li>
+<li><code>shadowRoot.host</code>：获取 shadow root 的宿主元素</li>
+</ul>
+
+
+<h3>引用、多个和嵌套</h3>
+
+<h4>引用 host 内容</h4>
+
+<p>创建了 shadow root 后，宿主元素的原内容将不被展示，而是展示 shadow root 的内容，但可以在 shadow root 中使用<code>&lt;content&gt;&lt;/content&gt;</code> 来引用宿主<strong>直接子元素</strong>的内容。</p>
+
+<blockquote><p>下面假定 #host 表示 shadow root 的 host，shadow root 的内容是 #template 里的内容</p></blockquote>
+
+<pre><code>&lt;div id="host"&gt;
+    &lt;p&gt;paragraph&lt;/p&gt;
+    &lt;div class="a"&gt;with selector .a&lt;/div&gt;
+    &lt;div&gt;something in &lt;span&gt;span0&lt;/span&gt;&lt;/div&gt;
+    &lt;span&gt;span1&lt;/span&gt;
+    &lt;br&gt;
+    &lt;span&gt;span2&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;template id="template"&gt;
+    &lt;header&gt;header&lt;/header&gt;
+    &lt;nav&gt;nav&lt;/nav&gt;
+    &lt;div class="main"&gt;
+        &lt;content&gt;&lt;/content&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;footer&lt;/footer&gt;
+&lt;/template&gt;
+</code></pre>
+
+<p>对于上面的代码，<code>#host</code> 标签里的原内容会被投射到 div.main 里。</p>
+
+<p><code>content</code> 是表示选择什么内容来投射到当前位置，默认是投射全部内容。</p>
+
+<p>可以使用 <code>select="immediate_child_selector"</code> 来选择 host 里直接子元素来投射，如 <code>&lt;content select="p"&gt;&lt;/content&gt;</code> 可以引用 <code>p</code>；<code>&lt;content select="span"&gt;&lt;/content&gt;</code> 来引用 span1 和 span2，但不会引用 span0，因为 span0 不是直接子元素。</p>
+
+<p>可以有多个 <code>&lt;content&gt;</code> 标签，但被引用的内容仅能被引用一次，先到先得，后来的将只能在挑剩的里面找匹配的。</p>
+
+<pre><code>&lt;div id="host"&gt;
+    &lt;div class="a"&gt;div0&lt;/div&gt;
+    &lt;div class="b"&gt;div1&lt;/div&gt;
+    &lt;div class="a"&gt;div2&lt;/div&gt;
+    &lt;div class="c"&gt;div3&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;template id="template"&gt;
+    &lt;content select=".a, .b"&gt;&lt;/content&gt;
+    &lt;hr&gt;
+    &lt;content select="div"&gt;&lt;/content&gt;
+&lt;/template&gt;
+</code></pre>
+
+<p>上面的例子中， <code>&lt;content select=".a, .b"&gt;&lt;/content&gt;</code> 引用了 div0，div1 和 div2，那么位于其后的 <code>&lt;content select="div"&gt;&lt;/div&gt;</code> 将只能匹配到剩下的一个 div3。</p>
+
+<h4>多个 shadow root 和嵌套</h4>
+
+<p>对于一个宿主，可以创建多个 shadow root，但仅有最新的一个会生效。</p>
+
+<pre><code>&lt;div id="host"&gt;
+    &lt;div class="a"&gt;a&lt;/div&gt;
+    &lt;div class="b"&gt;b&lt;/div&gt;
+    &lt;div class="c"&gt;c&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;template id="t1"&gt;
+    &lt;content select=".a"&gt;&lt;/content&gt;
+&lt;/template&gt;
+
+&lt;template id="t2"&gt;
+    &lt;content select=".b"&gt;&lt;/content&gt;
+&lt;/template&gt;
+
+&lt;template id="t3"&gt;
+    &lt;conent select=".c"&gt;&lt;/conent&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    var $ = function(id) {return document.getElementById(id);},
+        host = $('a'),
+        t1 = $('t1'),
+        t2 = $('t2'),
+        t3 = $('t3');
+
+    function addShadow(templateNode) {
+        host.appendChild(document.importNode(templateNode.content), true);
+    }
+
+    addShadow(t1);
+    addShadow(t2);
+    addShadow(t3);
+&lt;/script&gt;
+</code></pre>
+
+<p>上面最终将只展示 <code>div.c</code>。</p>
+
+<h4>嵌套</h4>
+
+<p>但如果在 <code>#t3</code> 的 <code>&lt;content&gt;</code> 后添加 <code>&lt;shadow&gt;&lt;/shadow&gt;</code>，那么则可以引用上一个 shadow root（可以看做是 FILO 的栈），这样展示的 <code>div.c</code> 后会展示 <code>div.b</code>。还可以在 <code>#t2</code> 的 <code>&lt;content&gt;</code> 后添加 <code>&lt;shadow&gt;&lt;/shadow&gt;</code>，那么会在 <code>div.b</code> 后展示 <code>div.a</code>。</p>
+
+<p>需要注意的是，嵌套时，如果使用了 <code>content</code>（有或没 select），那么最外层的 shadow root 引用了的元素将不会被内层的 shadow root 再次引用。</p>
+
+<pre><code>&lt;template id="t1"&gt;
+    &lt;content select=".a"&gt;&lt;/content&gt;
+    &lt;shadow&gt;&lt;/shadow&gt;
+&lt;/template&gt;
+
+&lt;template id="t2"&gt;
+    &lt;content select=".b"&gt;&lt;/content&gt;
+    &lt;shadow&gt;&lt;/shadow&gt;
+&lt;/template&gt;
+
+&lt;template id="t3"&gt;
+    &lt;conent select=".c"&gt;&lt;/conent&gt;
+    &lt;shadow&gt;&lt;/shadow&gt;
+&lt;/template&gt;
+</code></pre>
+
+<h3>样式</h3>
+
+<p>shadow root 隔离了普通的的样式，这意味外面的样式影响不了里面的，而里面的也影响不了外面的。</p>
+
+<p>但还是可以通过特定的选择器来在内部对 host 或从外部对内部设置样式。</p>
+
+<h4>在内部设置 host 的样式</h4>
+
+<ul>
+<li><code>:host</code>，对 host 设置样式</li>
+<li><code>:host(selector)</code>，如果 host 匹配了 selector，那么设置样式</li>
+<li><p><code>:host-context(selector)</code>，如果 host 或其祖先元素匹配了 selector，那么设置样式</p>
+
+<p>  :host(x-foo) {
+    /<em> Applies if the host is a <x-foo> element.</em>/
+  }</p>
+
+<p>  :host(x-foo:host) {
+    /<em> Same as above. Applies if the host is a <x-foo> element. </em>/
+  }</p>
+
+<p>  :host(div) {  {
+    /<em> Applies if the host element is a <div>. </em>/
+  }</p></li>
+</ul>
+
+
+<h4>在外部影响内部样式</h4>
+
+<ul>
+<li><code>::shadow</code>，选择当前 host 的 shadow root</li>
+<li><p><code> /deep/ </code>，选择其 shadow root、子元素的 shadow root 和嵌套的 shadow root</p>
+
+<p>  x-tabs::shadow x-panel::shadow h2 {
+    &hellip;
+  }</p>
+
+<p>  x-tabs /deep/ x-panel {
+    &hellip;
+  }</p>
+
+<p>  body /deep/ .library-theme {
+    &hellip;
+  }</p></li>
+</ul>
+
+
+<h4>投射的元素的样式</h4>
+
+<p>通过 <code>&lt;content&gt;</code> 来投射的元素的样式不是在 shadow root 内生效的，而是受原节点结构相关联的样式影响。这是因为投射过去的元素并不是在 shadow root 内，那只是一个渲染节点而已。</p>
+
+<p>如果需要在 shadow root 内设置投射过来的元素的样式，那么需要使用 <code>::content</code> 伪元素来选择对应的 content 映射空间，然后再接上待匹配的元素的选择器即可，如 <code>::content[select=div] .header</code>。</p>
+
+<h3>遍历</h3>
+
+<p>遍历 shadow root 和其后代元素，可以通过 <code>element.shadowRoot</code> 来获取 shadow root，然后通过选择器 api（<code>querySelector</code> 等） 来获取后代元素。</p>
+
+<p>但需要注意的是，通过 <code>content</code> 来投射的内容并不能这样获取，因为其并不在 shadow 树上。这需要在 <code>content</code> 节点上调用 <code>getDistributedNodes()</code> 来获取所有被引用的节点列表（NodeList）。</p>
+
+<h2>参考</h2>
+
+<ul>
+<li><a href="http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/">Shadow DOM 101</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-201/">Shadow DOM 201 - CSS and Styling</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-301/">Shadow DOM 301 - Advanced Concepts &amp; DOM APIs</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[html template]]></title>
+    <link href="http://liunian.github.io/blog/html-template/"/>
+    <updated>2015-09-21T17:49:18+08:00</updated>
+    <id>http://liunian.github.io/blog/html-template</id>
+    <content type="html"><![CDATA[<p>HTML 5.1 计划增加 template 元素，提供一段可被后续被 JavaScript 克隆和插入的代码片段。</p>
+
+<h2>what</h2>
+
+<p><code>&lt;template&gt;&lt;/template&gt;</code> 元素是提供页面渲染是不被解析渲染，但在 JavaScript 使用并插入到文档后才解析渲染的代码片段。其可存放任意合法的 HTML 内容，可位于任何合法的非替换元素里，包括 <code>&lt;head&gt;</code> 等。</p>
+
+<p>如<a href="http://defg.sinaapp.com/demos/template/1.html">示例一</a>：</p>
+
+<pre><code>&lt;template&gt;
+    &lt;style&gt;
+    div {
+        color: red;
+    }
+    &lt;/style&gt;
+
+    &lt;div&gt;
+        &lt;h1&gt;template&lt;/h1&gt;
+        &lt;img src="http://holdit.sinaapp.com/300" /&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+    alert('template');
+    &lt;/script&gt;
+
+&lt;/template&gt;
+</code></pre>
+
+<p>需要注意的是，这是一个可被重复使用的文档片段，并没有像 Mustache 那样的模板插值（<code></code>）甚至更高级的流程处理的功能。这是一个静态的模板，不是根据数据来动态生成 HTML 字符串。</p>
+
+<!-- more -->
+
+
+<h2>why</h2>
+
+<p>一直都有着重复使用一段内容（模板）的需求，以前使用的主要方式有两种：</p>
+
+<p>一是使用隐藏的 DOM 元素来存放模板，这样可以直接使用 DOM API 来操作，但浏览器默认会解析结构、发送请求（如果有图片等）和解析脚本（如果有）；</p>
+
+<p>二是使用 script 或 textarea 等默认不会解析的元素来存放，然后后续用 <code>innerHTML</code> 来放进文档，但容易造成 xss。</p>
+
+<p>所以提出这个 <code>template</code> 来直接使用 DOM 来避免 xss，同时也延迟解析。</p>
+
+<h2>how</h2>
+
+<h3>判断是否支持</h3>
+
+<pre><code>function supportsTemplate() {
+  return 'content' in document.createElement('template');
+}
+
+if (supportsTemplate()) {
+  // 检测通过！
+} else {
+  // 使用旧的模板技术或库。
+}
+</code></pre>
+
+<h3>获取模板内容</h3>
+
+<pre><code>var templateNode = document.querySelector('template');
+var fragDoc = templateNode.content;
+</code></pre>
+
+<p>模板的 <code>content</code> 是一个 <code>documentFragment</code>，所以可以对其做 DOM 能做的任何操作，也可以直接把其插入到文档中。</p>
+
+<h3>克隆使用</h3>
+
+<p><a href="http://defg.sinaapp.com/demos/template/2.html">示例二</a></p>
+
+<p>虽然可以直接把模板内容插入文档，但如果需要重复使用，那就不合适了。因为插入后就把内容从模板中移动到了文档中，模板中的内容就是空的了。</p>
+
+<p>这样，可以使用 <code>fragDoc.cloneNode(true)</code> 或 <code>document.importNode(fragDoc, true)</code> 来获取其克隆，然后再做处理。两种克隆方式的差别是：后者还适用于跨文档的情况，比如 iframe 和 shadow dom 这些情况；另，当前测试中（2015-09-18），Chrome 下 importNode 会请求 img 等，但 cloneNode 不会，暂没去确定规范是如何的。</p>
+
+<p>需要注意的是，克隆后，并不会运行模板中的脚本，而是在插入到文档中后才会运行里面的 js 脚本。</p>
+
+<h2>参考文档</h2>
+
+<ul>
+<li><a href="http://webcomponents.org/articles/introduction-to-template-element/">Introduction to template element</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/webcomponents/template/">HTML’s new template tag</a></li>
+<li><a href="https://html.spec.whatwg.org/multipage/scripting-1.html#the-template-element">w3c template spec</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript 严格模式]]></title>
+    <link href="http://liunian.github.io/blog/javascript-strict-mode/"/>
+    <updated>2015-08-01T00:29:35+08:00</updated>
+    <id>http://liunian.github.io/blog/javascript-strict-mode</id>
+    <content type="html"><![CDATA[<p>严格模式的提出是为了约束一些 JavaScript 的使用方式，修改一些容易导致失误和安全问题的地方。因为严格模式和非严格模式下的语义有所不同，所以使用上需要谨慎，最好渐进的使用。</p>
+
+<h2>使用</h2>
+
+<p>有两种使用方式，影响整个脚本的脚本方式和影响函数的方式。</p>
+
+<h3>脚本方式</h3>
+
+<p>在脚本最前面（需要是第一个有效语句，注释不是）添加 <code>'use strict';</code>，只是字符串，所以可以用双引号或单引号。</p>
+
+<pre><code class="js">// Whole-script strict mode syntax
+'use strict';
+var v = "Hi! I'm a strict mode script!";
+</code></pre>
+
+<!-- more -->
+
+
+<h3>函数方式</h3>
+
+<pre><code class="js">function strict(){
+  // Function-level strict mode syntax
+  'use strict';
+  function nested() { return "And so am I!"; }
+  return "Hi!  I'm a strict mode function!  " + nested();
+}
+
+function notStrict() { return "I'm not strict."; }
+</code></pre>
+
+<h2>变更</h2>
+
+<p>严格模式影响了语法和语义。</p>
+
+<h3>把失误转为错误</h3>
+
+<ul>
+<li>防止无意间创建全局变量</li>
+</ul>
+
+
+<pre><code class="js">'use strict';
+
+mistypedVariable = 17;  // 拼写失误或故意不用 var 来声明将抛异常
+</code></pre>
+
+<ul>
+<li>把静默失败的赋值调整为抛出异常</li>
+</ul>
+
+
+<p>包括 <code>NaN</code>，非严格模式下给不可写、只读的属性赋值，给不可扩展、sealed 或 froze 的对象添加属性会静默失败，严格模式下会抛出异常。</p>
+
+<pre><code class="js">"use strict";
+
+// throws exception
+NaN = 1;
+
+// Assignment to a non-writable property
+var obj1 = {};
+Object.defineProperty(obj1, "x", { value: 42, writable: false });
+obj1.x = 9; // throws a TypeError
+
+// Assignment to a getter-only property
+var obj2 = { get x() { return 17; } };
+obj2.x = 5; // throws a TypeError
+
+// Assignment to a new property on a non-extensible object
+var fixed = {};
+Object.preventExtensions(fixed);
+fixed.newProp = "ohai"; // throws a TypeError
+</code></pre>
+
+<ul>
+<li>删除不可移除的属性时报错（以前是返回 false 表示不可移除）</li>
+</ul>
+
+
+<pre><code class="js">"use strict";
+delete Object.prototype; // throws a TypeError
+</code></pre>
+
+<ul>
+<li>对象字面量存在相同的 key 时报错</li>
+</ul>
+
+
+<p>以前会取最后一个 key 的值为该 key 的值。</p>
+
+<pre><code class="js">"use strict";
+var o = { p: 1, p: 2 }; // !!! syntax error
+</code></pre>
+
+<ul>
+<li>函数的参数名必须唯一</li>
+</ul>
+
+
+<p>非严格模式下会取重复参数名最后的一个作为参数的值，但可以通过 <code>arguments</code> 来获取完整的参数。</p>
+
+<pre><code class="js">function sum(a, a, c){ // !!! syntax error
+  "use strict";
+  return a + b + c; // wrong if this code ran
+}
+</code></pre>
+
+<ul>
+<li>不允许使用八进制语法</li>
+</ul>
+
+
+<p>虽然说不上好坏，但严格模式的确是禁止了使用八进制语法。</p>
+
+<pre><code class="js">"use strict";
+var sum = 015 + // !!! syntax error
+          197 +
+          142;
+</code></pre>
+
+<h3>简化变量的使用</h3>
+
+<ul>
+<li>禁止使用 <code>with</code></li>
+<li><code>eval</code> 不再在作用域（全局或局部）中生成新的变量</li>
+<li>不允许删除普通变量（需要删除对象属性）</li>
+</ul>
+
+
+<pre><code class="js">"use strict";
+
+var x;
+delete x; // !!! syntax error
+
+eval("var y; delete y;"); // !!! syntax error
+</code></pre>
+
+<h3>简化 <code>eval</code> 和 <code>arguments</code></h3>
+
+<ul>
+<li>不能被赋值和作为参数或函数名等</li>
+</ul>
+
+
+<pre><code class="js">"use strict";
+eval = 17;
+arguments++;
+++eval;
+var obj = { set p(arguments) { } };
+var eval;
+try { } catch (arguments) { }
+function x(eval) { }
+function arguments() { }
+var y = function eval() { };
+var f = new Function("arguments", "'use strict'; return 17;");
+</code></pre>
+
+<ul>
+<li><code>arguments</code> 中的成员不是引用（意味着把实参拷贝到 arguments 中）</li>
+</ul>
+
+
+<blockquote><p>注意：至少在 node.js 0.12.7 中是浅拷贝而不是深拷贝。这样如果不是改变整个参数而是修改参数的属性时，会双向影响</p></blockquote>
+
+<p>非严格模式下，修改实参会改变 arguments，但严格模式下不会改变；同样地，改变 arguments 中的值不会改变实参。这样意味着双方将独立变化。</p>
+
+<pre><code class="js">function f(a){
+  "use strict";
+  a = 42;
+  return [a, arguments[0]];
+}
+var pair = f(17);
+console.assert(pair[0] === 42);
+console.assert(pair[1] === 17);
+</code></pre>
+
+<ul>
+<li>不能使用 <code>arguments.callee</code></li>
+</ul>
+
+
+<p>请使用命名函数</p>
+
+<pre><code class="js">"use strict";
+var f = function() { return arguments.callee; };
+f(); // throws a TypeError
+</code></pre>
+
+<h3>更「安全」</h3>
+
+<ul>
+<li>函数中的 this 不再被强制装箱包装成对象，这意味着对于普通调用，<code>this</code> 将是 <code>undefined</code> 而不是非严格模式下的 <code>global</code>（浏览器中是 <code>window</code>）。</li>
+<li>无法遍历调用栈，<code>fn.caller</code>、<code>fn.arguments</code> 等禁止访问</li>
+</ul>
+
+
+<pre><code class="js">function restricted()
+{
+  "use strict";
+  restricted.caller;    // throws a TypeError
+  restricted.arguments; // throws a TypeError
+}
+function privilegedInvoker()
+{
+  return restricted();
+}
+privilegedInvoker();
+</code></pre>
+
+<ul>
+<li>禁止使用 <code>arguments.caller</code></li>
+</ul>
+
+
+<pre><code class="js">"use strict";
+function fun(a, b)
+{
+  "use strict";
+  var v = 12;
+  return arguments.caller; // throws a TypeError
+}
+fun(1, 2); // doesn't expose v (or a or b)
+</code></pre>
+
+<h3>为后续 ECMAScript 版本做准备</h3>
+
+<ul>
+<li>部分标识符变为保留字，包括 <code>implements</code>、<code>interface</code>、<code>let</code>、<code>package</code>、<code>private</code>、<code>protected</code>、<code>public</code>、<code>static</code> 和 <code>yield</code>。</li>
+<li>禁止函数声明提升（注意，变量依然 ok），相应地，禁止了在块（如 if）中声明函数</li>
+</ul>
+
+
+<pre><code class="js">"use strict";
+if (true){
+  function f() { } // !!! syntax error
+  f();
+}
+
+for (var i = 0; i &lt; 5; i++){
+  function f2() { } // !!! syntax error
+  f2();
+}
+
+function baz(){ // kosher
+  function eit() { } // also kosher
+}
+</code></pre>
+
+<h2>参考</h2>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">Strict mode</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[inline-block in ie6/7]]></title>
+    <link href="http://liunian.github.io/blog/inline-block-in-ie6-and-7/"/>
+    <updated>2014-09-12T23:15:07+08:00</updated>
+    <id>http://liunian.github.io/blog/inline-block-in-ie6-and-7</id>
+    <content type="html"><![CDATA[<p>在 ie6/7 中，<code>display:inline-block</code> 无法对 <code>div</code> 这些块状元素生效，最简单的解决方法就是改用 <code>span</code> 的 inline 元素。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ie6 Inline-block 折行问题]]></title>
+    <link href="http://liunian.github.io/blog/ie6-inline-block-new-line/"/>
+    <updated>2012-07-07T12:49:50+08:00</updated>
+    <id>http://liunian.github.io/blog/ie6-inline-block-new-line</id>
+    <content type="html"><![CDATA[<h2>问题描述</h2>
+
+<p>IE6 下使用 <code>display:inline-block</code> 可能会发现中间出现了折行。</p>
+
+<h2>解决方法</h2>
+
+<p><code>display:inline-block</code> 的元素前后不能有空白符，需要紧紧相连。</p>
+]]></content>
+  </entry>
+  
+</feed>
