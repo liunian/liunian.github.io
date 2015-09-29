@@ -18,7 +18,7 @@ Shadow DOM 的用途是封装隔离一个元素，从而在组件化的过程中
 
 可以在一个 shadow host 上创建多个 shadow root（但只有最新的一个会生效，但可以通过 `<shadow></shadow>` 来内嵌引用前一个 shadow；并且目前无法移除 shadow root），还可以把一个 shadow root 里的元素作为 shadow host 来继续创建 shadow root。
 
-```html
+```
 <button>Hello, world!</button>
 <script>
 var host = document.querySelector('button');
@@ -29,7 +29,7 @@ root.textContent = 'こんにちは、影の世界!';
 
 通过配合使用 [html template](http://liunian.github.io/blog/html-template/) 可以简化创建时的繁琐，如：
 
-```javascript
+```
 var shadow = document.querySelector('#nameTag').createShadowRoot();
 var template = document.querySelector('#nameTagTemplate');
 var clone = document.importNode(template.content, true);
@@ -51,7 +51,7 @@ shadow.appendChild(clone);
 
 > 下面假定 #host 表示 shadow root 的 host，shadow root 的内容是 #template 里的内容
 
-```html
+```
 <div id="host">
     <p>paragraph</p>
     <div class="a">with selector .a</div>
@@ -79,7 +79,7 @@ shadow.appendChild(clone);
 
 可以有多个 `<content>` 标签，但被引用的内容仅能被引用一次，先到先得，后来的将只能在挑剩的里面找匹配的。
 
-```html
+```
 <div id="host">
     <div class="a">div0</div>
     <div class="b">div1</div>
@@ -100,7 +100,7 @@ shadow.appendChild(clone);
 
 对于一个宿主，可以创建多个 shadow root，但仅有最新的一个会生效。
 
-```html
+```
 <div id="host">
     <div class="a">a</div>
     <div class="b">b</div>
@@ -144,7 +144,7 @@ shadow.appendChild(clone);
 
 需要注意的是，嵌套时，如果使用了 `content`（有或没 select），那么最外层的 shadow root 引用了的元素将不会被内层的 shadow root 再次引用。
 
-```html
+```
 <template id="t1">
     <content select=".a"></content>
     <shadow></shadow>
@@ -169,11 +169,7 @@ shadow root 隔离了普通的的样式，这意味外面的样式影响不了�
 
 #### 在内部设置 host 的样式
 
-- `:host`，对 host 设置样式
-- `:host(selector)`，如果 host 匹配了 selector，那么设置样式
-- `:host-context(selector)`，如果 host 或其祖先元素匹配了 selector，那么设置样式
-
-```css
+```
 :host(x-foo) { 
   /* Applies if the host is a <x-foo> element.*/
 }
@@ -187,12 +183,14 @@ shadow root 隔离了普通的的样式，这意味外面的样式影响不了�
 }
 ```
 
+- `:host`，对 host 设置样式
+- `:host(selector)`，如果 host 匹配了 selector，那么设置样式
+- `:host-context(selector)`，如果 host 或其祖先元素匹配了 selector，那么设置样式
+
+
 #### 在外部影响内部样式
 
-- `::shadow`，选择当前 host 的 shadow root
-- ` /deep/ `，选择其 shadow root、子元素的 shadow root 和嵌套的 shadow root
-
-```css
+```
 x-tabs::shadow x-panel::shadow h2 {
   ...
 }
@@ -205,6 +203,9 @@ body /deep/ .library-theme {
   ...
 }
 ```
+
+- `::shadow`，选择当前 host 的 shadow root
+- ` /deep/ `，选择其 shadow root、子元素的 shadow root 和嵌套的 shadow root
 
 #### 投射的元素的样式
 
