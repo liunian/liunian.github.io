@@ -32,6 +32,8 @@ Shadow DOM 的用途是封装隔离一个元素，从而在组件化的过程中
 	var clone = document.importNode(template.content, true);
 	shadow.appendChild(clone);
 
+<!-- more -->
+
 #### 相关属性
 
 - `element.shadownRoot`：获取一个元素挂着的生效的 shadow root
