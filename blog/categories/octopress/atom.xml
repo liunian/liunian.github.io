@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | memos]]></title>
   <link href="http://liunian.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2015-09-29T10:23:02+08:00</updated>
+  <updated>2015-09-29T10:27:50+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -73,27 +73,29 @@ code snippet
 
 <p>Import files on your filesystem into any blog post as embedded code snippets with syntax highlighting and a download link. In the _config.yml you can set your code_dir but the default is <code>source/downloads/code</code>. Simply put a file anywhere under that directory and use the following tag to embed it in a post.</p>
 
-<pre><code>File /Users/bd/www/blog/source/downloads/code/path/to/file could not be found
+<pre><code>{% include_code [title] [lang:language] path/to/file %}
 </code></pre>
 
 <p>Following example will include the code file: <code>source/downloads/code/test.js</code></p>
 
-<pre><code>File /Users/bd/www/blog/source/downloads/code/test.js could not be found
+<pre><code>{% include_code test.js  %}
 </code></pre>
 
 <h2>image</h2>
 
-<pre><code><img class="[class names]" src="/path/to/image" title="[width] [height] [title text [alt text]]" >
+<pre><code>{% img [class names] /path/to/image [width] [height] [title text [alt text]] %}
 </code></pre>
 
 <h2>extended blockquote</h2>
 
-<pre><code><blockquote><p>Quote string</p><footer><strong>[author[</strong> <cite>Source]] [Link] [Source_link_title]</cite></footer></blockquote>
+<pre><code>{% blockquote [author[, source]] [link] [source_link_title] %}
+Quote string
+{% endblockquote %}
 </code></pre>
 
 <h2>Render Partial</h2>
 
-<pre><code>File /Users/bd/www/blog/source/path/to/file could not be found
+<pre><code>{% render_partial path/to/file %}
 </code></pre>
 
 <h2>add about page</h2>

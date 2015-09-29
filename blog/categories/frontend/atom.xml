@@ -4,7 +4,7 @@
   <title><![CDATA[Category: frontend | memos]]></title>
   <link href="http://liunian.github.io/blog/categories/frontend/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2015-09-29T10:23:02+08:00</updated>
+  <updated>2015-09-29T10:27:50+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -30,21 +30,25 @@
 
 <p>可以在一个 shadow host 上创建多个 shadow root（但只有最新的一个会生效，但可以通过 <code>&lt;shadow&gt;&lt;/shadow&gt;</code> 来内嵌引用前一个 shadow；并且目前无法移除 shadow root），还可以把一个 shadow root 里的元素作为 shadow host 来继续创建 shadow root。</p>
 
-<pre><code>&lt;button&gt;Hello, world!&lt;/button&gt;
-&lt;script&gt;
+<p>&#8220;`html
+<button>Hello, world!</button></p>
+
+<script>
 var host = document.querySelector('button');
 var root = host.createShadowRoot();
 root.textContent = 'こんにちは、影の世界!';
-&lt;/script&gt;
+</script>
+
+
+<pre><code>
+通过配合使用 [html template](http://liunian.github.io/blog/html-template/) 可以简化创建时的繁琐，如：
 </code></pre>
 
-<p>通过配合使用 <a href="http://liunian.github.io/blog/html-template/">html template</a> 可以简化创建时的繁琐，如：</p>
-
-<pre><code>var shadow = document.querySelector('#nameTag').createShadowRoot();
-var template = document.querySelector('#nameTagTemplate');
+<p>var shadow = document.querySelector(&lsquo;#nameTag&rsquo;).createShadowRoot();
+var template = document.querySelector(&lsquo;#nameTagTemplate&rsquo;);
 var clone = document.importNode(template.content, true);
 shadow.appendChild(clone);
-</code></pre>
+&#8220;`</p>
 
 <!-- more -->
 
@@ -65,24 +69,27 @@ shadow.appendChild(clone);
 
 <blockquote><p>下面假定 #host 表示 shadow root 的 host，shadow root 的内容是 #template 里的内容</p></blockquote>
 
-<pre><code>&lt;div id="host"&gt;
-    &lt;p&gt;paragraph&lt;/p&gt;
-    &lt;div class="a"&gt;with selector .a&lt;/div&gt;
-    &lt;div&gt;something in &lt;span&gt;span0&lt;/span&gt;&lt;/div&gt;
-    &lt;span&gt;span1&lt;/span&gt;
-    &lt;br&gt;
-    &lt;span&gt;span2&lt;/span&gt;
-&lt;/div&gt;
+<p>&#8220;`html</p>
 
-&lt;template id="template"&gt;
-    &lt;header&gt;header&lt;/header&gt;
-    &lt;nav&gt;nav&lt;/nav&gt;
-    &lt;div class="main"&gt;
-        &lt;content&gt;&lt;/content&gt;
-    &lt;/div&gt;
-    &lt;footer&gt;footer&lt;/footer&gt;
-&lt;/template&gt;
-</code></pre>
+<div id="host">
+    <p>paragraph</p>
+    <div class="a">with selector .a</div>
+    <div>something in <span>span0</span></div>
+    <span>span1</span>
+    <br>
+    <span>span2</span>
+</div>
+
+
+<p><template id="template">
+    <header>header</header>
+    <nav>nav</nav>
+    <div class="main">
+        <content></content>
+    </div>
+    <footer>footer</footer>
+</template>
+&#8220;`</p>
 
 <p>对于上面的代码，<code>#host</code> 标签里的原内容会被投射到 div.main 里。</p>
 
@@ -92,19 +99,22 @@ shadow.appendChild(clone);
 
 <p>可以有多个 <code>&lt;content&gt;</code> 标签，但被引用的内容仅能被引用一次，先到先得，后来的将只能在挑剩的里面找匹配的。</p>
 
-<pre><code>&lt;div id="host"&gt;
-    &lt;div class="a"&gt;div0&lt;/div&gt;
-    &lt;div class="b"&gt;div1&lt;/div&gt;
-    &lt;div class="a"&gt;div2&lt;/div&gt;
-    &lt;div class="c"&gt;div3&lt;/div&gt;
-&lt;/div&gt;
+<p>&#8220;`html</p>
 
-&lt;template id="template"&gt;
-    &lt;content select=".a, .b"&gt;&lt;/content&gt;
-    &lt;hr&gt;
-    &lt;content select="div"&gt;&lt;/content&gt;
-&lt;/template&gt;
-</code></pre>
+<div id="host">
+    <div class="a">div0</div>
+    <div class="b">div1</div>
+    <div class="a">div2</div>
+    <div class="c">div3</div>
+</div>
+
+
+<p><template id="template">
+    <content select=".a, .b"></content>
+    <hr>
+    <content select="div"></content>
+</template>
+&#8220;`</p>
 
 <p>上面的例子中， <code>&lt;content select=".a, .b"&gt;&lt;/content&gt;</code> 引用了 div0，div1 和 div2，那么位于其后的 <code>&lt;content select="div"&gt;&lt;/div&gt;</code> 将只能匹配到剩下的一个 div3。</p>
 
@@ -112,25 +122,28 @@ shadow.appendChild(clone);
 
 <p>对于一个宿主，可以创建多个 shadow root，但仅有最新的一个会生效。</p>
 
-<pre><code>&lt;div id="host"&gt;
-    &lt;div class="a"&gt;a&lt;/div&gt;
-    &lt;div class="b"&gt;b&lt;/div&gt;
-    &lt;div class="c"&gt;c&lt;/div&gt;
-&lt;/div&gt;
+<p>&#8220;`html</p>
 
-&lt;template id="t1"&gt;
-    &lt;content select=".a"&gt;&lt;/content&gt;
-&lt;/template&gt;
+<div id="host">
+    <div class="a">a</div>
+    <div class="b">b</div>
+    <div class="c">c</div>
+</div>
 
-&lt;template id="t2"&gt;
-    &lt;content select=".b"&gt;&lt;/content&gt;
-&lt;/template&gt;
 
-&lt;template id="t3"&gt;
-    &lt;conent select=".c"&gt;&lt;/conent&gt;
-&lt;/template&gt;
+<p><template id="t1">
+    <content select=".a"></content>
+</template></p>
 
-&lt;script&gt;
+<p><template id="t2">
+    <content select=".b"></content>
+</template></p>
+
+<p><template id="t3">
+    <conent select=".c"></conent>
+</template></p>
+
+<script>
     var $ = function(id) {return document.getElementById(id);},
         host = $('a'),
         t1 = $('t1'),
@@ -144,32 +157,34 @@ shadow.appendChild(clone);
     addShadow(t1);
     addShadow(t2);
     addShadow(t3);
-&lt;/script&gt;
+</script>
+
+
+<pre><code>
+上面最终将只展示 `div.c`。
+
+#### 嵌套
+
+但如果在 `#t3` 的 `&lt;content&gt;` 后添加 `&lt;shadow&gt;&lt;/shadow&gt;`，那么则可以引用上一个 shadow root（可以看做是 FILO 的栈），这样展示的 `div.c` 后会展示 `div.b`。还可以在 `#t2` 的 `&lt;content&gt;` 后添加 `&lt;shadow&gt;&lt;/shadow&gt;`，那么会在 `div.b` 后展示 `div.a`。
+
+需要注意的是，嵌套时，如果使用了 `content`（有或没 select），那么最外层的 shadow root 引用了的元素将不会被内层的 shadow root 再次引用。
 </code></pre>
 
-<p>上面最终将只展示 <code>div.c</code>。</p>
+<p><template id="t1">
+    <content select=".a"></content>
+    <shadow></shadow>
+</template></p>
 
-<h4>嵌套</h4>
+<p><template id="t2">
+    <content select=".b"></content>
+    <shadow></shadow>
+</template></p>
 
-<p>但如果在 <code>#t3</code> 的 <code>&lt;content&gt;</code> 后添加 <code>&lt;shadow&gt;&lt;/shadow&gt;</code>，那么则可以引用上一个 shadow root（可以看做是 FILO 的栈），这样展示的 <code>div.c</code> 后会展示 <code>div.b</code>。还可以在 <code>#t2</code> 的 <code>&lt;content&gt;</code> 后添加 <code>&lt;shadow&gt;&lt;/shadow&gt;</code>，那么会在 <code>div.b</code> 后展示 <code>div.a</code>。</p>
-
-<p>需要注意的是，嵌套时，如果使用了 <code>content</code>（有或没 select），那么最外层的 shadow root 引用了的元素将不会被内层的 shadow root 再次引用。</p>
-
-<pre><code>&lt;template id="t1"&gt;
-    &lt;content select=".a"&gt;&lt;/content&gt;
-    &lt;shadow&gt;&lt;/shadow&gt;
-&lt;/template&gt;
-
-&lt;template id="t2"&gt;
-    &lt;content select=".b"&gt;&lt;/content&gt;
-    &lt;shadow&gt;&lt;/shadow&gt;
-&lt;/template&gt;
-
-&lt;template id="t3"&gt;
-    &lt;conent select=".c"&gt;&lt;/conent&gt;
-    &lt;shadow&gt;&lt;/shadow&gt;
-&lt;/template&gt;
-</code></pre>
+<p><template id="t3">
+    <conent select=".c"></conent>
+    <shadow></shadow>
+</template>
+&#8220;`</p>
 
 <h3>样式</h3>
 
@@ -182,41 +197,43 @@ shadow.appendChild(clone);
 <ul>
 <li><code>:host</code>，对 host 设置样式</li>
 <li><code>:host(selector)</code>，如果 host 匹配了 selector，那么设置样式</li>
-<li><p><code>:host-context(selector)</code>，如果 host 或其祖先元素匹配了 selector，那么设置样式</p>
-
-<p>  :host(x-foo) {
-    /<em> Applies if the host is a <x-foo> element.</em>/
-  }</p>
-
-<p>  :host(x-foo:host) {
-    /<em> Same as above. Applies if the host is a <x-foo> element. </em>/
-  }</p>
-
-<p>  :host(div) {  {
-    /<em> Applies if the host element is a <div>. </em>/
-  }</p></li>
+<li><code>:host-context(selector)</code>，如果 host 或其祖先元素匹配了 selector，那么设置样式</li>
 </ul>
 
+
+<pre><code class="css">:host(x-foo) { 
+  /* Applies if the host is a &lt;x-foo&gt; element.*/
+}
+
+:host(x-foo:host) { 
+  /* Same as above. Applies if the host is a &lt;x-foo&gt; element. */
+}
+
+:host(div) {  {
+  /* Applies if the host element is a &lt;div&gt;. */
+}
+</code></pre>
 
 <h4>在外部影响内部样式</h4>
 
 <ul>
 <li><code>::shadow</code>，选择当前 host 的 shadow root</li>
-<li><p><code> /deep/ </code>，选择其 shadow root、子元素的 shadow root 和嵌套的 shadow root</p>
-
-<p>  x-tabs::shadow x-panel::shadow h2 {
-    &hellip;
-  }</p>
-
-<p>  x-tabs /deep/ x-panel {
-    &hellip;
-  }</p>
-
-<p>  body /deep/ .library-theme {
-    &hellip;
-  }</p></li>
+<li><code> /deep/ </code>，选择其 shadow root、子元素的 shadow root 和嵌套的 shadow root</li>
 </ul>
 
+
+<pre><code class="css">x-tabs::shadow x-panel::shadow h2 {
+  ...
+}
+
+x-tabs /deep/ x-panel {
+  ...
+}
+
+body /deep/ .library-theme {
+  ...
+}
+</code></pre>
 
 <h4>投射的元素的样式</h4>
 
@@ -273,7 +290,7 @@ shadow.appendChild(clone);
 &lt;/template&gt;
 </code></pre>
 
-<p>需要注意的是，这是一个可被重复使用的文档片段，并没有像 Mustache 那样的模板插值（<code></code>）甚至更高级的流程处理的功能。这是一个静态的模板，不是根据数据来动态生成 HTML 字符串。</p>
+<p>需要注意的是，这是一个可被重复使用的文档片段，并没有像 Mustache 那样的模板插值（<code>{{variable}}</code>）甚至更高级的流程处理的功能。这是一个静态的模板，不是根据数据来动态生成 HTML 字符串。</p>
 
 <!-- more -->
 
