@@ -4,7 +4,7 @@
   <title><![CDATA[Category: frontend | memos]]></title>
   <link href="http://liunian.github.io/blog/categories/frontend/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2015-09-29T10:21:41+08:00</updated>
+  <updated>2015-09-29T10:23:02+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -45,6 +45,9 @@ var template = document.querySelector('#nameTagTemplate');
 var clone = document.importNode(template.content, true);
 shadow.appendChild(clone);
 </code></pre>
+
+<!-- more -->
+
 
 <h4>相关属性</h4>
 
