@@ -29,7 +29,7 @@ root.textContent = 'こんにちは、影の世界!';
 
 通过配合使用 [html template](http://liunian.github.io/blog/html-template/) 可以简化创建时的繁琐，如：
 
-```js
+```javascript
 var shadow = document.querySelector('#nameTag').createShadowRoot();
 var template = document.querySelector('#nameTagTemplate');
 var clone = document.importNode(template.content, true);
