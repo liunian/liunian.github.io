@@ -4,7 +4,7 @@
   <title><![CDATA[Category: frontend | memos]]></title>
   <link href="http://liunian.github.io/blog/categories/frontend/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2015-09-29T10:50:03+08:00</updated>
+  <updated>2015-12-24T16:20:01+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Iterator in ES6]]></title>
+    <link href="http://liunian.github.io/blog/iterator-in-es6/"/>
+    <updated>2015-12-24T16:17:41+08:00</updated>
+    <id>http://liunian.github.io/blog/iterator-in-es6</id>
+    <content type="html"><![CDATA[<p><code>for-of</code> 使用迭代器（iterator）来迭代一个可迭代（iterable）的对象，主要是想取代传统的比较繁琐的 <code>for</code> 及会遍历非自带属性以及无法 <code>continue/break/return</code> 的 <code>forEach</code>，其基本示例如：</p>
+
+<pre><code class="js">for (let i of [1, 2, 3]) {
+    console.log(i);
+}
+</code></pre>
+
+<p><code>for-of</code> 默认支持了数组、字符串、类数组以及 ES6 中的 Map 和 Set 等，但不支持平对象（字面量对象）（实际支持情况还看浏览器，比如在此刻 firefox 支持了 NodeList，但 Chrome 还不支持）。</p>
+
+<p>迭代 Map 可以像上面那样使用单变量来在每次迭代时得到一个数组，也可以配合列表结构来直接得到 key 和 value。</p>
+
+<pre><code class="js">let aMap = new Map();
+aMap.set('a', 1)
+aMap.set('b', [2]);
+
+for (let [k, v] of aMap) {
+  console.log(k, v);
+}
+</code></pre>
+
+<!-- more -->
+
+
+<h2>迭代器</h2>
+
+<p>一个对象只要遵循迭代器协议就是一个迭代器。</p>
+
+<h3>迭代器协议</h3>
+
+<p>实现了 <code>.next()</code> 方法，该方法返回一个字面量对象，里面需要有两个属性，<code>done</code> 表示是否迭代了最后，<code>value</code> 则是每次迭代需要返回的值。</p>
+
+<h2>可迭代对象</h2>
+
+<p>一个对象只要遵循了下面的协议，那么就是可迭代对象。</p>
+
+<h3>可迭代协议</h3>
+
+<p>一个对象或其原型上有 <code>@@iterator</code> 函数（ <code>[Symbol.iterator]</code>），该函数无实参，返回一个遵循迭代器协议的对象。</p>
+
+<p>下面是一个简单的迭代器（同时也是一个可迭代对象），for-of 将会输出 5 4 3 2 1.</p>
+
+<pre><code class="js">var fiveTimesIterator = {
+  _count: 5,
+    return this;
+  },
+  next: function () {
+    if (this._count == 0) {
+      this._count = 5;
+      return {done: true, value: 0};
+    } else {
+      return {done: false, value: this._count--};
+    }
+  }
+};
+
+for(var f of fiveTimesIterator) {
+  console.log(f);
+}
+</code></pre>
+
+<h2>参考资料</h2>
+
+<ul>
+<li><a href="https://hacks.mozilla.org/2015/04/es6-in-depth-iterators-and-the-for-of-loop/">ES6 In Depth: Iterators and the for-of loop</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols">Iteration protocols</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[shadow dom]]></title>
@@ -616,21 +691,6 @@ function baz(){ // kosher
     <updated>2014-09-12T23:15:07+08:00</updated>
     <id>http://liunian.github.io/blog/inline-block-in-ie6-and-7</id>
     <content type="html"><![CDATA[<p>在 ie6/7 中，<code>display:inline-block</code> 无法对 <code>div</code> 这些块状元素生效，最简单的解决方法就是改用 <code>span</code> 的 inline 元素。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ie6 Inline-block 折行问题]]></title>
-    <link href="http://liunian.github.io/blog/ie6-inline-block-new-line/"/>
-    <updated>2012-07-07T12:49:50+08:00</updated>
-    <id>http://liunian.github.io/blog/ie6-inline-block-new-line</id>
-    <content type="html"><![CDATA[<h2>问题描述</h2>
-
-<p>IE6 下使用 <code>display:inline-block</code> 可能会发现中间出现了折行。</p>
-
-<h2>解决方法</h2>
-
-<p><code>display:inline-block</code> 的元素前后不能有空白符，需要紧紧相连。</p>
 ]]></content>
   </entry>
   
