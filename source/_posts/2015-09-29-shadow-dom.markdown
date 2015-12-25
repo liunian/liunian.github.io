@@ -51,7 +51,7 @@ shadow.appendChild(clone);
 
 > 下面假定 #host 表示 shadow root 的 host，shadow root 的内容是 #template 里的内容
 
-```
+{% codeblock html %}
 <div id="host">
     <p>paragraph</p>
     <div class="a">with selector .a</div>
@@ -69,7 +69,7 @@ shadow.appendChild(clone);
     </div>
     <footer>footer</footer>
 </template>
-```
+{% endcodeblock %}
 
 对于上面的代码，`#host` 标签里的原内容会被投射到 div.main 里。
 
@@ -79,7 +79,7 @@ shadow.appendChild(clone);
 
 可以有多个 `<content>` 标签，但被引用的内容仅能被引用一次，先到先得，后来的将只能在挑剩的里面找匹配的。
 
-```
+{% codeblock html %}
 <div id="host">
     <div class="a">div0</div>
     <div class="b">div1</div>
@@ -92,7 +92,7 @@ shadow.appendChild(clone);
     <hr>
     <content select="div"></content>
 </template>
-```
+{% endcodeblock %}
 
 上面的例子中， `<content select=".a, .b"></content>` 引用了 div0，div1 和 div2，那么位于其后的 `<content select="div"></div>` 将只能匹配到剩下的一个 div3。
 
@@ -100,7 +100,7 @@ shadow.appendChild(clone);
 
 对于一个宿主，可以创建多个 shadow root，但仅有最新的一个会生效。
 
-```
+{% codeblock html %}
 <div id="host">
     <div class="a">a</div>
     <div class="b">b</div>
@@ -134,7 +134,7 @@ shadow.appendChild(clone);
     addShadow(t2);
     addShadow(t3);
 </script>
-```
+{% endcodeblock %}
 
 上面最终将只展示 `div.c`。
 
@@ -170,11 +170,11 @@ shadow root 隔离了普通的的样式，这意味外面的样式影响不了�
 #### 在内部设置 host 的样式
 
 ```
-:host(x-foo) { 
+:host(x-foo) {
   /* Applies if the host is a <x-foo> element.*/
 }
 
-:host(x-foo:host) { 
+:host(x-foo:host) {
   /* Same as above. Applies if the host is a <x-foo> element. */
 }
 
