@@ -51,7 +51,7 @@ shadow.appendChild(clone);
 
 > 下面假定 #host 表示 shadow root 的 host，shadow root 的内容是 #template 里的内容
 
-{% codeblock html %}
+{% codeblock lang:html %}
 <div id="host">
     <p>paragraph</p>
     <div class="a">with selector .a</div>
@@ -79,7 +79,7 @@ shadow.appendChild(clone);
 
 可以有多个 `<content>` 标签，但被引用的内容仅能被引用一次，先到先得，后来的将只能在挑剩的里面找匹配的。
 
-{% codeblock html %}
+{% codeblock lang:html %}
 <div id="host">
     <div class="a">div0</div>
     <div class="b">div1</div>
@@ -100,7 +100,7 @@ shadow.appendChild(clone);
 
 对于一个宿主，可以创建多个 shadow root，但仅有最新的一个会生效。
 
-{% codeblock html %}
+{% codeblock lang:html %}
 <div id="host">
     <div class="a">a</div>
     <div class="b">b</div>
