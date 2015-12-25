@@ -4,7 +4,7 @@
   <title><![CDATA[Category: frontend | memos]]></title>
   <link href="http://liunian.github.io/blog/categories/frontend/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2015-12-25T14:54:14+08:00</updated>
+  <updated>2015-12-25T14:57:41+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -144,8 +144,7 @@ shadow.appendChild(clone);
 
 <blockquote><p>下面假定 #host 表示 shadow root 的 host，shadow root 的内容是 #template 里的内容</p></blockquote>
 
-<p><figure class='code'><figcaption><span>html </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -165,26 +164,27 @@ shadow.appendChild(clone);
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
 </span><span class='line'>
-</span><span class='line'>&lt;div id="host">
-</span><span class='line'>    &lt;p>paragraph&lt;/p>
-</span><span class='line'>    &lt;div class="a">with selector .a&lt;/div>
-</span><span class='line'>    &lt;div>something in &lt;span>span0&lt;/span>&lt;/div>
-</span><span class='line'>    &lt;span>span1&lt;/span>
-</span><span class='line'>    &lt;br>
-</span><span class='line'>    &lt;span>span2&lt;/span>
-</span><span class='line'>&lt;/div>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;host&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;p&gt;</span>paragraph<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;a&quot;</span><span class="nt">&gt;</span>with selector .a<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div&gt;</span>something in <span class="nt">&lt;span&gt;</span>span0<span class="nt">&lt;/span&gt;&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;span&gt;</span>span1<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;br&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;span&gt;</span>span2<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
 </span><span class='line'>
 </span><span class='line'>
-</span><span class='line'>&lt;p>&lt;template id="template">
-</span><span class='line'>    &lt;header>header&lt;/header>
-</span><span class='line'>    &lt;nav>nav&lt;/nav>
-</span><span class='line'>    &lt;div class="main">
-</span><span class='line'>        &lt;content>&lt;/content>
-</span><span class='line'>    &lt;/div>
-</span><span class='line'>    &lt;footer>footer&lt;/footer>
-</span><span class='line'>&lt;/template></span></code></pre></td></tr></table></div></figure></p>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;template</span> <span class="na">id=</span><span class="s">&quot;template&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;header&gt;</span>header<span class="nt">&lt;/header&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;nav&gt;</span>nav<span class="nt">&lt;/nav&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;content&gt;&lt;/content&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;footer&gt;</span>footer<span class="nt">&lt;/footer&gt;</span>
+</span><span class='line'><span class="nt">&lt;/template&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>对于上面的代码，<code>#host</code> 标签里的原内容会被投射到 div.main 里。</p>
 
@@ -194,8 +194,7 @@ shadow.appendChild(clone);
 
 <p>可以有多个 <code>&lt;content&gt;</code> 标签，但被引用的内容仅能被引用一次，先到先得，后来的将只能在挑剩的里面找匹配的。</p>
 
-<p><figure class='code'><figcaption><span>html </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -210,21 +209,22 @@ shadow.appendChild(clone);
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
 </span><span class='line'>
-</span><span class='line'>&lt;div id="host">
-</span><span class='line'>    &lt;div class="a">div0&lt;/div>
-</span><span class='line'>    &lt;div class="b">div1&lt;/div>
-</span><span class='line'>    &lt;div class="a">div2&lt;/div>
-</span><span class='line'>    &lt;div class="c">div3&lt;/div>
-</span><span class='line'>&lt;/div>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;host&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;a&quot;</span><span class="nt">&gt;</span>div0<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;b&quot;</span><span class="nt">&gt;</span>div1<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;a&quot;</span><span class="nt">&gt;</span>div2<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;c&quot;</span><span class="nt">&gt;</span>div3<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
 </span><span class='line'>
 </span><span class='line'>
-</span><span class='line'>&lt;p>&lt;template id="template">
-</span><span class='line'>    &lt;content select=".a, .b">&lt;/content>
-</span><span class='line'>    &lt;hr>
-</span><span class='line'>    &lt;content select="div">&lt;/content>
-</span><span class='line'>&lt;/template></span></code></pre></td></tr></table></div></figure></p>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;template</span> <span class="na">id=</span><span class="s">&quot;template&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;content</span> <span class="na">select=</span><span class="s">&quot;.a, .b&quot;</span><span class="nt">&gt;&lt;/content&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;hr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;content</span> <span class="na">select=</span><span class="s">&quot;div&quot;</span><span class="nt">&gt;&lt;/content&gt;</span>
+</span><span class='line'><span class="nt">&lt;/template&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>上面的例子中， <code>&lt;content select=".a, .b"&gt;&lt;/content&gt;</code> 引用了 div0，div1 和 div2，那么位于其后的 <code>&lt;content select="div"&gt;&lt;/div&gt;</code> 将只能匹配到剩下的一个 div3。</p>
 
@@ -232,8 +232,7 @@ shadow.appendChild(clone);
 
 <p>对于一个宿主，可以创建多个 shadow root，但仅有最新的一个会生效。</p>
 
-<p><figure class='code'><figcaption><span>html </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -272,45 +271,46 @@ shadow.appendChild(clone);
 <span class='line-number'>37</span>
 <span class='line-number'>38</span>
 <span class='line-number'>39</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
 </span><span class='line'>
-</span><span class='line'>&lt;div id="host">
-</span><span class='line'>    &lt;div class="a">a&lt;/div>
-</span><span class='line'>    &lt;div class="b">b&lt;/div>
-</span><span class='line'>    &lt;div class="c">c&lt;/div>
-</span><span class='line'>&lt;/div>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>&lt;p>&lt;template id="t1">
-</span><span class='line'>    &lt;content select=".a">&lt;/content>
-</span><span class='line'>&lt;/template>&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>&lt;template id="t2">
-</span><span class='line'>    &lt;content select=".b">&lt;/content>
-</span><span class='line'>&lt;/template>&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>&lt;template id="t3">
-</span><span class='line'>    &lt;conent select=".c">&lt;/conent>
-</span><span class='line'>&lt;/template>&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;script>
-</span><span class='line'>    var $ = function(id) {return document.getElementById(id);},
-</span><span class='line'>        host = $('a'),
-</span><span class='line'>        t1 = $('t1'),
-</span><span class='line'>        t2 = $('t2'),
-</span><span class='line'>        t3 = $('t3');
-</span><span class='line'>
-</span><span class='line'>    function addShadow(templateNode) {
-</span><span class='line'>        host.appendChild(document.importNode(templateNode.content), true);
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    addShadow(t1);
-</span><span class='line'>    addShadow(t2);
-</span><span class='line'>    addShadow(t3);
-</span><span class='line'>&lt;/script>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;host&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;a&quot;</span><span class="nt">&gt;</span>a<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;b&quot;</span><span class="nt">&gt;</span>b<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;c&quot;</span><span class="nt">&gt;</span>c<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
 </span><span class='line'>
 </span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></p>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;template</span> <span class="na">id=</span><span class="s">&quot;t1&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;content</span> <span class="na">select=</span><span class="s">&quot;.a&quot;</span><span class="nt">&gt;&lt;/content&gt;</span>
+</span><span class='line'><span class="nt">&lt;/template&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;template</span> <span class="na">id=</span><span class="s">&quot;t2&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;content</span> <span class="na">select=</span><span class="s">&quot;.b&quot;</span><span class="nt">&gt;&lt;/content&gt;</span>
+</span><span class='line'><span class="nt">&lt;/template&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;template</span> <span class="na">id=</span><span class="s">&quot;t3&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;conent</span> <span class="na">select=</span><span class="s">&quot;.c&quot;</span><span class="nt">&gt;&lt;/conent&gt;</span>
+</span><span class='line'><span class="nt">&lt;/template&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script&gt;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);},</span>
+</span><span class='line'>        <span class="nx">host</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">),</span>
+</span><span class='line'>        <span class="nx">t1</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;t1&#39;</span><span class="p">),</span>
+</span><span class='line'>        <span class="nx">t2</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;t2&#39;</span><span class="p">),</span>
+</span><span class='line'>        <span class="nx">t3</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;t3&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">function</span> <span class="nx">addShadow</span><span class="p">(</span><span class="nx">templateNode</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">host</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">importNode</span><span class="p">(</span><span class="nx">templateNode</span><span class="p">.</span><span class="nx">content</span><span class="p">),</span> <span class="kc">true</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">addShadow</span><span class="p">(</span><span class="nx">t1</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">addShadow</span><span class="p">(</span><span class="nx">t2</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">addShadow</span><span class="p">(</span><span class="nx">t3</span><span class="p">);</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>上面最终将只展示 <code>div.c</code>。</p>
 
