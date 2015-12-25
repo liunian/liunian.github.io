@@ -9,7 +9,10 @@
   <meta name="author" content="流年">
 
   
-  <meta name="description" content="Shadow DOM 的用途是封装隔离一个元素，从而在组件化的过程中隔离外部样式和 JS 的影响。 使用 创建 通过在一个元素（A）上创建一个 shadow root 的方式来创建 shadow dom，返回的值成为 shadow root，A 成为 shadow host。 一旦创建了 &hellip;">
+  <meta name="description" content="for-of 使用迭代器（iterator）来迭代一个可迭代（iterable）的对象，主要是想取代传统的比较繁琐的 for 及会遍历非自带属性以及无法 continue/break/return 的 forEach，其基本示例如： 1
+2
+3
+for (let i of [1, 2, 3 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,6 +72,79 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/iterator-in-es6/">Iterator in ES6</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-12-24T16:17:41+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>for-of</code> 使用迭代器（iterator）来迭代一个可迭代（iterable）的对象，主要是想取代传统的比较繁琐的 <code>for</code> 及会遍历非自带属性以及无法 <code>continue/break/return</code> 的 <code>forEach</code>，其基本示例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="nx">of</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>for-of</code> 默认支持了数组、字符串、类数组以及 ES6 中的 Map 和 Set 等，但不支持平对象（字面量对象）（实际支持情况还看浏览器，比如在此刻 firefox 支持了 NodeList，但 Chrome 还不支持）。</p>
+
+<p>迭代 Map 可以像上面那样使用单变量来在每次迭代时得到一个数组，也可以配合列表结构来直接得到 key 和 value。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">let</span> <span class="nx">aMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">();</span>
+</span><span class='line'><span class="nx">aMap</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="nx">aMap</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="p">[</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">]</span> <span class="nx">of</span> <span class="nx">aMap</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/iterator-in-es6/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/shadow-dom/">Shadow Dom</a></h1>
     
     
@@ -104,21 +180,33 @@
 
 <p>可以在一个 shadow host 上创建多个 shadow root（但只有最新的一个会生效，但可以通过 <code>&lt;shadow&gt;&lt;/shadow&gt;</code> 来内嵌引用前一个 shadow；并且目前无法移除 shadow root），还可以把一个 shadow root 里的元素作为 shadow host 来继续创建 shadow root。</p>
 
-<pre><code>&lt;button&gt;Hello, world!&lt;/button&gt;
-&lt;script&gt;
-var host = document.querySelector('button');
-var root = host.createShadowRoot();
-root.textContent = 'こんにちは、影の世界!';
-&lt;/script&gt;
-</code></pre>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;button&gt;Hello, world!&lt;/button&gt;
+</span><span class='line'>&lt;script&gt;
+</span><span class='line'>var host = document.querySelector('button');
+</span><span class='line'>var root = host.createShadowRoot();
+</span><span class='line'>root.textContent = 'こんにちは、影の世界!';
+</span><span class='line'>&lt;/script&gt;</span></code></pre></td></tr></table></div></figure>
+
 
 <p>通过配合使用 <a href="http://liunian.github.io/blog/html-template/">html template</a> 可以简化创建时的繁琐，如：</p>
 
-<pre><code>var shadow = document.querySelector('#nameTag').createShadowRoot();
-var template = document.querySelector('#nameTagTemplate');
-var clone = document.importNode(template.content, true);
-shadow.appendChild(clone);
-</code></pre>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var shadow = document.querySelector('#nameTag').createShadowRoot();
+</span><span class='line'>var template = document.querySelector('#nameTagTemplate');
+</span><span class='line'>var clone = document.importNode(template.content, true);
+</span><span class='line'>shadow.appendChild(clone);</span></code></pre></td></tr></table></div></figure>
+
+
+
 
 </div>
   
@@ -658,55 +746,9 @@ classmethod VS staticmethod</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/ie6-float-right-bug/">Ie6 Float Right 导致换行</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-29T02:11:20+08:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>问题描述</h2>
-
-<p>IE6 下，当一个 float:right 的元素不是第一个子元素并且其前面没有 float:left 的元素时，那么将会将会导致一个换行。</p>
-
-<h2>解决方法</h2>
-
-<p>将 float:right 的元素放到最前面
-把 float:right 前面的一个或多个元素加上 float:left（视样式而定)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/ie6-float-right-bug/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="2">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -717,6 +759,10 @@ classmethod VS staticmethod</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/iterator-in-es6/">Iterator in ES6</a>
+      </li>
     
       <li class="post">
         <a href="/blog/shadow-dom/">shadow dom</a>
@@ -732,10 +778,6 @@ classmethod VS staticmethod</p>
     
       <li class="post">
         <a href="/blog/inline-block-in-ie6-and-7/">inline-block in ie6/7</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/io-language/">Io Language</a>
       </li>
     
   </ul>

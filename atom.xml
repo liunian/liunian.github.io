@@ -4,7 +4,7 @@
   <title><![CDATA[memos]]></title>
   <link href="http://liunian.github.io/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2015-09-29T10:23:02+08:00</updated>
+  <updated>2015-12-25T14:54:14+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -12,6 +12,115 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Iterator in ES6]]></title>
+    <link href="http://liunian.github.io/blog/iterator-in-es6/"/>
+    <updated>2015-12-24T16:17:41+08:00</updated>
+    <id>http://liunian.github.io/blog/iterator-in-es6</id>
+    <content type="html"><![CDATA[<p><code>for-of</code> 使用迭代器（iterator）来迭代一个可迭代（iterable）的对象，主要是想取代传统的比较繁琐的 <code>for</code> 及会遍历非自带属性以及无法 <code>continue/break/return</code> 的 <code>forEach</code>，其基本示例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="nx">of</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>for-of</code> 默认支持了数组、字符串、类数组以及 ES6 中的 Map 和 Set 等，但不支持平对象（字面量对象）（实际支持情况还看浏览器，比如在此刻 firefox 支持了 NodeList，但 Chrome 还不支持）。</p>
+
+<p>迭代 Map 可以像上面那样使用单变量来在每次迭代时得到一个数组，也可以配合列表结构来直接得到 key 和 value。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">let</span> <span class="nx">aMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">();</span>
+</span><span class='line'><span class="nx">aMap</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="nx">aMap</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="p">[</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">]</span> <span class="nx">of</span> <span class="nx">aMap</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!-- more -->
+
+
+<h2>迭代器</h2>
+
+<p>一个对象只要遵循迭代器协议就是一个迭代器。</p>
+
+<h3>迭代器协议</h3>
+
+<p>实现了 <code>.next()</code> 方法，该方法返回一个字面量对象，里面需要有两个属性，<code>done</code> 表示是否迭代了最后，<code>value</code> 则是每次迭代需要返回的值。</p>
+
+<h2>可迭代对象</h2>
+
+<p>一个对象只要遵循了下面的协议，那么就是可迭代对象。</p>
+
+<h3>可迭代协议</h3>
+
+<p>一个对象或其原型上有 <code>@@iterator</code> 函数（ <code>[Symbol.iterator]</code>），该函数无实参，返回一个遵循迭代器协议的对象。</p>
+
+<p>下面是一个简单的迭代器（同时也是一个可迭代对象），for-of 将会输出 5 4 3 2 1.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">fiveTimesIterator</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">_count</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+</span><span class='line'>  <span class="p">[</span><span class="nx">Symbol</span><span class="p">.</span><span class="nx">iterator</span><span class="p">]</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">next</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">_count</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">return</span> <span class="p">{</span><span class="nx">done</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="mi">0</span><span class="p">};</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="p">{</span><span class="nx">done</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_count</span><span class="o">--</span><span class="p">};</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">f</span> <span class="nx">of</span> <span class="nx">fiveTimesIterator</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">f</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参考资料</h2>
+
+<ul>
+<li><a href="https://hacks.mozilla.org/2015/04/es6-in-depth-iterators-and-the-for-of-loop/">ES6 In Depth: Iterators and the for-of loop</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols">Iteration protocols</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[shadow dom]]></title>
@@ -30,21 +139,33 @@
 
 <p>可以在一个 shadow host 上创建多个 shadow root（但只有最新的一个会生效，但可以通过 <code>&lt;shadow&gt;&lt;/shadow&gt;</code> 来内嵌引用前一个 shadow；并且目前无法移除 shadow root），还可以把一个 shadow root 里的元素作为 shadow host 来继续创建 shadow root。</p>
 
-<pre><code>&lt;button&gt;Hello, world!&lt;/button&gt;
-&lt;script&gt;
-var host = document.querySelector('button');
-var root = host.createShadowRoot();
-root.textContent = 'こんにちは、影の世界!';
-&lt;/script&gt;
-</code></pre>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;button&gt;Hello, world!&lt;/button&gt;
+</span><span class='line'>&lt;script&gt;
+</span><span class='line'>var host = document.querySelector('button');
+</span><span class='line'>var root = host.createShadowRoot();
+</span><span class='line'>root.textContent = 'こんにちは、影の世界!';
+</span><span class='line'>&lt;/script&gt;</span></code></pre></td></tr></table></div></figure>
+
 
 <p>通过配合使用 <a href="http://liunian.github.io/blog/html-template/">html template</a> 可以简化创建时的繁琐，如：</p>
 
-<pre><code>var shadow = document.querySelector('#nameTag').createShadowRoot();
-var template = document.querySelector('#nameTagTemplate');
-var clone = document.importNode(template.content, true);
-shadow.appendChild(clone);
-</code></pre>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var shadow = document.querySelector('#nameTag').createShadowRoot();
+</span><span class='line'>var template = document.querySelector('#nameTagTemplate');
+</span><span class='line'>var clone = document.importNode(template.content, true);
+</span><span class='line'>shadow.appendChild(clone);</span></code></pre></td></tr></table></div></figure>
+
+
+
 
 <!-- more -->
 
@@ -65,24 +186,42 @@ shadow.appendChild(clone);
 
 <blockquote><p>下面假定 #host 表示 shadow root 的 host，shadow root 的内容是 #template 里的内容</p></blockquote>
 
-<pre><code>&lt;div id="host"&gt;
-    &lt;p&gt;paragraph&lt;/p&gt;
-    &lt;div class="a"&gt;with selector .a&lt;/div&gt;
-    &lt;div&gt;something in &lt;span&gt;span0&lt;/span&gt;&lt;/div&gt;
-    &lt;span&gt;span1&lt;/span&gt;
-    &lt;br&gt;
-    &lt;span&gt;span2&lt;/span&gt;
-&lt;/div&gt;
+<figure class='code'><figcaption><span>html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div id="host">
+</span><span class='line'>    &lt;p>paragraph&lt;/p>
+</span><span class='line'>    &lt;div class="a">with selector .a&lt;/div>
+</span><span class='line'>    &lt;div>something in &lt;span>span0&lt;/span>&lt;/div>
+</span><span class='line'>    &lt;span>span1&lt;/span>
+</span><span class='line'>    &lt;br>
+</span><span class='line'>    &lt;span>span2&lt;/span>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>&lt;template id="template">
+</span><span class='line'>    &lt;header>header&lt;/header>
+</span><span class='line'>    &lt;nav>nav&lt;/nav>
+</span><span class='line'>    &lt;div class="main">
+</span><span class='line'>        &lt;content>&lt;/content>
+</span><span class='line'>    &lt;/div>
+</span><span class='line'>    &lt;footer>footer&lt;/footer>
+</span><span class='line'>&lt;/template></span></code></pre></td></tr></table></div></figure>
 
-&lt;template id="template"&gt;
-    &lt;header&gt;header&lt;/header&gt;
-    &lt;nav&gt;nav&lt;/nav&gt;
-    &lt;div class="main"&gt;
-        &lt;content&gt;&lt;/content&gt;
-    &lt;/div&gt;
-    &lt;footer&gt;footer&lt;/footer&gt;
-&lt;/template&gt;
-</code></pre>
 
 <p>对于上面的代码，<code>#host</code> 标签里的原内容会被投射到 div.main 里。</p>
 
@@ -92,19 +231,32 @@ shadow.appendChild(clone);
 
 <p>可以有多个 <code>&lt;content&gt;</code> 标签，但被引用的内容仅能被引用一次，先到先得，后来的将只能在挑剩的里面找匹配的。</p>
 
-<pre><code>&lt;div id="host"&gt;
-    &lt;div class="a"&gt;div0&lt;/div&gt;
-    &lt;div class="b"&gt;div1&lt;/div&gt;
-    &lt;div class="a"&gt;div2&lt;/div&gt;
-    &lt;div class="c"&gt;div3&lt;/div&gt;
-&lt;/div&gt;
+<figure class='code'><figcaption><span>html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div id="host">
+</span><span class='line'>    &lt;div class="a">div0&lt;/div>
+</span><span class='line'>    &lt;div class="b">div1&lt;/div>
+</span><span class='line'>    &lt;div class="a">div2&lt;/div>
+</span><span class='line'>    &lt;div class="c">div3&lt;/div>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>&lt;template id="template">
+</span><span class='line'>    &lt;content select=".a, .b">&lt;/content>
+</span><span class='line'>    &lt;hr>
+</span><span class='line'>    &lt;content select="div">&lt;/content>
+</span><span class='line'>&lt;/template></span></code></pre></td></tr></table></div></figure>
 
-&lt;template id="template"&gt;
-    &lt;content select=".a, .b"&gt;&lt;/content&gt;
-    &lt;hr&gt;
-    &lt;content select="div"&gt;&lt;/content&gt;
-&lt;/template&gt;
-</code></pre>
 
 <p>上面的例子中， <code>&lt;content select=".a, .b"&gt;&lt;/content&gt;</code> 引用了 div0，div1 和 div2，那么位于其后的 <code>&lt;content select="div"&gt;&lt;/div&gt;</code> 将只能匹配到剩下的一个 div3。</p>
 
@@ -112,40 +264,74 @@ shadow.appendChild(clone);
 
 <p>对于一个宿主，可以创建多个 shadow root，但仅有最新的一个会生效。</p>
 
-<pre><code>&lt;div id="host"&gt;
-    &lt;div class="a"&gt;a&lt;/div&gt;
-    &lt;div class="b"&gt;b&lt;/div&gt;
-    &lt;div class="c"&gt;c&lt;/div&gt;
-&lt;/div&gt;
+<figure class='code'><figcaption><span>html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div id="host">
+</span><span class='line'>    &lt;div class="a">a&lt;/div>
+</span><span class='line'>    &lt;div class="b">b&lt;/div>
+</span><span class='line'>    &lt;div class="c">c&lt;/div>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>&lt;template id="t1">
+</span><span class='line'>    &lt;content select=".a">&lt;/content>
+</span><span class='line'>&lt;/template>
+</span><span class='line'>
+</span><span class='line'>&lt;template id="t2">
+</span><span class='line'>    &lt;content select=".b">&lt;/content>
+</span><span class='line'>&lt;/template>
+</span><span class='line'>
+</span><span class='line'>&lt;template id="t3">
+</span><span class='line'>    &lt;conent select=".c">&lt;/conent>
+</span><span class='line'>&lt;/template>
+</span><span class='line'>
+</span><span class='line'>&lt;script>
+</span><span class='line'>    var $ = function(id) {return document.getElementById(id);},
+</span><span class='line'>        host = $('a'),
+</span><span class='line'>        t1 = $('t1'),
+</span><span class='line'>        t2 = $('t2'),
+</span><span class='line'>        t3 = $('t3');
+</span><span class='line'>
+</span><span class='line'>    function addShadow(templateNode) {
+</span><span class='line'>        host.appendChild(document.importNode(templateNode.content), true);
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    addShadow(t1);
+</span><span class='line'>    addShadow(t2);
+</span><span class='line'>    addShadow(t3);
+</span><span class='line'>&lt;/script></span></code></pre></td></tr></table></div></figure>
 
-&lt;template id="t1"&gt;
-    &lt;content select=".a"&gt;&lt;/content&gt;
-&lt;/template&gt;
-
-&lt;template id="t2"&gt;
-    &lt;content select=".b"&gt;&lt;/content&gt;
-&lt;/template&gt;
-
-&lt;template id="t3"&gt;
-    &lt;conent select=".c"&gt;&lt;/conent&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-    var $ = function(id) {return document.getElementById(id);},
-        host = $('a'),
-        t1 = $('t1'),
-        t2 = $('t2'),
-        t3 = $('t3');
-
-    function addShadow(templateNode) {
-        host.appendChild(document.importNode(templateNode.content), true);
-    }
-
-    addShadow(t1);
-    addShadow(t2);
-    addShadow(t3);
-&lt;/script&gt;
-</code></pre>
 
 <p>上面最终将只展示 <code>div.c</code>。</p>
 
@@ -155,21 +341,35 @@ shadow.appendChild(clone);
 
 <p>需要注意的是，嵌套时，如果使用了 <code>content</code>（有或没 select），那么最外层的 shadow root 引用了的元素将不会被内层的 shadow root 再次引用。</p>
 
-<pre><code>&lt;template id="t1"&gt;
-    &lt;content select=".a"&gt;&lt;/content&gt;
-    &lt;shadow&gt;&lt;/shadow&gt;
-&lt;/template&gt;
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;template id="t1"&gt;
+</span><span class='line'>    &lt;content select=".a"&gt;&lt;/content&gt;
+</span><span class='line'>    &lt;shadow&gt;&lt;/shadow&gt;
+</span><span class='line'>&lt;/template&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;template id="t2"&gt;
+</span><span class='line'>    &lt;content select=".b"&gt;&lt;/content&gt;
+</span><span class='line'>    &lt;shadow&gt;&lt;/shadow&gt;
+</span><span class='line'>&lt;/template&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;template id="t3"&gt;
+</span><span class='line'>    &lt;conent select=".c"&gt;&lt;/conent&gt;
+</span><span class='line'>    &lt;shadow&gt;&lt;/shadow&gt;
+</span><span class='line'>&lt;/template&gt;</span></code></pre></td></tr></table></div></figure>
 
-&lt;template id="t2"&gt;
-    &lt;content select=".b"&gt;&lt;/content&gt;
-    &lt;shadow&gt;&lt;/shadow&gt;
-&lt;/template&gt;
-
-&lt;template id="t3"&gt;
-    &lt;conent select=".c"&gt;&lt;/conent&gt;
-    &lt;shadow&gt;&lt;/shadow&gt;
-&lt;/template&gt;
-</code></pre>
 
 <h3>样式</h3>
 
@@ -179,42 +379,66 @@ shadow.appendChild(clone);
 
 <h4>在内部设置 host 的样式</h4>
 
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:host(x-foo) {
+</span><span class='line'>  /* Applies if the host is a &lt;x-foo&gt; element.*/
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>:host(x-foo:host) {
+</span><span class='line'>  /* Same as above. Applies if the host is a &lt;x-foo&gt; element. */
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>:host(div) {  {
+</span><span class='line'>  /* Applies if the host element is a &lt;div&gt;. */
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
 <ul>
 <li><code>:host</code>，对 host 设置样式</li>
 <li><code>:host(selector)</code>，如果 host 匹配了 selector，那么设置样式</li>
-<li><p><code>:host-context(selector)</code>，如果 host 或其祖先元素匹配了 selector，那么设置样式</p>
-
-<p>  :host(x-foo) {
-    /<em> Applies if the host is a <x-foo> element.</em>/
-  }</p>
-
-<p>  :host(x-foo:host) {
-    /<em> Same as above. Applies if the host is a <x-foo> element. </em>/
-  }</p>
-
-<p>  :host(div) {  {
-    /<em> Applies if the host element is a <div>. </em>/
-  }</p></li>
+<li><code>:host-context(selector)</code>，如果 host 或其祖先元素匹配了 selector，那么设置样式</li>
 </ul>
 
 
 <h4>在外部影响内部样式</h4>
 
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>x-tabs::shadow x-panel::shadow h2 {
+</span><span class='line'>  ...
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>x-tabs /deep/ x-panel {
+</span><span class='line'>  ...
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>body /deep/ .library-theme {
+</span><span class='line'>  ...
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
 <ul>
 <li><code>::shadow</code>，选择当前 host 的 shadow root</li>
-<li><p><code> /deep/ </code>，选择其 shadow root、子元素的 shadow root 和嵌套的 shadow root</p>
-
-<p>  x-tabs::shadow x-panel::shadow h2 {
-    &hellip;
-  }</p>
-
-<p>  x-tabs /deep/ x-panel {
-    &hellip;
-  }</p>
-
-<p>  body /deep/ .library-theme {
-    &hellip;
-  }</p></li>
+<li><code> /deep/ </code>，选择其 shadow root、子元素的 shadow root 和嵌套的 shadow root</li>
 </ul>
 
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: frontend | memos]]></title>
   <link href="http://liunian.github.io/blog/categories/frontend/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2015-12-24T16:34:00+08:00</updated>
+  <updated>2015-12-25T14:54:14+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -144,27 +144,47 @@ shadow.appendChild(clone);
 
 <blockquote><p>下面假定 #host 表示 shadow root 的 host，shadow root 的内容是 #template 里的内容</p></blockquote>
 
-<p>&#8220;`</p>
-
-<div id="host">
-    <p>paragraph</p>
-    <div class="a">with selector .a</div>
-    <div>something in <span>span0</span></div>
-    <span>span1</span>
-    <br>
-    <span>span2</span>
-</div>
-
-
-<p><template id="template">
-    <header>header</header>
-    <nav>nav</nav>
-    <div class="main">
-        <content></content>
-    </div>
-    <footer>footer</footer>
-</template>
-&#8220;`</p>
+<p><figure class='code'><figcaption><span>html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;div id="host">
+</span><span class='line'>    &lt;p>paragraph&lt;/p>
+</span><span class='line'>    &lt;div class="a">with selector .a&lt;/div>
+</span><span class='line'>    &lt;div>something in &lt;span>span0&lt;/span>&lt;/div>
+</span><span class='line'>    &lt;span>span1&lt;/span>
+</span><span class='line'>    &lt;br>
+</span><span class='line'>    &lt;span>span2&lt;/span>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&lt;template id="template">
+</span><span class='line'>    &lt;header>header&lt;/header>
+</span><span class='line'>    &lt;nav>nav&lt;/nav>
+</span><span class='line'>    &lt;div class="main">
+</span><span class='line'>        &lt;content>&lt;/content>
+</span><span class='line'>    &lt;/div>
+</span><span class='line'>    &lt;footer>footer&lt;/footer>
+</span><span class='line'>&lt;/template></span></code></pre></td></tr></table></div></figure></p>
 
 <p>对于上面的代码，<code>#host</code> 标签里的原内容会被投射到 div.main 里。</p>
 
@@ -174,22 +194,37 @@ shadow.appendChild(clone);
 
 <p>可以有多个 <code>&lt;content&gt;</code> 标签，但被引用的内容仅能被引用一次，先到先得，后来的将只能在挑剩的里面找匹配的。</p>
 
-<p>&#8220;`</p>
-
-<div id="host">
-    <div class="a">div0</div>
-    <div class="b">div1</div>
-    <div class="a">div2</div>
-    <div class="c">div3</div>
-</div>
-
-
-<p><template id="template">
-    <content select=".a, .b"></content>
-    <hr>
-    <content select="div"></content>
-</template>
-&#8220;`</p>
+<p><figure class='code'><figcaption><span>html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;div id="host">
+</span><span class='line'>    &lt;div class="a">div0&lt;/div>
+</span><span class='line'>    &lt;div class="b">div1&lt;/div>
+</span><span class='line'>    &lt;div class="a">div2&lt;/div>
+</span><span class='line'>    &lt;div class="c">div3&lt;/div>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&lt;template id="template">
+</span><span class='line'>    &lt;content select=".a, .b">&lt;/content>
+</span><span class='line'>    &lt;hr>
+</span><span class='line'>    &lt;content select="div">&lt;/content>
+</span><span class='line'>&lt;/template></span></code></pre></td></tr></table></div></figure></p>
 
 <p>上面的例子中， <code>&lt;content select=".a, .b"&gt;&lt;/content&gt;</code> 引用了 div0，div1 和 div2，那么位于其后的 <code>&lt;content select="div"&gt;&lt;/div&gt;</code> 将只能匹配到剩下的一个 div3。</p>
 
@@ -197,69 +232,109 @@ shadow.appendChild(clone);
 
 <p>对于一个宿主，可以创建多个 shadow root，但仅有最新的一个会生效。</p>
 
-<p>&#8220;`</p>
+<p><figure class='code'><figcaption><span>html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;div id="host">
+</span><span class='line'>    &lt;div class="a">a&lt;/div>
+</span><span class='line'>    &lt;div class="b">b&lt;/div>
+</span><span class='line'>    &lt;div class="c">c&lt;/div>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&lt;template id="t1">
+</span><span class='line'>    &lt;content select=".a">&lt;/content>
+</span><span class='line'>&lt;/template>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&lt;template id="t2">
+</span><span class='line'>    &lt;content select=".b">&lt;/content>
+</span><span class='line'>&lt;/template>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&lt;template id="t3">
+</span><span class='line'>    &lt;conent select=".c">&lt;/conent>
+</span><span class='line'>&lt;/template>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;script>
+</span><span class='line'>    var $ = function(id) {return document.getElementById(id);},
+</span><span class='line'>        host = $('a'),
+</span><span class='line'>        t1 = $('t1'),
+</span><span class='line'>        t2 = $('t2'),
+</span><span class='line'>        t3 = $('t3');
+</span><span class='line'>
+</span><span class='line'>    function addShadow(templateNode) {
+</span><span class='line'>        host.appendChild(document.importNode(templateNode.content), true);
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    addShadow(t1);
+</span><span class='line'>    addShadow(t2);
+</span><span class='line'>    addShadow(t3);
+</span><span class='line'>&lt;/script>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></p>
 
-<div id="host">
-    <div class="a">a</div>
-    <div class="b">b</div>
-    <div class="c">c</div>
-</div>
+<p>上面最终将只展示 <code>div.c</code>。</p>
 
+<h4>嵌套</h4>
 
-<p><template id="t1">
-    <content select=".a"></content>
-</template></p>
+<p>但如果在 <code>#t3</code> 的 <code>&lt;content&gt;</code> 后添加 <code>&lt;shadow&gt;&lt;/shadow&gt;</code>，那么则可以引用上一个 shadow root（可以看做是 FILO 的栈），这样展示的 <code>div.c</code> 后会展示 <code>div.b</code>。还可以在 <code>#t2</code> 的 <code>&lt;content&gt;</code> 后添加 <code>&lt;shadow&gt;&lt;/shadow&gt;</code>，那么会在 <code>div.b</code> 后展示 <code>div.a</code>。</p>
 
-<p><template id="t2">
-    <content select=".b"></content>
-</template></p>
+<p>需要注意的是，嵌套时，如果使用了 <code>content</code>（有或没 select），那么最外层的 shadow root 引用了的元素将不会被内层的 shadow root 再次引用。</p>
 
-<p><template id="t3">
-    <conent select=".c"></conent>
-</template></p>
+<pre><code>&lt;template id="t1"&gt;
+    &lt;content select=".a"&gt;&lt;/content&gt;
+    &lt;shadow&gt;&lt;/shadow&gt;
+&lt;/template&gt;
 
-<script>
-    var $ = function(id) {return document.getElementById(id);},
-        host = $('a'),
-        t1 = $('t1'),
-        t2 = $('t2'),
-        t3 = $('t3');
+&lt;template id="t2"&gt;
+    &lt;content select=".b"&gt;&lt;/content&gt;
+    &lt;shadow&gt;&lt;/shadow&gt;
+&lt;/template&gt;
 
-    function addShadow(templateNode) {
-        host.appendChild(document.importNode(templateNode.content), true);
-    }
-
-    addShadow(t1);
-    addShadow(t2);
-    addShadow(t3);
-</script>
-
-
-<pre><code>
-上面最终将只展示 `div.c`。
-
-#### 嵌套
-
-但如果在 `#t3` 的 `&lt;content&gt;` 后添加 `&lt;shadow&gt;&lt;/shadow&gt;`，那么则可以引用上一个 shadow root（可以看做是 FILO 的栈），这样展示的 `div.c` 后会展示 `div.b`。还可以在 `#t2` 的 `&lt;content&gt;` 后添加 `&lt;shadow&gt;&lt;/shadow&gt;`，那么会在 `div.b` 后展示 `div.a`。
-
-需要注意的是，嵌套时，如果使用了 `content`（有或没 select），那么最外层的 shadow root 引用了的元素将不会被内层的 shadow root 再次引用。
+&lt;template id="t3"&gt;
+    &lt;conent select=".c"&gt;&lt;/conent&gt;
+    &lt;shadow&gt;&lt;/shadow&gt;
+&lt;/template&gt;
 </code></pre>
-
-<p><template id="t1">
-    <content select=".a"></content>
-    <shadow></shadow>
-</template></p>
-
-<p><template id="t2">
-    <content select=".b"></content>
-    <shadow></shadow>
-</template></p>
-
-<p><template id="t3">
-    <conent select=".c"></conent>
-    <shadow></shadow>
-</template>
-&#8220;`</p>
 
 <h3>样式</h3>
 
@@ -269,11 +344,11 @@ shadow.appendChild(clone);
 
 <h4>在内部设置 host 的样式</h4>
 
-<pre><code>:host(x-foo) { 
+<pre><code>:host(x-foo) {
   /* Applies if the host is a &lt;x-foo&gt; element.*/
 }
 
-:host(x-foo:host) { 
+:host(x-foo:host) {
   /* Same as above. Applies if the host is a &lt;x-foo&gt; element. */
 }
 
@@ -365,7 +440,7 @@ body /deep/ .library-theme {
 &lt;/template&gt;
 </code></pre>
 
-<p>需要注意的是，这是一个可被重复使用的文档片段，并没有像 Mustache 那样的模板插值（<code>{{variable}}</code>）甚至更高级的流程处理的功能。这是一个静态的模板，不是根据数据来动态生成 HTML 字符串。</p>
+<p>需要注意的是，这是一个可被重复使用的文档片段，并没有像 Mustache 那样的模板插值（<code></code>）甚至更高级的流程处理的功能。这是一个静态的模板，不是根据数据来动态生成 HTML 字符串。</p>
 
 <!-- more -->
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: memo | memos]]></title>
   <link href="http://liunian.github.io/blog/categories/memo/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2015-12-24T16:34:00+08:00</updated>
+  <updated>2015-12-25T14:54:14+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -40,7 +40,44 @@
 <li>从上可以看到，从某种类型创建一个对象使用 clone 消息。</li>
 <li>查看一个对象可用 obj slotNames。</li>
 <li>继承机制使用原型（proto）而不是父子类，如：
-{% include_code 1.io %}</li>
+<figure class='code'><figcaption><span> (1.io)</span> <a href='/downloads/code/1.io'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='io'><span class='line'><span class="c1">#!/usr/bin/env io</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Vehicle</span> <span class="o">:=</span> <span class="nb">Object</span> <span class="k">clone</span>
+</span><span class='line'><span class="n">Vehicle</span> <span class="n">description</span> <span class="o">:=</span> <span class="s">&quot;Something to take you far away&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Car</span> <span class="o">:=</span> <span class="n">Vehicle</span> <span class="k">clone</span>
+</span><span class='line'><span class="n">ferrari</span> <span class="o">:=</span> <span class="n">Car</span> <span class="k">clone</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Car</span> <span class="n">slotNames</span> <span class="n">println</span>           <span class="c1"># list(type)</span>
+</span><span class='line'><span class="n">ferrari</span> <span class="n">slotNames</span> <span class="n">println</span>       <span class="c1"># list()</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Car</span> <span class="n">description</span> <span class="n">println</span>         <span class="c1"># Something to take you far away</span>
+</span><span class='line'><span class="n">ferrari</span> <span class="n">description</span> <span class="n">println</span>     <span class="c1"># Something to take you far away</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">ferrari</span> <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Car_0x19bcb80: type = &quot;Car&quot;</span>
+</span><span class='line'><span class="n">Car</span>     <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Vehicle_0x19c9f10: description = &quot;Something...&quot; type = &quot;Vehicle&quot;</span>
+</span><span class='line'><span class="n">Vehicle</span> <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Object_0x17c1a10: type = Object_type() .....</span>
+</span><span class='line'><span class="nb">Object</span>  <span class="n">proto</span> <span class="n">println</span>           <span class="c1"># Object_17e5720: Car = Car_0x19bcb80 Vehicle = Vehicle_0x19c9f10 Protos = xxx Lobby = xxxx ....</span>
+</span></code></pre></td></tr></table></div></figure></li>
 <li>方法使用 method() 创建，如：Car dirve := method(&ldquo;Vroom&rdquo; print)，给 ferrari 发送 drive 消息将有 ferrari drive => &ldquo;Vroom&#8221;。</li>
 <li>和 Ruby 一样，0 是 true 而不是 false。nil 是 false。</li>
 </ol>
@@ -51,7 +88,26 @@
 
 <h2>List &amp; Map</h2>
 
-<p>{% include_code 2.io %}</p>
+<p><figure class='code'><figcaption><span> (2.io)</span> <a href='/downloads/code/2.io'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='io'><span class='line'><span class="c1">#!/usr/bin/env io</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">a</span> <span class="o">:=</span> <span class="nb">List</span> <span class="k">clone</span>             <span class="c1"># list(), create by using clone</span>
+</span><span class='line'><span class="n">a</span> <span class="o">:=</span> <span class="nb">list</span><span class="o">(</span><span class="mf">1</span><span class="o">,</span> <span class="mf">2</span><span class="o">,</span> <span class="s">&quot;a&quot;</span><span class="o">,</span> <span class="s">&quot;b&quot;</span><span class="o">)</span>   <span class="c1"># list(1, 2, a, b), create by using method</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">a</span> <span class="n">at</span><span class="o">(</span><span class="mf">1</span><span class="o">)</span>                     <span class="c1"># 2</span>
+</span><span class='line'><span class="n">a</span> <span class="n">append</span><span class="o">(</span><span class="mf">3</span><span class="o">)</span>                 <span class="c1"># list(1, 2, a, b, 3)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># more examples: http://iolanguage.org/scm/io/docs/IoGuide.html#Primitives-List</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2>Control Flow</h2>
 
@@ -151,29 +207,27 @@ code snippet
 
 <p>Import files on your filesystem into any blog post as embedded code snippets with syntax highlighting and a download link. In the _config.yml you can set your code_dir but the default is <code>source/downloads/code</code>. Simply put a file anywhere under that directory and use the following tag to embed it in a post.</p>
 
-<pre><code>{% include_code [title] [lang:language] path/to/file %}
+<pre><code>File /Users/bd/www/blog/source/downloads/code/path/to/file could not be found
 </code></pre>
 
 <p>Following example will include the code file: <code>source/downloads/code/test.js</code></p>
 
-<pre><code>{% include_code test.js  %}
+<pre><code>File /Users/bd/www/blog/source/downloads/code/test.js could not be found
 </code></pre>
 
 <h2>image</h2>
 
-<pre><code>{% img [class names] /path/to/image [width] [height] [title text [alt text]] %}
+<pre><code><img class="[class names]" src="/path/to/image" title="[width] [height] [title text [alt text]]" >
 </code></pre>
 
 <h2>extended blockquote</h2>
 
-<pre><code>{% blockquote [author[, source]] [link] [source_link_title] %}
-Quote string
-{% endblockquote %}
+<pre><code><blockquote><p>Quote string</p><footer><strong>[author[</strong> <cite>Source]] [Link] [Source_link_title]</cite></footer></blockquote>
 </code></pre>
 
 <h2>Render Partial</h2>
 
-<pre><code>{% render_partial path/to/file %}
+<pre><code>File /Users/bd/www/blog/source/path/to/file could not be found
 </code></pre>
 
 <h2>add about page</h2>

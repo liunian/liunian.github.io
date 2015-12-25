@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Python Library - memos</title>
+  <title>memos</title>
   <meta name="author" content="流年">
 
   
-  <meta name="description" content="Built-in Functions callable(object) Note that classed are callable(calling a class returns a new instance); class instances are callable if they have &hellip;">
+  <meta name="description" content="问题描述 IE6 下，当一个 float:right 的元素不是第一个子元素并且其前面没有 float:left 的元素时，那么将会将会导致一个换行。 解决方法 将 float:right 的元素放到最前面
+把 float:right 前面的一个或多个元素加上 float:left（视样式而定) ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liunian.github.io/blog/python-library/">
+  <link rel="canonical" href="http://liunian.github.io/posts/2/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -61,12 +62,15 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article class="hentry" role="article">
+      <div class="blog-index">
   
+  
+  
+    <article>
+      
   <header>
     
-      <h1 class="entry-title">Python Library</h1>
+      <h1 class="entry-title"><a href="/blog/ie6-float-right-bug/">Ie6 Float Right 导致换行</a></h1>
     
     
       <p class="meta">
@@ -82,79 +86,41 @@
   
 
 
-<time datetime="2012-12-19T03:10:13+08:00" pubdate data-updated="true"></time>
+<time datetime="2012-06-29T02:11:20+08:00" pubdate data-updated="true"></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>Built-in Functions</h2>
+  <div class="entry-content"><h2>问题描述</h2>
 
-<p><em>callable(object)</em></p>
+<p>IE6 下，当一个 float:right 的元素不是第一个子元素并且其前面没有 float:left 的元素时，那么将会将会导致一个换行。</p>
 
-<p>Note that classed are callable(calling a class returns a new instance); class instances are callable if they have a <code>__call__()</code> method.
-classmethod VS staticmethod</p>
+<h2>解决方法</h2>
 
-<p><em>cmp(x, y)</em></p>
+<p>将 float:right 的元素放到最前面
+把 float:right 前面的一个或多个元素加上 float:left（视样式而定)</p>
 
-<p>return negative if x &lt; y, 0 if x = y, positive if x > y</p>
-
-<p><em>To be continued…</em></p>
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">流年</span></span>
-
-      
-
-
-
-
-
-
-
-
+  
+    <footer>
+      <a rel="full-article" href="/blog/ie6-float-right-bug/">Read on &rarr;</a>
+    </footer>
   
 
 
-<time datetime="2012-12-19T03:10:13+08:00" pubdate data-updated="true"></time>
-      
-
-<span class="categories">
+    </article>
   
-    <a class='category' href='/blog/categories/memo/'>memo</a>, <a class='category' href='/blog/categories/python/'>python</a>
-  
-</span>
-
-
-    </p>
+  <div class="pagination">
     
-      <div class="sharing">
-  
-  
-  
-</div>
-
+    <a href="/blog/archives">Blog Archives</a>
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/octopress/" title="Previous Post: Octopress memo">&laquo; Octopress memo</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/io-language/" title="Next Post: Io Language">Io Language &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
+    <a class="next" href="1">Newer &rarr;</a>
+    
+  </div>
 </div>
-
 <aside class="sidebar">
   
     <section>
@@ -190,7 +156,6 @@ classmethod VS staticmethod</p>
 
   
 </aside>
-
 
     </div>
   </div>
