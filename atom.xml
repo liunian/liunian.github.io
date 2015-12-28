@@ -4,7 +4,7 @@
   <title><![CDATA[memos]]></title>
   <link href="http://liunian.github.io/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2015-12-28T17:17:45+08:00</updated>
+  <updated>2015-12-28T17:29:25+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -12,6 +12,307 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Arrow function in ES6]]></title>
+    <link href="http://liunian.github.io/blog/arrow-function-in-es6/"/>
+    <updated>2015-12-28T17:27:28+08:00</updated>
+    <id>http://liunian.github.io/blog/arrow-function-in-es6</id>
+    <content type="html"><![CDATA[<p>Arrow function 的使用一来能简化匿名函数的使用，二来能解决匿名函数中不时碰到的 <code>this</code> 指向的问题。</p>
+
+<p>在 JavaScript 中，大量地使用到匿名函数，比如事件绑定和像 map/reduce/filter 等这些方法中。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">selected</span> <span class="o">=</span> <span class="nx">allJobs</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">job</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">job</span><span class="p">.</span><span class="nx">isSelected</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使用 arrow function 后，可以简化为下面这样：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">selected</span> <span class="o">=</span> <span class="nx">allJobs</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">job</span> <span class="o">=&gt;</span> <span class="nx">job</span><span class="p">.</span><span class="nx">isSelected</span><span class="p">());</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
+
+
+<p>可以注意到的是，在上面的语句中，不需要显示地 return。</p>
+
+<p>在多参数的情况下或无参数的情况下，参数列表需要用 <code>()</code> 来包围，如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// ES5</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">total</span> <span class="o">=</span> <span class="nx">values</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+</span><span class='line'><span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// ES6</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">total</span> <span class="o">=</span> <span class="nx">values</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在函数体不是一个语句的时候，需要用 <code>{}</code> 来包住，并且这个时候将需要显示的 <code>return</code> 才会返回值。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// ES5</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#confetti-btn&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">playTrumpet</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">fireConfettiCannon</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// ES6</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#confetti-btn&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="nx">event</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">playTrumpet</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">fireConfettiCannon</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>this</h2>
+
+<p>arrow function 没有自己的 this 值，任何情况下 arrow function 里的 this 的值都是继承自 arrow function 的上下文。</p>
+
+<p>这同时也意味着，即便使用 <code>call</code> 或 <code>apply</code>，也不会改变 <code>this</code> 的指向。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">a</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="s1">&#39;i.a&#39;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">a</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="s1">&#39;obj.a&#39;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">b</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;obj.b&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">())</span>
+</span><span class='line'>    <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">c</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;obj.c&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">())</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">f</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">d</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;obj.d&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">())</span>
+</span><span class='line'>    <span class="nx">f</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">obj</span><span class="p">.</span><span class="nx">b</span><span class="p">()</span> <span class="c1">// obj.b obj.a</span>
+</span><span class='line'><span class="nx">obj</span><span class="p">.</span><span class="nx">c</span><span class="p">()</span> <span class="c1">// obj.c i.a</span>
+</span><span class='line'><span class="nx">obj</span><span class="p">.</span><span class="nx">d</span><span class="p">()</span> <span class="c1">// obj.d obj.a</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参考资料</h2>
+
+<ul>
+<li><a href="https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/">ES6 In Depth: Arrow functions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow functions</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rest parameters and defaults in ES6]]></title>
+    <link href="http://liunian.github.io/blog/rest-parameters-and-defaults-in-es6/"/>
+    <updated>2015-12-28T17:25:10+08:00</updated>
+    <id>http://liunian.github.io/blog/rest-parameters-and-defaults-in-es6</id>
+    <content type="html"><![CDATA[<p>ES6 给函数增加了剩余参数（rest parameters）和参数默认值的功能。</p>
+
+<h2>剩余参数</h2>
+
+<p>因为 JavaScript 并没有重载功能，以及为了支持可变参数的情况，是通过 <code>arguments</code> 来实现的。ES6 增加了剩余参数这个功能，希望能简化下这种情况下的实现。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">containsAll</span><span class="p">(</span><span class="nx">haystack</span><span class="p">,</span> <span class="p">...</span><span class="nx">needles</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">needle</span> <span class="nx">of</span> <span class="nx">needles</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">haystack</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">needle</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">containsAll</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">));</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">containsAll</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">));</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">containsAll</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">));</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">containsAll</span><span class="p">());</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参数默认值</h2>
+
+<p>参数默认值可用来解决以前需要用 <code>param = param || 'default'</code> 或 <code>if</code> 判断设置的情况。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">word</span><span class="o">=</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">word</span><span class="p">},</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="err">`</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nx">sayHello</span><span class="p">(</span><span class="s1">&#39;Jimmy&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">sayHello</span><span class="p">(</span><span class="s1">&#39;Kate&#39;</span><span class="p">,</span> <span class="s1">&#39;你好&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">sayHello</span><span class="p">(</span><span class="s1">&#39;Jimmy&#39;</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ES6 中，由于默认参数的表达式实在调用时自左而右地计算，所以，默认参数可以使用其之前的参数，如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span> <span class="nx">conditionalParameter</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="o">=</span><span class="p">(</span><span class="nx">a</span><span class="o">==</span><span class="mi">1</span> <span class="o">?</span> <span class="mi">2</span> <span class="o">:</span> <span class="mi">3</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">conditionalParameter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span><span class="c1">// 7</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">conditionalParameter</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>   <span class="c1">// 3</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">conditionalParameter</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>   <span class="c1">// 5</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参考资料</h2>
+
+<ul>
+<li><a href="https://hacks.mozilla.org/2015/05/es6-in-depth-rest-parameters-and-defaults/">ES6 In Depth: Rest parameters and defaults</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Template Strings in ES6]]></title>
+    <link href="http://liunian.github.io/blog/template-strings-in-es6/"/>
+    <updated>2015-12-28T17:22:27+08:00</updated>
+    <id>http://liunian.github.io/blog/template-strings-in-es6</id>
+    <content type="html"><![CDATA[<p>ES6 中的 template string 并不是 Mustache 这类模板库的替代品，最重要的是提供字符串插值功能，但并不提供诸如 if/for 等控制功能</p>
+
+<h2>定义</h2>
+
+<p>普通的字符串是使用 <code>'</code> 或 <code>"</code> 来定义，template string 是使用 &#8220;&#8220;`。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">let</span> <span class="nx">s</span> <span class="o">=</span> <span class="err">`</span><span class="nx">This</span> <span class="nx">is</span> <span class="nx">a</span> <span class="nx">template</span> <span class="nx">string</span><span class="err">`</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>不同的是，template string 可以直接用来定义多行的字符串，并且保留其换行和空白。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">let</span> <span class="nx">ss</span> <span class="o">=</span> <span class="err">`</span><span class="nx">This</span> <span class="nx">is</span> <span class="nx">a</span>
+</span><span class='line'><span class="nx">multiple</span> <span class="nx">line</span> <span class="nx">templat</span> <span class="nx">string</span>
+</span><span class='line'>  <span class="nx">which</span> <span class="nx">reserves</span> <span class="nx">space</span><span class="err">`</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>插值</h2>
+
+<p>和普通字符串相比，除了能够方便地定义多行的字符串外，还支持字符串插值，插值处支持任何 JavaScript 表达式，如果表达式返回值不是字符串，那么则按照通用的规则来做转换。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;obj&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">say</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="k">return</span> <span class="mi">3</span><span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">let</span> <span class="nx">c</span> <span class="o">=</span> <span class="err">`</span><span class="nx">The</span> <span class="nx">$</span><span class="p">{</span><span class="nx">obj</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span> <span class="nx">says</span><span class="o">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">obj</span><span class="p">.</span><span class="nx">say</span><span class="p">()}</span><span class="err">`</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="c1">// The obj says: 3</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>参考资料</h2>
+
+<ul>
+<li><a href="https://hacks.mozilla.org/2015/05/es6-in-depth-template-strings-2/">ES6 In Depth: Template strings</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Generator in ES6]]></title>

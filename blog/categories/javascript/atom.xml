@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | memos]]></title>
   <link href="http://liunian.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2015-12-28T17:17:45+08:00</updated>
+  <updated>2015-12-28T17:29:25+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -12,6 +12,206 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Arrow function in ES6]]></title>
+    <link href="http://liunian.github.io/blog/arrow-function-in-es6/"/>
+    <updated>2015-12-28T17:27:28+08:00</updated>
+    <id>http://liunian.github.io/blog/arrow-function-in-es6</id>
+    <content type="html"><![CDATA[<p>Arrow function 的使用一来能简化匿名函数的使用，二来能解决匿名函数中不时碰到的 <code>this</code> 指向的问题。</p>
+
+<p>在 JavaScript 中，大量地使用到匿名函数，比如事件绑定和像 map/reduce/filter 等这些方法中。</p>
+
+<pre><code class="js">var selected = allJobs.filter(function (job) {
+  return job.isSelected();
+});
+</code></pre>
+
+<p>使用 arrow function 后，可以简化为下面这样：</p>
+
+<pre><code class="js">var selected = allJobs.filter(job =&gt; job.isSelected());
+</code></pre>
+
+<!-- more -->
+
+
+<p>可以注意到的是，在上面的语句中，不需要显示地 return。</p>
+
+<p>在多参数的情况下或无参数的情况下，参数列表需要用 <code>()</code> 来包围，如：</p>
+
+<pre><code class="js">// ES5
+var total = values.reduce(function (a, b) {
+  return a + b;
+}, 0);
+
+// ES6
+var total = values.reduce((a, b) =&gt; a + b, 0);
+</code></pre>
+
+<p>在函数体不是一个语句的时候，需要用 <code>{}</code> 来包住，并且这个时候将需要显示的 <code>return</code> 才会返回值。</p>
+
+<pre><code class="js">// ES5
+$("#confetti-btn").click(function (event) {
+  playTrumpet();
+  fireConfettiCannon();
+});
+
+// ES6
+$("#confetti-btn").click(event =&gt; {
+  playTrumpet();
+  fireConfettiCannon();
+});
+</code></pre>
+
+<h2>this</h2>
+
+<p>arrow function 没有自己的 this 值，任何情况下 arrow function 里的 this 的值都是继承自 arrow function 的上下文。</p>
+
+<p>这同时也意味着，即便使用 <code>call</code> 或 <code>apply</code>，也不会改变 <code>this</code> 的指向。</p>
+
+<pre><code class="js">let i = {
+  a: function() {
+    return 'i.a'
+  }
+}
+
+let obj = {
+  a: function() {
+    return 'obj.a'
+  },
+  b: function() {
+    setTimeout(() =&gt; {
+      console.log('obj.b', this.a())
+    }, 1000)
+  },
+  c: function() {
+    var f = function() {
+      console.log('obj.c', this.a())
+    }
+    f.call(i)
+  },
+  d: function() {
+    var f = () =&gt; console.log('obj.d', this.a())
+    f.call(i)
+  }
+}
+
+obj.b() // obj.b obj.a
+obj.c() // obj.c i.a
+obj.d() // obj.d obj.a
+</code></pre>
+
+<h2>参考资料</h2>
+
+<ul>
+<li><a href="https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/">ES6 In Depth: Arrow functions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow functions</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rest parameters and defaults in ES6]]></title>
+    <link href="http://liunian.github.io/blog/rest-parameters-and-defaults-in-es6/"/>
+    <updated>2015-12-28T17:25:10+08:00</updated>
+    <id>http://liunian.github.io/blog/rest-parameters-and-defaults-in-es6</id>
+    <content type="html"><![CDATA[<p>ES6 给函数增加了剩余参数（rest parameters）和参数默认值的功能。</p>
+
+<h2>剩余参数</h2>
+
+<p>因为 JavaScript 并没有重载功能，以及为了支持可变参数的情况，是通过 <code>arguments</code> 来实现的。ES6 增加了剩余参数这个功能，希望能简化下这种情况下的实现。</p>
+
+<pre><code class="js">function containsAll(haystack, ...needles) {
+  for (let needle of needles) {
+    if (haystack.indexOf(needle) === -1) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+console.log(containsAll('abc', 'a', 'b'));
+console.log(containsAll('abc', 'a', 'd'));
+console.log(containsAll('abc'));
+console.log(containsAll());
+</code></pre>
+
+<h2>参数默认值</h2>
+
+<p>参数默认值可用来解决以前需要用 <code>param = param || 'default'</code> 或 <code>if</code> 判断设置的情况。</p>
+
+<pre><code class="js">function sayHello(name, word="hello") {
+  console.log(`${word}, ${name}`);
+}
+sayHello('Jimmy');
+sayHello('Kate', '你好');
+sayHello('Jimmy', undefined);
+</code></pre>
+
+<p>ES6 中，由于默认参数的表达式实在调用时自左而右地计算，所以，默认参数可以使用其之前的参数，如下：</p>
+
+<pre><code class="js">function conditionalParameter(a, b=(a==1 ? 2 : 3)) {
+  return a + b;
+}
+
+console.log(conditionalParameter(2, 5));// 7
+console.log(conditionalParameter(1));   // 3
+console.log(conditionalParameter(2));   // 5
+</code></pre>
+
+<h2>参考资料</h2>
+
+<ul>
+<li><a href="https://hacks.mozilla.org/2015/05/es6-in-depth-rest-parameters-and-defaults/">ES6 In Depth: Rest parameters and defaults</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Template Strings in ES6]]></title>
+    <link href="http://liunian.github.io/blog/template-strings-in-es6/"/>
+    <updated>2015-12-28T17:22:27+08:00</updated>
+    <id>http://liunian.github.io/blog/template-strings-in-es6</id>
+    <content type="html"><![CDATA[<p>ES6 中的 template string 并不是 Mustache 这类模板库的替代品，最重要的是提供字符串插值功能，但并不提供诸如 if/for 等控制功能</p>
+
+<h2>定义</h2>
+
+<p>普通的字符串是使用 <code>'</code> 或 <code>"</code> 来定义，template string 是使用 &#8220;&#8220;`。</p>
+
+<pre><code class="js">let s = `This is a template string`
+</code></pre>
+
+<p>不同的是，template string 可以直接用来定义多行的字符串，并且保留其换行和空白。</p>
+
+<pre><code class="js">let ss = `This is a 
+multiple line templat string
+  which reserves space`
+</code></pre>
+
+<h2>插值</h2>
+
+<p>和普通字符串相比，除了能够方便地定义多行的字符串外，还支持字符串插值，插值处支持任何 JavaScript 表达式，如果表达式返回值不是字符串，那么则按照通用的规则来做转换。</p>
+
+<pre><code class="js">let obj = {
+  name: 'obj',
+  say: () =&gt; {return 3}
+}
+
+let c = `The ${obj.name} says: ${obj.say()}`
+console.log(c) // The obj says: 3
+</code></pre>
+
+<h2>参考资料</h2>
+
+<ul>
+<li><a href="https://hacks.mozilla.org/2015/05/es6-in-depth-template-strings-2/">ES6 In Depth: Template strings</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Generator in ES6]]></title>
@@ -338,267 +538,6 @@ for(var f of fiveTimesIterator) {
 <ul>
 <li><a href="https://hacks.mozilla.org/2015/04/es6-in-depth-iterators-and-the-for-of-loop/">ES6 In Depth: Iterators and the for-of loop</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols">Iteration protocols</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaScript 严格模式]]></title>
-    <link href="http://liunian.github.io/blog/javascript-strict-mode/"/>
-    <updated>2015-08-01T00:29:35+08:00</updated>
-    <id>http://liunian.github.io/blog/javascript-strict-mode</id>
-    <content type="html"><![CDATA[<p>严格模式的提出是为了约束一些 JavaScript 的使用方式，修改一些容易导致失误和安全问题的地方。因为严格模式和非严格模式下的语义有所不同，所以使用上需要谨慎，最好渐进的使用。</p>
-
-<h2>使用</h2>
-
-<p>有两种使用方式，影响整个脚本的脚本方式和影响函数的方式。</p>
-
-<h3>脚本方式</h3>
-
-<p>在脚本最前面（需要是第一个有效语句，注释不是）添加 <code>'use strict';</code>，只是字符串，所以可以用双引号或单引号。</p>
-
-<pre><code class="js">// Whole-script strict mode syntax
-'use strict';
-var v = "Hi! I'm a strict mode script!";
-</code></pre>
-
-<!-- more -->
-
-
-<h3>函数方式</h3>
-
-<pre><code class="js">function strict(){
-  // Function-level strict mode syntax
-  'use strict';
-  function nested() { return "And so am I!"; }
-  return "Hi!  I'm a strict mode function!  " + nested();
-}
-
-function notStrict() { return "I'm not strict."; }
-</code></pre>
-
-<h2>变更</h2>
-
-<p>严格模式影响了语法和语义。</p>
-
-<h3>把失误转为错误</h3>
-
-<ul>
-<li>防止无意间创建全局变量</li>
-</ul>
-
-
-<pre><code class="js">'use strict';
-
-mistypedVariable = 17;  // 拼写失误或故意不用 var 来声明将抛异常
-</code></pre>
-
-<ul>
-<li>把静默失败的赋值调整为抛出异常</li>
-</ul>
-
-
-<p>包括 <code>NaN</code>，非严格模式下给不可写、只读的属性赋值，给不可扩展、sealed 或 froze 的对象添加属性会静默失败，严格模式下会抛出异常。</p>
-
-<pre><code class="js">"use strict";
-
-// throws exception
-NaN = 1;
-
-// Assignment to a non-writable property
-var obj1 = {};
-Object.defineProperty(obj1, "x", { value: 42, writable: false });
-obj1.x = 9; // throws a TypeError
-
-// Assignment to a getter-only property
-var obj2 = { get x() { return 17; } };
-obj2.x = 5; // throws a TypeError
-
-// Assignment to a new property on a non-extensible object
-var fixed = {};
-Object.preventExtensions(fixed);
-fixed.newProp = "ohai"; // throws a TypeError
-</code></pre>
-
-<ul>
-<li>删除不可移除的属性时报错（以前是返回 false 表示不可移除）</li>
-</ul>
-
-
-<pre><code class="js">"use strict";
-delete Object.prototype; // throws a TypeError
-</code></pre>
-
-<ul>
-<li>对象字面量存在相同的 key 时报错</li>
-</ul>
-
-
-<p>以前会取最后一个 key 的值为该 key 的值。</p>
-
-<pre><code class="js">"use strict";
-var o = { p: 1, p: 2 }; // !!! syntax error
-</code></pre>
-
-<ul>
-<li>函数的参数名必须唯一</li>
-</ul>
-
-
-<p>非严格模式下会取重复参数名最后的一个作为参数的值，但可以通过 <code>arguments</code> 来获取完整的参数。</p>
-
-<pre><code class="js">function sum(a, a, c){ // !!! syntax error
-  "use strict";
-  return a + b + c; // wrong if this code ran
-}
-</code></pre>
-
-<ul>
-<li>不允许使用八进制语法</li>
-</ul>
-
-
-<p>虽然说不上好坏，但严格模式的确是禁止了使用八进制语法。</p>
-
-<pre><code class="js">"use strict";
-var sum = 015 + // !!! syntax error
-          197 +
-          142;
-</code></pre>
-
-<h3>简化变量的使用</h3>
-
-<ul>
-<li>禁止使用 <code>with</code></li>
-<li><code>eval</code> 不再在作用域（全局或局部）中生成新的变量</li>
-<li>不允许删除普通变量（需要删除对象属性）</li>
-</ul>
-
-
-<pre><code class="js">"use strict";
-
-var x;
-delete x; // !!! syntax error
-
-eval("var y; delete y;"); // !!! syntax error
-</code></pre>
-
-<h3>简化 <code>eval</code> 和 <code>arguments</code></h3>
-
-<ul>
-<li>不能被赋值和作为参数或函数名等</li>
-</ul>
-
-
-<pre><code class="js">"use strict";
-eval = 17;
-arguments++;
-++eval;
-var obj = { set p(arguments) { } };
-var eval;
-try { } catch (arguments) { }
-function x(eval) { }
-function arguments() { }
-var y = function eval() { };
-var f = new Function("arguments", "'use strict'; return 17;");
-</code></pre>
-
-<ul>
-<li><code>arguments</code> 中的成员不是引用（意味着把实参拷贝到 arguments 中）</li>
-</ul>
-
-
-<blockquote><p>注意：至少在 node.js 0.12.7 中是浅拷贝而不是深拷贝。这样如果不是改变整个参数而是修改参数的属性时，会双向影响</p></blockquote>
-
-<p>非严格模式下，修改实参会改变 arguments，但严格模式下不会改变；同样地，改变 arguments 中的值不会改变实参。这样意味着双方将独立变化。</p>
-
-<pre><code class="js">function f(a){
-  "use strict";
-  a = 42;
-  return [a, arguments[0]];
-}
-var pair = f(17);
-console.assert(pair[0] === 42);
-console.assert(pair[1] === 17);
-</code></pre>
-
-<ul>
-<li>不能使用 <code>arguments.callee</code></li>
-</ul>
-
-
-<p>请使用命名函数</p>
-
-<pre><code class="js">"use strict";
-var f = function() { return arguments.callee; };
-f(); // throws a TypeError
-</code></pre>
-
-<h3>更「安全」</h3>
-
-<ul>
-<li>函数中的 this 不再被强制装箱包装成对象，这意味着对于普通调用，<code>this</code> 将是 <code>undefined</code> 而不是非严格模式下的 <code>global</code>（浏览器中是 <code>window</code>）。</li>
-<li>无法遍历调用栈，<code>fn.caller</code>、<code>fn.arguments</code> 等禁止访问</li>
-</ul>
-
-
-<pre><code class="js">function restricted()
-{
-  "use strict";
-  restricted.caller;    // throws a TypeError
-  restricted.arguments; // throws a TypeError
-}
-function privilegedInvoker()
-{
-  return restricted();
-}
-privilegedInvoker();
-</code></pre>
-
-<ul>
-<li>禁止使用 <code>arguments.caller</code></li>
-</ul>
-
-
-<pre><code class="js">"use strict";
-function fun(a, b)
-{
-  "use strict";
-  var v = 12;
-  return arguments.caller; // throws a TypeError
-}
-fun(1, 2); // doesn't expose v (or a or b)
-</code></pre>
-
-<h3>为后续 ECMAScript 版本做准备</h3>
-
-<ul>
-<li>部分标识符变为保留字，包括 <code>implements</code>、<code>interface</code>、<code>let</code>、<code>package</code>、<code>private</code>、<code>protected</code>、<code>public</code>、<code>static</code> 和 <code>yield</code>。</li>
-<li>禁止函数声明提升（注意，变量依然 ok），相应地，禁止了在块（如 if）中声明函数</li>
-</ul>
-
-
-<pre><code class="js">"use strict";
-if (true){
-  function f() { } // !!! syntax error
-  f();
-}
-
-for (var i = 0; i &lt; 5; i++){
-  function f2() { } // !!! syntax error
-  f2();
-}
-
-function baz(){ // kosher
-  function eit() { } // also kosher
-}
-</code></pre>
-
-<h2>参考</h2>
-
-<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">Strict mode</a></li>
 </ul>
 
 ]]></content>
