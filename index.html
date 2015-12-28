@@ -9,10 +9,10 @@
   <meta name="author" content="流年">
 
   
-  <meta name="description" content="for-of 使用迭代器（iterator）来迭代一个可迭代（iterable）的对象，主要是想取代传统的比较繁琐的 for 及会遍历非自带属性以及无法 continue/break/return 的 forEach，其基本示例如： 1
+  <meta name="description" content="生成器（Generator）是一个由生成器函数返回的对象，其既是一个迭代器，也是一个可迭代对象。 生成器函数则是一个使用 function* 来声明的函数，如： 1
 2
-3
-for (let i of [1, 2, 3 &hellip;">
+function* gen() {
+} 能够暂停的函数 由于 JavaScript 是单线程的，所以一旦执行一个函数， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +66,89 @@ for (let i of [1, 2, 3 &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/generator-in-es6/">Generator in ES6</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-12-28T17:13:20+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>生成器（Generator）是一个由生成器函数返回的对象，其既是一个迭代器，也是一个可迭代对象。</p>
+
+<p>生成器函数则是一个使用 <code>function*</code> 来声明的函数，如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span><span class="o">*</span> <span class="nx">gen</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>能够暂停的函数</h2>
+
+<p>由于 JavaScript 是单线程的，所以一旦执行一个函数，那么一定是按顺序执行完函数体里的语句才能执行这个函数后面的语句。</p>
+
+<p>生成器提供一个能力，可以在指定地方暂停，然后再在需要的时候回到暂停处继续执行。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">function</span><span class="o">*</span> <span class="nx">gen</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">yield</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">it</span> <span class="o">=</span> <span class="nx">gen</span><span class="p">();</span>
+</span><span class='line'><span class="nx">it</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span><span class='line'><span class="nx">it</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面代码中，log 的顺序将是 <code>1 3 2</code>。</p>
+
+<p>首先，调用生成器函数不会运行里面的代码，而是返回一个生成器。对于一个生成器而言，调用 <code>next</code> 方法来开始运行，然后在里面碰到 <code>yield</code> 时暂停里面的运行，而回到 <code>next</code> 调用处继续往下执行；再次调用 <code>next</code>，则回到生成器上次停止的地方继续往下执行，直至碰到 <code>yield</code> 而暂停里面回到外面或执行完毕。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/generator-in-es6/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -704,48 +787,6 @@ classmethod VS staticmethod</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/ie6-inline-block-new-line/">Ie6 Inline-block 折行问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-07T12:49:50+08:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>问题描述</h2>
-
-<p>IE6 下使用 <code>display:inline-block</code> 可能会发现中间出现了折行。</p>
-
-<h2>解决方法</h2>
-
-<p><code>display:inline-block</code> 的元素前后不能有空白符，需要紧紧相连。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="2">&larr; Older</a>
@@ -761,6 +802,10 @@ classmethod VS staticmethod</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/generator-in-es6/">Generator in ES6</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/iterator-in-es6/">Iterator in ES6</a>
       </li>
     
@@ -774,10 +819,6 @@ classmethod VS staticmethod</p>
     
       <li class="post">
         <a href="/blog/javascript-strict-mode/">JavaScript 严格模式</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/inline-block-in-ie6-and-7/">inline-block in ie6/7</a>
       </li>
     
   </ul>
