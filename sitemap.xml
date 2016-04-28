@@ -3,6 +3,14 @@
   
   
   <url>
+    <loc>http://liunian.github.io/blog/es2015-computed-property-name/</loc>
+    
+    <lastmod>2016-04-28T10:04:55+08:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://liunian.github.io/blog/arrow-function-in-es6/</loc>
     
     <lastmod>2015-12-28T17:27:28+08:00</lastmod>
@@ -125,21 +133,21 @@
   
   <url>
     <loc>http://liunian.github.io/blog/archives/</loc>
-    <lastmod>2015-12-28T17:29:25+08:00</lastmod>
+    <lastmod>2016-04-28T10:08:34+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://liunian.github.io/</loc>
-    <lastmod>2015-12-28T17:29:25+08:00</lastmod>
+    <lastmod>2016-04-28T10:08:34+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://liunian.github.io/about/</loc>
-    <lastmod>2015-12-28T17:29:25+08:00</lastmod>
+    <lastmod>2016-04-28T10:08:34+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -148,7 +156,7 @@
   
   <url>
     <loc>http://liunian.github.io/downloads/code/ie6_float_right.html</loc>
-    <lastmod>2015-12-25T14:58:18Z</lastmod>
+    <lastmod>2015-12-28T17:31:13Z</lastmod>
     <priority>0.6</priority>
   </url>
   
