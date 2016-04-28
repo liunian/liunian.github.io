@@ -4,7 +4,7 @@
   <title><![CDATA[Category: frontend | memos]]></title>
   <link href="http://liunian.github.io/blog/categories/frontend/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2016-04-28T10:08:34+08:00</updated>
+  <updated>2016-04-28T10:16:30+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -37,6 +37,24 @@ obj['a'] = 0;
 var obj = {
 };
 console.log(obj); // {'1': 3}
+</code></pre>
+
+<p>并不是只能使用变量，而是可以使用一切表达式，如：</p>
+
+<pre><code class="js">// Computed property names (ES6)
+var i = 0;
+var a = {
+};
+
+console.log(a.foo1); // 1
+console.log(a.foo2); // 2
+console.log(a.foo3); // 3
+
+var param = 'size';
+var config = {
+};
+
+console.log(config); // { size: 12, mobileSize: 4 }
 </code></pre>
 
 <h2>参考链接</h2>
