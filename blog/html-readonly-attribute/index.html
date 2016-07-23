@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>inline-block in ie6/7 - memos</title>
+  <title>html readonly 属性 - memos</title>
   <meta name="author" content="流年">
 
   
-  <meta name="description" content="在 ie6/7 中，display:inline-block 无法对 div 这些块状元素生效，最简单的解决方法就是改用 span 的 inline 元素。
+  <meta name="description" content="readonly 属性用于控制表单字段不可编辑，但和 disabled 不同，form 表单提交时会把值提交上去。 但对以下表单元素无效，包括 type 是 hidden、range、color、checkbox、radio、file 以及按钮类型（button 或 submit）。
 ">
   
 
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://liunian.github.io/blog/inline-block-in-ie6-and-7/">
+  <link rel="canonical" href="http://liunian.github.io/blog/html-readonly-attribute/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -67,7 +67,7 @@
   
   <header>
     
-      <h1 class="entry-title">Inline-block in Ie6/7</h1>
+      <h1 class="entry-title">Html Readonly 属性</h1>
     
     
       <p class="meta">
@@ -83,14 +83,16 @@
   
 
 
-<time datetime="2014-09-12T23:15:07+08:00" pubdate data-updated="true"></time>
+<time datetime="2016-07-23T13:15:38+08:00" pubdate data-updated="true"></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>在 ie6/7 中，<code>display:inline-block</code> 无法对 <code>div</code> 这些块状元素生效，最简单的解决方法就是改用 <code>span</code> 的 inline 元素。</p>
+<div class="entry-content"><p><code>readonly</code> 属性用于控制表单字段不可编辑，但和 <code>disabled</code> 不同，form 表单提交时会把值提交上去。</p>
+
+<p>但对以下表单元素无效，包括 type 是 <code>hidden</code>、<code>range</code>、<code>color</code>、<code>checkbox</code>、<code>radio</code>、<code>file</code> 以及按钮类型（button 或 submit）。</p>
 </div>
 
 
@@ -113,12 +115,12 @@
   
 
 
-<time datetime="2014-09-12T23:15:07+08:00" pubdate data-updated="true"></time>
+<time datetime="2016-07-23T13:15:38+08:00" pubdate data-updated="true"></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/css/'>css</a>, <a class='category' href='/blog/categories/frontend/'>frontend</a>
+    <a class='category' href='/blog/categories/frontend/'>frontend</a>
   
 </span>
 
@@ -134,10 +136,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/io-language/" title="Previous Post: Io Language">&laquo; Io Language</a>
+        <a class="basic-alignment left" href="/blog/es2015-computed-property-name/" title="Previous Post: ES2015之对象计算属性值（computed property name）">&laquo; ES2015之对象计算属性值（computed property name）</a>
       
-      
-        <a class="basic-alignment right" href="/blog/javascript-strict-mode/" title="Next Post: JavaScript 严格模式">JavaScript 严格模式 &raquo;</a>
       
     </p>
   </footer>

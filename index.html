@@ -9,19 +9,8 @@
   <meta name="author" content="流年">
 
   
-  <meta name="description" content="对于 JavaScript 普通对象，定义和使用一般如下： 1
-2
-3
-4
-5
-6
-7
-var obj = { a: 1
-};
-obj.b = 2;
-var k = &#39;c&#39;;
-obj[k] = 3;
-obj[&#39;a&#39;] = 0; 如果属性名（property name &hellip;">
+  <meta name="description" content="readonly 属性用于控制表单字段不可编辑，但和 disabled 不同，form 表单提交时会把值提交上去。 但对以下表单元素无效，包括 type 是 hidden、range、color、checkbox、radio、file 以及按钮类型（button 或 submit）。
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +64,44 @@ obj[&#39;a&#39;] = 0; 如果属性名（property name &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/html-readonly-attribute/">Html Readonly 属性</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-07-23T13:15:38+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>readonly</code> 属性用于控制表单字段不可编辑，但和 <code>disabled</code> 不同，form 表单提交时会把值提交上去。</p>
+
+<p>但对以下表单元素无效，包括 type 是 <code>hidden</code>、<code>range</code>、<code>color</code>、<code>checkbox</code>、<code>radio</code>、<code>file</code> 以及按钮类型（button 或 submit）。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -818,42 +845,6 @@ obj[&#39;a&#39;] = 0; 如果属性名（property name &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/inline-block-in-ie6-and-7/">Inline-block in Ie6/7</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-09-12T23:15:07+08:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在 ie6/7 中，<code>display:inline-block</code> 无法对 <code>div</code> 这些块状元素生效，最简单的解决方法就是改用 <code>span</code> 的 inline 元素。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="2">&larr; Older</a>
@@ -869,6 +860,10 @@ obj[&#39;a&#39;] = 0; 如果属性名（property name &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/html-readonly-attribute/">html readonly 属性</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/es2015-computed-property-name/">ES2015之对象计算属性值（computed property name）</a>
       </li>
     
@@ -882,10 +877,6 @@ obj[&#39;a&#39;] = 0; 如果属性名（property name &hellip;">
     
       <li class="post">
         <a href="/blog/template-strings-in-es6/">Template Strings in ES6</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/generator-in-es6/">Generator in ES6</a>
       </li>
     
   </ul>

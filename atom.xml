@@ -4,7 +4,7 @@
   <title><![CDATA[memos]]></title>
   <link href="http://liunian.github.io/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2016-04-28T10:16:30+08:00</updated>
+  <updated>2016-07-23T13:45:57+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[html readonly 属性]]></title>
+    <link href="http://liunian.github.io/blog/html-readonly-attribute/"/>
+    <updated>2016-07-23T13:15:38+08:00</updated>
+    <id>http://liunian.github.io/blog/html-readonly-attribute</id>
+    <content type="html"><![CDATA[<p><code>readonly</code> 属性用于控制表单字段不可编辑，但和 <code>disabled</code> 不同，form 表单提交时会把值提交上去。</p>
+
+<p>但对以下表单元素无效，包括 type 是 <code>hidden</code>、<code>range</code>、<code>color</code>、<code>checkbox</code>、<code>radio</code>、<code>file</code> 以及按钮类型（button 或 submit）。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ES2015之对象计算属性值（computed property name）]]></title>
