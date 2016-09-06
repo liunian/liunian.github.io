@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "css 蒙版"
+title: "CSS 蒙版"
 date: 2016-09-06 14:40:54 +0800
 comments: true
 categories: css frontend
@@ -33,5 +33,4 @@ css 蒙版的关键点是：黑色表示完全透明展示；白色表示不展�
 示例效果：
 
 <!--more-->
-
-<iframe frameborder="no" width="100%" height="300" src="http://output.jsbin.com/wogunecaqa"></iframe>
+<a class="jsbin-embed" href="http://jsbin.com/wogunecaqa/embed">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.39.15"></script>
