@@ -4,7 +4,7 @@
   <title><![CDATA[Category: frontend | memos]]></title>
   <link href="http://liunian.github.io/blog/categories/frontend/atom.xml" rel="self"/>
   <link href="http://liunian.github.io/"/>
-  <updated>2016-09-06T14:58:07+08:00</updated>
+  <updated>2016-09-06T15:02:16+08:00</updated>
   <id>http://liunian.github.io/</id>
   <author>
     <name><![CDATA[流年]]></name>
@@ -51,6 +51,13 @@
 
 
 <p><a class="jsbin-embed" href="http://jsbin.com/wogunecaqa/embed">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.39.15"></script></p>
+
+<h2>参考文档</h2>
+
+<ul>
+<li><a href="http://www.html5rocks.com/en/tutorials/masking/adobe/">CSS Masking</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
