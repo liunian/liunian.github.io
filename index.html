@@ -9,8 +9,22 @@
   <meta name="author" content="流年">
 
   
-  <meta name="description" content="readonly 属性用于控制表单字段不可编辑，但和 disabled 不同，form 表单提交时会把值提交上去。 但对以下表单元素无效，包括 type 是 hidden、range、color、checkbox、radio、file 以及按钮类型（button 或 submit）。
-">
+  <meta name="description" content="使用 CSS 蒙版可以帮助达到类似弹层指引的效果。 css 蒙版的关键点是：黑色表示完全透明展示；白色表示不展示，即图片完全被遮盖，黑色一片；而中间的颜色则表示相应的透明度。 示例代码： 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+&lt;div id=&quot; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +78,86 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/css-masking/">Css 蒙版</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-09-06T14:40:54+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>使用 CSS 蒙版可以帮助达到类似弹层指引的效果。</p>
+
+<p>css 蒙版的关键点是：黑色表示完全透明展示；白色表示不展示，即图片完全被遮盖，黑色一片；而中间的颜色则表示相应的透明度。</p>
+
+<p>示例代码：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;container&quot;</span> <span class="na">style=</span><span class="s">&quot;position: relative;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;svg</span> <span class="na">style=</span><span class="s">&quot;position: absolute;&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;280&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;defs&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;mask</span> <span class="na">id=</span><span class="s">&quot;mask3&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span> <span class="na">height=</span><span class="s">&quot;100%&quot;</span> <span class="na">style=</span><span class="s">&quot;stroke:none; fill: #888&quot;</span><span class="nt">&gt;&lt;/rect&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;circle</span> <span class="na">id=</span><span class="s">&quot;circle1&quot;</span> <span class="na">cx=</span><span class="s">&quot;100&quot;</span> <span class="na">cy=</span><span class="s">&quot;100&quot;</span> <span class="na">r=</span><span class="s">&quot;50&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;200&quot;</span> <span class="na">y=</span><span class="s">&quot;200&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;50&quot;</span><span class="nt">&gt;&lt;/rect&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/mask&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/defs&gt;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span> <span class="na">height=</span><span class="s">&quot;100%&quot;</span> <span class="na">style=</span><span class="s">&quot;stroke: none; mask: url(#mask3)&quot;</span><span class="nt">&gt;&lt;/rect&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/svg&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://img6.cache.netease.com/cnews/2014/11/3/20141103100737855b7.jpg&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>示例效果：</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/css-masking/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -785,66 +879,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/javascript-strict-mode/">JavaScript 严格模式</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-08-01T00:29:35+08:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>严格模式的提出是为了约束一些 JavaScript 的使用方式，修改一些容易导致失误和安全问题的地方。因为严格模式和非严格模式下的语义有所不同，所以使用上需要谨慎，最好渐进的使用。</p>
-
-<h2>使用</h2>
-
-<p>有两种使用方式，影响整个脚本的脚本方式和影响函数的方式。</p>
-
-<h3>脚本方式</h3>
-
-<p>在脚本最前面（需要是第一个有效语句，注释不是）添加 <code>'use strict';</code>，只是字符串，所以可以用双引号或单引号。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Whole-script strict mode syntax</span>
-</span><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="s2">&quot;Hi! I&#39;m a strict mode script!&quot;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/javascript-strict-mode/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="2">&larr; Older</a>
@@ -860,6 +894,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/css-masking/">css 蒙版</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/html-readonly-attribute/">html readonly 属性</a>
       </li>
     
@@ -873,10 +911,6 @@
     
       <li class="post">
         <a href="/blog/rest-parameters-and-defaults-in-es6/">Rest parameters and defaults in ES6</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/template-strings-in-es6/">Template Strings in ES6</a>
       </li>
     
   </ul>

@@ -9,8 +9,7 @@
   <meta name="author" content="流年">
 
   
-  <meta name="description" content="在 ie6/7 中，display:inline-block 无法对 div 这些块状元素生效，最简单的解决方法就是改用 span 的 inline 元素。
-">
+  <meta name="description" content="严格模式的提出是为了约束一些 JavaScript 的使用方式，修改一些容易导致失误和安全问题的地方。因为严格模式和非严格模式下的语义有所不同，所以使用上需要谨慎，最好渐进的使用。 使用 有两种使用方式，影响整个脚本的脚本方式和影响函数的方式。 脚本方式 在脚本最前面（需要是第一个有效语句， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +63,66 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/javascript-strict-mode/">JavaScript 严格模式</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-08-01T00:29:35+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>严格模式的提出是为了约束一些 JavaScript 的使用方式，修改一些容易导致失误和安全问题的地方。因为严格模式和非严格模式下的语义有所不同，所以使用上需要谨慎，最好渐进的使用。</p>
+
+<h2>使用</h2>
+
+<p>有两种使用方式，影响整个脚本的脚本方式和影响函数的方式。</p>
+
+<h3>脚本方式</h3>
+
+<p>在脚本最前面（需要是第一个有效语句，注释不是）添加 <code>'use strict';</code>，只是字符串，所以可以用双引号或单引号。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Whole-script strict mode syntax</span>
+</span><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">v</span> <span class="o">=</span> <span class="s2">&quot;Hi! I&#39;m a strict mode script!&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/javascript-strict-mode/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -527,6 +586,10 @@ classmethod VS staticmethod</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/css-masking/">css 蒙版</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/html-readonly-attribute/">html readonly 属性</a>
       </li>
     
@@ -540,10 +603,6 @@ classmethod VS staticmethod</p>
     
       <li class="post">
         <a href="/blog/rest-parameters-and-defaults-in-es6/">Rest parameters and defaults in ES6</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/template-strings-in-es6/">Template Strings in ES6</a>
       </li>
     
   </ul>
