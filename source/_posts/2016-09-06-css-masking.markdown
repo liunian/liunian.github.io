@@ -34,3 +34,7 @@ css 蒙版的关键点是：黑色表示完全透明展示；白色表示不展�
 
 <!--more-->
 <a class="jsbin-embed" href="http://jsbin.com/wogunecaqa/embed">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.39.15"></script>
+
+## 参考文档
+
+- [CSS Masking](http://www.html5rocks.com/en/tutorials/masking/adobe/)
