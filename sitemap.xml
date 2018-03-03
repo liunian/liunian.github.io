@@ -1,179 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  
-  <url>
-    <loc>http://liunian.github.io/blog/css-masking/</loc>
-    
-    <lastmod>2016-09-06T14:40:54+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/html-readonly-attribute/</loc>
-    
-    <lastmod>2016-07-23T13:15:38+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/es2015-computed-property-name/</loc>
-    
-    <lastmod>2016-04-28T10:04:55+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/arrow-function-in-es6/</loc>
-    
-    <lastmod>2015-12-28T17:27:28+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/rest-parameters-and-defaults-in-es6/</loc>
-    
-    <lastmod>2015-12-28T17:25:10+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/template-strings-in-es6/</loc>
-    
-    <lastmod>2015-12-28T17:22:27+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/generator-in-es6/</loc>
-    
-    <lastmod>2015-12-28T17:13:20+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/iterator-in-es6/</loc>
-    
-    <lastmod>2015-12-24T16:17:41+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/shadow-dom/</loc>
-    
-    <lastmod>2015-09-29T10:17:55+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/html-template/</loc>
-    
-    <lastmod>2015-09-21T17:49:18+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/javascript-strict-mode/</loc>
-    
-    <lastmod>2015-08-01T00:29:35+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/inline-block-in-ie6-and-7/</loc>
-    
-    <lastmod>2014-09-12T23:15:07+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/io-language/</loc>
-    
-    <lastmod>2013-01-01T03:13:05+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/python-library/</loc>
-    
-    <lastmod>2012-12-19T03:10:13+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/octopress/</loc>
-    
-    <lastmod>2012-08-03T02:51:34+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/python-tutorial/</loc>
-    
-    <lastmod>2012-07-14T02:21:51+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/ie6-inline-block-new-line/</loc>
-    
-    <lastmod>2012-07-07T12:49:50+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/blog/ie6-float-right-bug/</loc>
-    
-    <lastmod>2012-06-29T02:11:20+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  
-  <url>
-    <loc>http://liunian.github.io/blog/archives/</loc>
-    <lastmod>2016-09-06T15:02:16+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/</loc>
-    <lastmod>2016-09-06T15:02:16+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  
-  <url>
-    <loc>http://liunian.github.io/about/</loc>
-    <lastmod>2016-09-06T15:02:16+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  
-  
-  <url>
-    <loc>http://liunian.github.io/downloads/code/ie6_float_right.html</loc>
-    <lastmod>2016-09-06T14:59:59Z</lastmod>
-    <priority>0.6</priority>
-  </url>
-  
+<url>
+<loc>http://liunian.github.io/blog/css-masking/</loc>
+<lastmod>2016-09-06T14:40:54+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/html-readonly-attribute/</loc>
+<lastmod>2016-07-23T13:15:38+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/es2015-computed-property-name/</loc>
+<lastmod>2016-04-28T10:04:55+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/arrow-function-in-es6/</loc>
+<lastmod>2015-12-28T17:27:28+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/rest-parameters-and-defaults-in-es6/</loc>
+<lastmod>2015-12-28T17:25:10+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/template-strings-in-es6/</loc>
+<lastmod>2015-12-28T17:22:27+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/generator-in-es6/</loc>
+<lastmod>2015-12-28T17:13:20+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/iterator-in-es6/</loc>
+<lastmod>2015-12-24T16:17:41+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/shadow-dom/</loc>
+<lastmod>2015-09-29T10:17:55+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/html-template/</loc>
+<lastmod>2015-09-21T17:49:18+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/javascript-strict-mode/</loc>
+<lastmod>2015-08-01T00:29:35+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/inline-block-in-ie6-and-7/</loc>
+<lastmod>2014-09-12T23:15:07+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/io-language/</loc>
+<lastmod>2013-01-01T03:13:05+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/python-library/</loc>
+<lastmod>2012-12-19T03:10:13+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/octopress/</loc>
+<lastmod>2012-08-03T02:51:34+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/python-tutorial/</loc>
+<lastmod>2012-07-14T02:21:51+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/ie6-inline-block-new-line/</loc>
+<lastmod>2012-07-07T12:49:50+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/ie6-float-right-bug/</loc>
+<lastmod>2012-06-29T02:11:20+08:00</lastmod>
+</url>
+<url>
+<loc>http://liunian.github.io/</loc>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/archives/</loc>
+</url>
+<url>
+<loc>http://liunian.github.io/about/</loc>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/categories/css/</loc>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/categories/frontend/</loc>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/categories/python/</loc>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/categories/memo/</loc>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/categories/octopress/</loc>
+</url>
+<url>
+<loc>http://liunian.github.io/blog/categories/javascript/</loc>
+</url>
+<url>
+<loc>http://liunian.github.io/downloads/code/ie6_float_right.html</loc>
+<lastmod>2018-03-04T00:11:15+08:00</lastmod>
+</url>
 </urlset>
