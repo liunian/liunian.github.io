@@ -1,5 +1,7 @@
 # Blog 环境设置
 
+> 工作在 `source` 分支就可以了，`master` 分支由 `bundle exec rake deploy` 来生成
+
 ## 安装 `rbenv`
 
 - 先卸载 `rvm`: `$ rvm implode`
@@ -27,4 +29,5 @@
 
 ## 运行 Rake 命令
 
-octopress 的 rake 命令需要前置 `bundle exec` 来运行，如 `bundle exec rake preview`
+octopress 的 rake 命令需要前置 `bundle exec` 运行，如 `bundle exec rake preview`
+
