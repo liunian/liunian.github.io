@@ -9,6 +9,7 @@ footer: true
 ``` json
 about: {
     blog: "just code memos",
-    person: "someone do coding"
+    person: "someone do coding",
+    date: "now"
 }
 ```
